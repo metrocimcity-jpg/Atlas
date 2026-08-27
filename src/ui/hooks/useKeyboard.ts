@@ -1,0 +1,67 @@
+import { actions, useAtlas } from "@/state/store";
+import { resetFoamTreeView } from "@/visualization/foamtree/host";
+import { useEffect } from "react";
+
+export function useKeyboard(): void {
+  const { panels, selectedId } = useAtlas();
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent): void => {
+      const meta = event.ctrlKey || event.metaKey;
+      if (meta && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        actions.setPanel("commandPalette", !panels.commandPalette);
+        return;
+      }
+      if (meta && event.shiftKey && event.key.toLowerCase() === "o") {
+        event.preventDefault();
+        void actions.openJson();
+        return;
+      }
+      if (meta && event.key.toLowerCase() === "o") {
+        event.preventDefault();
+        void actions.openFolder();
+        return;
+      }
+      if (meta && event.key.toLowerCase() === "f") {
+        event.preventDefault();
+        const search = document.querySelector<HTMLInputElement>(".search-wrap input, input.search");
+        search?.focus();
+        return;
+      }
+      if (meta && event.key.toLowerCase() === "r") {
+        event.preventDefault();
+        void actions.openFolder();
+        return;
+      }
+      if (event.key === "Escape") {
+        if (panels.commandPalette) {
+          actions.setPanel("commandPalette", false);
+          return;
+        }
+        if (panels.settings) {
+          actions.setPanel("settings", false);
+          return;
+        }
+        if (selectedId) {
+          actions.select(null);
+          resetFoamTreeView();
+          return;
+        }
+        resetFoamTreeView();
+        actions.navigateBack();
+        return;
+      }
+      if (event.key === "Backspace") {
+        const target = event.target as HTMLElement | null;
+        if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable)) {
+          return;
+        }
+        event.preventDefault();
+        actions.navigateBack();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [panels, selectedId]);
+}

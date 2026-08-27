@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Disk Atlas — File Treemap Explorer</title>
+<script src="https://cdn.jsdelivr.net/npm/@carrotsearch/foamtree@3.6.1/foamtree.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  :root{
+    --bg:            #0f1115;
+    --bg-alt:        #12151b;
+    --panel:         #171a20;
+    --panel-raised:  #1d2129;
+    --border:        #262b34;
+    --border-soft:   #1f232b;
+    --text:          #e7e9ee;
+    --text-dim:      #9aa1b1;
+    --text-faint:    #5c6376;
+    --accent:        #ffb454;      /* folder-tab gold */
+    --accent-dim:    #a67a3a;
+    --match:         #59d9c4;      /* teal search-match glow */
+    --danger:        #ff6b6b;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-ui: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  *{ box-sizing: border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+    overflow:hidden;
+  }
+
+  #app{ display:flex; flex-direction:column; height:100vh; }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    display:flex; align-items:center; gap:18px;
+    padding: 12px 20px;
+    background: linear-gradient(180deg, var(--bg-alt), var(--bg));
+    border-bottom: 1px solid var(--border);
+    flex-shrink:0;
+  }
+  .brand{ display:flex; align-items:baseline; gap:10px; }
+  .brand .mark{
+    font-family: var(--font-display); font-weight:700; font-size:19px;
+    letter-spacing:0.2px; color: var(--text);
+  }
+  .brand .mark span{ color: var(--accent); }
+  .brand .tag{
+    font-family: var(--font-mono); font-size:11px; color: var(--text-faint);
+    border-left: 1px solid var(--border); padding-left:10px;
+  }
+
+  .topbar-actions{ display:flex; gap:8px; margin-left:auto; }
+
+  button.btn{
+    font-family: var(--font-ui); font-weight:600; font-size:12.5px;
+    color: var(--text); background: var(--panel-raised);
+    border:1px solid var(--border); border-radius: var(--radius-sm);
+    padding:8px 13px; cursor:pointer; display:flex; align-items:center; gap:7px;
+    transition: border-color .15s ease, transform .1s ease, background .15s ease;
+  }
+  button.btn:hover{ border-color:#3a4150; background:#20242c; }
+  button.btn:active{ transform: scale(0.97); }
+  button.btn.primary{ background: var(--accent); color:#241a08; border-color: var(--accent); }
+  button.btn.primary:hover{ background:#ffc069; }
+  button.btn svg{ width:14px; height:14px; flex-shrink:0; }
+  input[type=file]{ display:none; }
+
+  /* ---------- Breadcrumb ---------- */
+  .crumbbar{
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    padding: 9px 20px; background: var(--bg-alt);
+    border-bottom: 1px solid var(--border-soft);
+    font-family: var(--font-mono); font-size:12px; color: var(--text-dim);
+    flex-shrink:0; min-height: 16px;
+  }
+  .crumb{
+    cursor:pointer; padding:2px 7px; border-radius: var(--radius-sm);
+    background: transparent; border: 1px solid transparent;
+    transition: all .12s ease; white-space:nowrap; max-width: 220px; overflow:hidden; text-overflow:ellipsis;
+  }
+  .crumb:hover{ background: var(--panel-raised); border-color: var(--border); color: var(--text); }
+  .crumb.current{ color: var(--accent); }
+  .crumb-sep{ color: var(--text-faint); }
+
+  /* ---------- Layout ---------- */
+  .layout{ flex:1; display:flex; min-height:0; }
+
+  .sidebar{
+    width: 300px; flex-shrink:0; background: var(--panel);
+    border-right: 1px solid var(--border);
+    overflow-y:auto; padding: 16px 16px 40px;
+    display:flex; flex-direction:column; gap:18px;
+  }
+  .sidebar::-webkit-scrollbar{ width:8px; }
+  .sidebar::-webkit-scrollbar-thumb{ background: var(--border); border-radius:8px; }
+
+  .card{
+    background: var(--bg-alt); border:1px solid var(--border-soft);
+    border-radius: var(--radius-md); padding: 13px 14px;
+  }
+  .card h3{
+    margin:0 0 10px; font-family: var(--font-display); font-size:11.5px;
+    font-weight:700; letter-spacing:0.09em; text-transform:uppercase; color: var(--text-dim);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .card h3 .reset-link{
+    font-family: var(--font-ui); font-size:11px; font-weight:600; letter-spacing:0;
+    text-transform:none; color: var(--accent); cursor:pointer; opacity:0.85;
+  }
+  .card h3 .reset-link:hover{ opacity:1; text-decoration:underline; }
+
+  label.field-label{
+    display:block; font-size:11px; font-weight:600; color: var(--text-faint);
+    margin: 10px 0 5px; text-transform:uppercase; letter-spacing:0.06em;
+  }
+  label.field-label:first-child{ margin-top:0; }
+
+  .search-wrap{ position:relative; }
+  .search-wrap svg{
+    position:absolute; left:9px; top:50%; transform:translateY(-50%);
+    width:13px; height:13px; color: var(--text-faint); pointer-events:none;
+  }
+  input[type=text], input[type=number], input[type=date], select{
+    width:100%; background: var(--panel); border:1px solid var(--border);
+    color: var(--text); border-radius: var(--radius-sm); padding:8px 10px;
+    font-family: var(--font-ui); font-size:12.5px; outline:none;
+    transition: border-color .12s ease;
+  }
+  input[type=text]{ padding-left:28px; font-family: var(--font-mono); }
+  input:focus, select:focus{ border-color: var(--accent-dim); }
+  select{ cursor:pointer; }
+
+  .row-2{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+
+  .chips{ display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; max-height:130px; overflow-y:auto; padding-right:2px;}
+  .chips::-webkit-scrollbar{ width:6px; }
+  .chips::-webkit-scrollbar-thumb{ background: var(--border); border-radius:8px; }
+  .chip{
+    display:flex; align-items:center; gap:5px;
+    font-family: var(--font-mono); font-size:11px; font-weight:500;
+    padding:4px 8px 4px 6px; border-radius:12px; cursor:pointer;
+    background: var(--panel); border:1px solid var(--border); color: var(--text-dim);
+    user-select:none; transition: all .12s ease;
+  }
+  .chip .sw{ width:8px; height:8px; border-radius:2px; flex-shrink:0; }
+  .chip.active{ background:#242017; border-color: var(--accent-dim); color: var(--accent); }
+  .chip .cnt{ color: var(--text-faint); }
+  .chip.active .cnt{ color: var(--accent-dim); }
+
+  .toggle-row{
+    display:flex; align-items:center; justify-content:space-between;
+    font-size:12px; color: var(--text-dim); margin-top:12px;
+  }
+  .switch{
+    width:34px; height:19px; background: var(--panel); border:1px solid var(--border);
+    border-radius:11px; position:relative; cursor:pointer; flex-shrink:0;
+  }
+  .switch .knob{
+    position:absolute; top:2px; left:2px; width:13px; height:13px; border-radius:50%;
+    background: var(--text-faint); transition: all .15s ease;
+  }
+  .switch.on{ background:#2a2313; border-color: var(--accent-dim); }
+  .switch.on .knob{ left:17px; background: var(--accent); }
+
+  .clear-filters{
+    display:block; text-align:center; margin-top:12px; font-size:11.5px;
+    color: var(--text-faint); cursor:pointer; padding:6px; border-radius: var(--radius-sm);
+    border:1px dashed var(--border);
+  }
+  .clear-filters:hover{ color: var(--danger); border-color: var(--danger); }
+
+  .stat-line{ display:flex; justify-content:space-between; font-size:12px; padding:3px 0; }
+  .stat-line .k{ color: var(--text-faint); }
+  .stat-line .v{ font-family: var(--font-mono); color: var(--text); }
+  .stat-line .v.accentv{ color: var(--accent); }
+
+  .legend-row{ display:flex; align-items:center; gap:8px; margin:7px 0; font-size:11.5px; }
+  .legend-row .sw{ width:9px; height:9px; border-radius:2px; flex-shrink:0; }
+  .legend-row .name{ font-family: var(--font-mono); color: var(--text-dim); width:52px; flex-shrink:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .legend-row .bar-track{ flex:1; height:6px; background: var(--panel); border-radius:3px; overflow:hidden; }
+  .legend-row .bar-fill{ height:100%; border-radius:3px; }
+  .legend-row .pct{ font-family: var(--font-mono); color: var(--text-faint); width:34px; text-align:right; flex-shrink:0; }
+
+  .detail-empty{ font-size:12px; color: var(--text-faint); line-height:1.6; }
+  .detail-title{
+    font-family: var(--font-mono); font-size:13px; color: var(--accent);
+    word-break: break-word; margin-bottom:8px; font-weight:600;
+  }
+  .detail-path{
+    font-family: var(--font-mono); font-size:10.5px; color: var(--text-faint);
+    word-break: break-all; margin-bottom:10px; line-height:1.5;
+  }
+
+  /* ---------- Stage ---------- */
+  .stage{ flex:1; position:relative; background: var(--bg); min-width:0; }
+  #visualization{ position:absolute; inset:0; }
+
+  .dropzone{
+    position:absolute; inset:14px; border:2px dashed var(--accent);
+    border-radius:12px; display:none; align-items:center; justify-content:center;
+    background: rgba(255,180,84,0.06); z-index:20; pointer-events:none;
+    font-family: var(--font-display); font-size:18px; color: var(--accent);
+  }
+  .dropzone.active{ display:flex; }
+
+  .empty-state{
+    position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:16px; text-align:center; padding:20px;
+  }
+  .empty-state svg{ width:52px; height:52px; color: var(--text-faint); opacity:0.6; }
+  .empty-state h2{ font-family: var(--font-display); font-size:18px; margin:0; color: var(--text); }
+  .empty-state p{ font-size:13px; color: var(--text-faint); margin:0; max-width:340px; line-height:1.6; }
+  .empty-state .actions{ display:flex; gap:10px; margin-top:6px; }
+
+  /* ---------- Status bar ---------- */
+  .statusbar{
+    display:flex; align-items:center; gap:18px;
+    padding: 8px 20px; background: var(--bg-alt); border-top:1px solid var(--border);
+    font-family: var(--font-mono); font-size:11.5px; color: var(--text-faint); flex-shrink:0;
+  }
+  .statusbar .hl{ color: var(--text); }
+  .statusbar .sep{ color: var(--border); }
+  .statusbar .match-dot{ width:7px; height:7px; border-radius:50%; background: var(--match); display:inline-block; margin-right:6px; }
+
+  ::-webkit-scrollbar{ width:9px; height:9px; }
+  ::-webkit-scrollbar-track{ background:transparent; }
+  ::-webkit-scrollbar-thumb{ background:#2a2f39; border-radius:8px; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <div class="topbar">
+    <div class="brand">
+      <div class="mark">Disk<span>Atlas</span></div>
+      <div class="tag">file &amp; folder treemap — grouped by type / size / date</div>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn" id="btnDemo" title="Load a synthetic sample project">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        Sample data
+      </button>
+      <button class="btn primary" id="btnFolder" title="Choose a real folder from your computer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2v11Z"/></svg>
+        Load folder
+      </button>
+      <input type="file" id="folderInput" webkitdirectory directory multiple />
+    </div>
+  </div>
+
+  <div class="crumbbar" id="crumbbar"></div>
+
+  <div class="layout">
+    <aside class="sidebar">
+
+      <div class="card">
+        <h3>Search</h3>
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="searchInput" placeholder="filename or path contains…" />
+        </div>
+
+        <label class="field-label">File type</label>
+        <div class="chips" id="extChips"></div>
+
+        <label class="field-label">Size range (KB)</label>
+        <div class="row-2">
+          <input type="number" id="sizeMin" placeholder="min" min="0" />
+          <input type="number" id="sizeMax" placeholder="max" min="0" />
+        </div>
+
+        <label class="field-label">Modified between</label>
+        <div class="row-2">
+          <input type="date" id="dateFrom" />
+          <input type="date" id="dateTo" />
+        </div>
+
+        <div class="toggle-row">
+          <span>Only show matches</span>
+          <div class="switch" id="onlyMatchesToggle"><div class="knob"></div></div>
+        </div>
+
+        <div class="clear-filters" id="clearFilters">clear all filters</div>
+      </div>
+
+      <div class="card">
+        <h3>View</h3>
+        <label class="field-label">Group by</label>
+        <select id="groupBySelect">
+          <option value="folder">Folder structure</option>
+          <option value="ext" selected>File type</option>
+          <option value="ext-size">File type → size</option>
+          <option value="size">Size</option>
+          <option value="date">Date modified</option>
+          <option value="date-ext">Date modified → type</option>
+        </select>
+
+        <label class="field-label">Color by</label>
+        <select id="colorBySelect">
+          <option value="ext" selected>File type</option>
+          <option value="size">Size</option>
+          <option value="date">Recency</option>
+        </select>
+
+        <label class="field-label">Display</label>
+        <select id="stackingSelect">
+          <option value="flattened" selected>Flattened (see all levels)</option>
+          <option value="hierarchical">Hierarchical (drill down)</option>
+        </select>
+      </div>
+
+      <div class="card" id="statsCard">
+        <h3>Overview</h3>
+        <div id="statLines"></div>
+        <label class="field-label" style="margin-top:12px;">Top types by size</label>
+        <div id="legendList"></div>
+      </div>
+
+      <div class="card">
+        <h3>Selection <span class="reset-link" id="clearSelection">clear</span></h3>
+        <div id="detailPanel"><div class="detail-empty">Click any tile in the map to see its details here. Click a group to drill in; use the breadcrumb above to step back out.</div></div>
+      </div>
+
+    </aside>
+
+    <main class="stage">
+      <div id="visualization"></div>
+      <div class="dropzone" id="dropzone">Drop a folder to visualize it</div>
+      <div class="empty-state" id="emptyState">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2v11Z"/></svg>
+        <h2>No files loaded yet</h2>
+        <p>Load a real folder from your computer, drag one onto this window, or explore a generated sample project to see how it works.</p>
+        <div class="actions">
+          <button class="btn primary" id="emptyBtnFolder">Load folder</button>
+          <button class="btn" id="emptyBtnDemo">Try sample data</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="statusbar" id="statusbar">
+    <span>Ready.</span>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =====================================================================
+     CONFIG
+  ===================================================================== */
+
+  // Curated categorical palette (consistent S/L for visual cohesion),
+  // used both for the manual extension map and as a hash fallback.
+  const PALETTE = [
+    "#ffb454","#5eb3ff","#8fd97a","#ff8fb1","#c896ff","#5edede",
+    "#ffd166","#ff9a5e","#7ea8ff","#c4e86b","#ff6b9d","#6bdbb0",
+    "#e0a3ff","#84d8ff","#ffbb7d","#9ecf6f","#f77e8f","#7fc9c9"
+  ];
+
+  const EXT_CATEGORY = {
+    js:0, jsx:0, ts:0, tsx:0, mjs:0, cjs:0, vue:0, svelte:0,
+    json:6, yml:1, yaml:1, xml:1, toml:1, ini:1, env:1, lock:1,
+    css:2, scss:2, sass:2, less:2, html:8,
+    md:6, txt:6, rst:6, pdf:9,
+    png:4, jpg:4, jpeg:4, gif:4, svg:4, webp:4, ico:4, bmp:4,
+    py:11, java:11, go:11, rs:11, rb:11, php:11, c:11, cpp:11, h:11, cs:11, kt:11, swift:11,
+    sql:5, csv:5, db:5, sqlite:5,
+    zip:1, tar:1, gz:1, "7z":1, rar:1,
+    mp3:10, wav:10, mp4:10, mov:10, avi:10, webm:10,
+    log:1, gitignore:1, dockerfile:11, sh:11, bat:1,
+  };
+
+  const SIZE_BUCKETS = [
+    { label:"0 – 10 KB",     min:0,             max:10*1024 },
+    { label:"10 – 100 KB",   min:10*1024,       max:100*1024 },
+    { label:"100 KB – 1 MB", min:100*1024,      max:1024*1024 },
+    { label:"1 – 10 MB",     min:1024*1024,     max:10*1024*1024 },
+    { label:"10 – 100 MB",   min:10*1024*1024,  max:100*1024*1024 },
+    { label:"100 MB +",      min:100*1024*1024, max:Infinity },
+  ];
+
+  const NO_EXT = "no extension";
+
+  /* =====================================================================
+     UTILITIES
+  ===================================================================== */
+
+  function extOf(name){
+    const base = name.split("/").pop();
+    const dot = base.lastIndexOf(".");
+    if (dot <= 0 || dot === base.length - 1) return NO_EXT;
+    return base.slice(dot + 1).toLowerCase();
+  }
+
+  function hashString(s){
+    let h = 0;
+    for (let i = 0; i < s.length; i++){ h = (h * 31 + s.charCodeAt(i)) | 0; }
+    return Math.abs(h);
+  }
+
+  function colorForExt(ext){
+    if (ext === NO_EXT) return "#5c6376";
+    const idx = (ext in EXT_CATEGORY) ? EXT_CATEGORY[ext] : hashString(ext);
+    return PALETTE[idx % PALETTE.length];
+  }
+
+  function lerp(a, b, t){ return a + (b - a) * t; }
+
+  function hexToRgb(hex){
+    const n = parseInt(hex.slice(1), 16);
+    return [ (n>>16)&255, (n>>8)&255, n&255 ];
+  }
+  function rgbToHex(r,g,b){
+    return "#" + [r,g,b].map(v => Math.round(Math.max(0,Math.min(255,v))).toString(16).padStart(2,"0")).join("");
+  }
+  function colorScale(t, fromHex, toHex){
+    t = Math.max(0, Math.min(1, t));
+    const a = hexToRgb(fromHex), b = hexToRgb(toHex);
+    return rgbToHex(lerp(a[0],b[0],t), lerp(a[1],b[1],t), lerp(a[2],b[2],t));
+  }
+
+  function formatBytes(bytes){
+    if (bytes === 0) return "0 B";
+    const units = ["B","KB","MB","GB","TB"];
+    const i = Math.min(units.length - 1, Math.floor(Math.log(bytes) / Math.log(1024)));
+    const v = bytes / Math.pow(1024, i);
+    return (i === 0 ? v : v.toFixed(v < 10 ? 2 : 1)) + " " + units[i];
+  }
+
+  function formatDate(d){
+    return d.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"numeric" });
+  }
+
+  function relativeDays(d){
+    return Math.floor((Date.now() - d.getTime()) / 86400000);
+  }
+
+  function dateBucketOf(d){
+    const days = relativeDays(d);
+    if (days < 1) return "Today";
+    if (days < 7) return "This week";
+    if (days < 30) return "This month";
+    if (days < 365) return "This year";
+    return "Older";
+  }
+  const DATE_BUCKET_ORDER = ["Today","This week","This month","This year","Older"];
+
+  function sizeBucketOf(bytes){
+    for (const b of SIZE_BUCKETS) if (bytes >= b.min && bytes < b.max) return b.label;
+    return SIZE_BUCKETS[SIZE_BUCKETS.length - 1].label;
+  }
+
+  function debounce(fn, ms){
+    let t;
+    return function(...args){ clearTimeout(t); t = setTimeout(() => fn.apply(this, args), ms); };
+  }
+
+  /* =====================================================================
+     STATE
+  ===================================================================== */
+
+  const state = {
+    files: [],              // flat list: {name, path, size, modified(Date), ext}
+    filters: { text:"", exts: new Set(), sizeMin:null, sizeMax:null, dateFrom:null, dateTo:null, onlyMatches:false },
+    extUniverse: [],         // [{ext, count, size}] sorted by size desc, over full dataset
+    groupBy: "ext",
+    colorBy: "ext",
+    stacking: "flattened",
+    foamtree: null,
+    selectedFile: null,
+  };
+
+  /* =====================================================================
+     DEMO DATA GENERATOR
+  ===================================================================== */
+
+  function generateDemoFiles(){
+    const now = Date.now();
+    const day = 86400000;
+    const files = [];
+
+    function push(path, size, ageDays){
+      files.push({
+        name: path.split("/").pop(),
+        path,
+        size: Math.max(1, Math.round(size)),
+        modified: new Date(now - ageDays * day - Math.random()*day),
+        ext: extOf(path)
+      });
+    }
+
+    // src/ code files
+    const modules = ["auth","cart","checkout","catalog","search","profile","notifications","billing","admin","onboarding"];
+    modules.forEach(m => {
+      push(`src/modules/${m}/index.ts`, 800 + Math.random()*4000, Math.random()*40);
+      push(`src/modules/${m}/${m}.controller.ts`, 1200 + Math.random()*6000, Math.random()*90);
+      push(`src/modules/${m}/${m}.service.ts`, 1500 + Math.random()*8000, Math.random()*200);
+      push(`src/modules/${m}/${m}.test.ts`, 900 + Math.random()*3000, Math.random()*15);
+      push(`src/modules/${m}/${m}.styles.css`, 400 + Math.random()*2500, Math.random()*300);
+      if (Math.random() > 0.5) push(`src/modules/${m}/README.md`, 500 + Math.random()*1500, Math.random()*400);
+    });
+    for (let i=0;i<18;i++) push(`src/components/Component${i}.tsx`, 600 + Math.random()*5000, Math.random()*250);
+    for (let i=0;i<10;i++) push(`src/hooks/use${i}.ts`, 300 + Math.random()*1200, Math.random()*150);
+    push("src/index.tsx", 1200, 2);
+    push("src/App.tsx", 3400, 5);
+
+    // assets/ images
+    const imgExts = ["png","jpg","svg","webp","gif"];
+    for (let i=0;i<40;i++){
+      const ext = imgExts[Math.floor(Math.random()*imgExts.length)];
+      const size = ext === "svg" ? 2000+Math.random()*30000 : 20000 + Math.random()*4000000;
+      push(`assets/images/asset-${i}.${ext}`, size, Math.random()*500);
+    }
+    push("assets/video/hero-loop.mp4", 42_000_000, 120);
+    push("assets/video/onboarding-demo.mov", 88_000_000, 340);
+    push("assets/audio/notify.mp3", 180_000, 220);
+
+    // node_modules-ish (many small + a few big)
+    const pkgs = ["react","lodash","express","webpack","typescript","axios","date-fns","zod","redux","vite"];
+    pkgs.forEach(p => {
+      for (let i=0;i<6;i++) push(`node_modules/${p}/dist/file-${i}.js`, 2000 + Math.random()*60000, 400+Math.random()*300);
+      push(`node_modules/${p}/package.json`, 400+Math.random()*1000, 400+Math.random()*300);
+      push(`node_modules/${p}/README.md`, 1000+Math.random()*3000, 400+Math.random()*300);
+    });
+    push("node_modules/.package-lock.json", 1_800_000, 3);
+
+    // docs
+    ["Overview","Architecture","API-Reference","Contributing","Changelog","Deployment"].forEach(d => {
+      push(`docs/${d}.md`, 1500 + Math.random()*12000, Math.random()*600);
+    });
+    push("docs/diagrams/system-overview.svg", 45000, 300);
+    push("docs/diagrams/data-flow.png", 340000, 300);
+
+    // data / config
+    push("data/seed-users.csv", 240000, 60);
+    push("data/seed-orders.csv", 1_200_000, 60);
+    push("data/analytics-export.json", 3_400_000, 10);
+    push(".env.example", 400, 500);
+    push(".gitignore", 250, 700);
+    push("package.json", 2100, 4);
+    push("package-lock.json", 640_000, 4);
+    push("tsconfig.json", 900, 40);
+    push(".eslintrc.yml", 700, 90);
+    push("docker-compose.yml", 1400, 80);
+    push("Dockerfile", 900, 80);
+    push("README.md", 4200, 3);
+    push("LICENSE", 11000, 700);
+
+    // logs
+    for (let i=0;i<6;i++) push(`logs/server-${i}.log`, 50000 + Math.random()*900000, i*3);
+
+    return files;
+  }
+
+  /* =====================================================================
+     TREE BUILDING
+  ===================================================================== */
+
+  // Wrap a plain file record as a FoamTree leaf group.
+  function fileLeaf(f){
+    return {
+      label: f.name,
+      weight: Math.max(f.size, 1),
+      file: f,
+      isFile: true
+    };
+  }
+
+  function getOrCreate(map, key, factory){
+    let v = map.get(key);
+    if (!v){ v = factory(); map.set(key, v); }
+    return v;
+  }
+
+  function buildFolderTree(files){
+    const root = { children: new Map() };
+    files.forEach(f => {
+      const parts = f.path.split("/");
+      let node = root;
+      for (let i=0;i<parts.length-1;i++){
+        node = getOrCreate(node.children, parts[i], () => ({ label: parts[i], children: new Map() }));
+      }
+      node.children = node.children || new Map();
+      getOrCreate(node.children, f.name, () => fileLeaf(f));
+    });
+    function toGroups(node){
+      if (node.isFile) return node;
+      const groups = Array.from(node.children.values()).map(toGroups);
+      return { label: node.label, groups, isFolder: true };
+    }
+    return Array.from(root.children.values()).map(toGroups);
+  }
+
+  function buildFlatGroupTree(files, keyFn, order){
+    const buckets = new Map();
+    files.forEach(f => {
+      const key = keyFn(f);
+      getOrCreate(buckets, key, () => []).push(f);
+    });
+    let keys = Array.from(buckets.keys());
+    if (order) keys = order.filter(k => buckets.has(k)).concat(keys.filter(k => !order.includes(k)));
+    else keys.sort();
+    return keys.map(key => ({
+      label: key,
+      isBucket: true,
+      bucketKey: key,
+      groups: buckets.get(key).map(fileLeaf)
+    }));
+  }
+
+  function buildTwoLevelTree(files, outerKeyFn, innerKeyFn, outerOrder){
+    const outer = new Map();
+    files.forEach(f => {
+      const ok = outerKeyFn(f);
+      getOrCreate(outer, ok, () => []).push(f);
+    });
+    let keys = Array.from(outer.keys());
+    if (outerOrder) keys = outerOrder.filter(k => outer.has(k)).concat(keys.filter(k => !outerOrder.includes(k)));
+    else keys.sort();
+    return keys.map(ok => ({
+      label: ok,
+      isBucket: true,
+      bucketKey: ok,
+      groups: buildFlatGroupTree(outer.get(ok), innerKeyFn)
+    }));
+  }
+
+  function buildGroups(files, groupBy){
+    switch (groupBy){
+      case "folder":   return buildFolderTree(files);
+      case "ext":      return buildFlatGroupTree(files, f => f.ext);
+      case "size":     return buildFlatGroupTree(files, f => sizeBucketOf(f.size), SIZE_BUCKETS.map(b=>b.label));
+      case "date":     return buildFlatGroupTree(files, f => dateBucketOf(f.modified), DATE_BUCKET_ORDER);
+      case "ext-size": return buildTwoLevelTree(files, f => f.ext, f => sizeBucketOf(f.size));
+      case "date-ext": return buildTwoLevelTree(files, f => dateBucketOf(f.modified), f => f.ext, DATE_BUCKET_ORDER);
+      default:         return buildFlatGroupTree(files, f => f.ext);
+    }
+  }
+
+  // Roll up weight / size / count / parent refs, bottom-up.
+  function finalize(node, parent){
+    node.parent = parent;
+    if (node.isFile){
+      node.totalSize = node.file.size;
+      node.fileCount = 1;
+      return;
+    }
+    let size = 0, count = 0, weight = 0;
+    (node.groups || []).forEach(child => {
+      finalize(child, node);
+      size += child.totalSize;
+      count += child.fileCount;
+      weight += child.weight;
+    });
+    node.totalSize = size;
+    node.fileCount = count;
+    node.weight = Math.max(weight, 1);
+  }
+
+  /* =====================================================================
+     COLOR DECORATION
+  ===================================================================== */
+
+  let sizeRangeCache = null, dateRangeCache = null;
+
+  function computeRanges(files){
+    if (files.length === 0){ sizeRangeCache = [0,1]; dateRangeCache = [0,1]; return; }
+    let minS=Infinity,maxS=0,minD=Infinity,maxD=0;
+    files.forEach(f => {
+      if (f.size < minS) minS = f.size;
+      if (f.size > maxS) maxS = f.size;
+      const t = f.modified.getTime();
+      if (t < minD) minD = t;
+      if (t > maxD) maxD = t;
+    });
+    sizeRangeCache = [Math.log(minS+1), Math.log(maxS+1)];
+    dateRangeCache = [minD, maxD];
+  }
+
+  function colorForFile(f, colorBy){
+    if (colorBy === "size"){
+      const lv = Math.log(f.size+1);
+      const t = sizeRangeCache[1] > sizeRangeCache[0] ? (lv - sizeRangeCache[0]) / (sizeRangeCache[1]-sizeRangeCache[0]) : 0;
+      return colorScale(t, "#4d6b99", "#ff8a4d");
+    }
+    if (colorBy === "date"){
+      const t = dateRangeCache[1] > dateRangeCache[0] ? (f.modified.getTime() - dateRangeCache[0]) / (dateRangeCache[1]-dateRangeCache[0]) : 0;
+      return colorScale(t, "#4a4f5c", "#5eddc0"); // old = grey, new = teal
+    }
+    return colorForExt(f.ext);
+  }
+
+  /* =====================================================================
+     FILTER MATCHING
+  ===================================================================== */
+
+  function matchesFilters(f, filters){
+    if (filters.text){
+      const hay = (f.path + " " + f.name).toLowerCase();
+      if (!hay.includes(filters.text)) return false;
+    }
+    if (filters.exts.size > 0 && !filters.exts.has(f.ext)) return false;
+    const kb = f.size / 1024;
+    if (filters.sizeMin != null && kb < filters.sizeMin) return false;
+    if (filters.sizeMax != null && kb > filters.sizeMax) return false;
+    if (filters.dateFrom && f.modified < filters.dateFrom) return false;
+    if (filters.dateTo && f.modified > filters.dateTo) return false;
+    return true;
+  }
+
+  function filtersActive(filters){
+    return !!(filters.text || filters.exts.size || filters.sizeMin != null ||
+      filters.sizeMax != null || filters.dateFrom || filters.dateTo);
+  }
+
+  /* =====================================================================
+     DOM REFS
+  ===================================================================== */
+
+  const el = id => document.getElementById(id);
+  const $viz = el("visualization");
+  const $empty = el("emptyState");
+  const $dropzone = el("dropzone");
+  const $crumbbar = el("crumbbar");
+  const $statusbar = el("statusbar");
+  const $statLines = el("statLines");
+  const $legendList = el("legendList");
+  const $extChips = el("extChips");
+  const $detailPanel = el("detailPanel");
+
+  /* =====================================================================
+     RENDER: sidebar stats + legend + chips
+  ===================================================================== */
+
+  function computeExtUniverse(files){
+    const map = new Map();
+    files.forEach(f => {
+      const e = getOrCreate(map, f.ext, () => ({ ext:f.ext, count:0, size:0 }));
+      e.count++; e.size += f.size;
+    });
+    return Array.from(map.values()).sort((a,b) => b.size - a.size);
+  }
+
+  function renderChips(){
+    $extChips.innerHTML = "";
+    state.extUniverse.forEach(e => {
+      const chip = document.createElement("div");
+      chip.className = "chip" + (state.filters.exts.has(e.ext) ? " active" : "");
+      chip.innerHTML = `<span class="sw" style="background:${colorForExt(e.ext)}"></span>${e.ext} <span class="cnt">${e.count}</span>`;
+      chip.onclick = () => {
+        if (state.filters.exts.has(e.ext)) state.filters.exts.delete(e.ext);
+        else state.filters.exts.add(e.ext);
+        renderChips();
+        applyAndRender();
+      };
+      $extChips.appendChild(chip);
+    });
+  }
+
+  function renderStats(matched){
+    const totalFiles = state.files.length;
+    const totalSize = state.files.reduce((s,f) => s+f.size, 0);
+    const matchFiles = matched.length;
+    const matchSize = matched.reduce((s,f) => s+f.size, 0);
+    const active = filtersActive(state.filters);
+
+    $statLines.innerHTML = `
+      <div class="stat-line"><span class="k">Total files</span><span class="v">${totalFiles.toLocaleString()}</span></div>
+      <div class="stat-line"><span class="k">Total size</span><span class="v">${formatBytes(totalSize)}</span></div>
+      ${ active ? `
+      <div class="stat-line"><span class="k">Matching</span><span class="v accentv">${matchFiles.toLocaleString()}</span></div>
+      <div class="stat-line"><span class="k">Matching size</span><span class="v accentv">${formatBytes(matchSize)}</span></div>` : "" }
+    `;
+
+    const top = state.extUniverse.slice(0, 8);
+    const maxSize = top.length ? top[0].size : 1;
+    $legendList.innerHTML = "";
+    top.forEach(e => {
+      const row = document.createElement("div");
+      row.className = "legend-row";
+      const pct = totalSize ? (e.size/totalSize*100) : 0;
+      row.innerHTML = `
+        <span class="sw" style="background:${colorForExt(e.ext)}"></span>
+        <span class="name" title="${e.ext}">${e.ext}</span>
+        <span class="bar-track"><span class="bar-fill" style="width:${(e.size/maxSize*100)}%;background:${colorForExt(e.ext)}"></span></span>
+        <span class="pct">${pct.toFixed(1)}%</span>
+      `;
+      $legendList.appendChild(row);
+    });
+
+    $statusbar.innerHTML = active
+      ? `<span class="match-dot"></span><span class="hl">${matchFiles.toLocaleString()}</span> of ${totalFiles.toLocaleString()} files match <span class="sep">·</span> <span class="hl">${formatBytes(matchSize)}</span> of ${formatBytes(totalSize)}`
+      : `<span class="hl">${totalFiles.toLocaleString()}</span> files <span class="sep">·</span> <span class="hl">${formatBytes(totalSize)}</span> total`;
+  }
+
+  /* =====================================================================
+     RENDER: breadcrumb
+  ===================================================================== */
+
+  function renderBreadcrumb(openGroup){
+    const chain = [];
+    let g = openGroup;
+    while (g){ chain.unshift(g); g = g.parent; }
+    $crumbbar.innerHTML = "";
+
+    const home = document.createElement("span");
+    home.className = "crumb" + (chain.length === 0 ? " current" : "");
+    home.textContent = "⌂ all files";
+    home.onclick = () => { try { state.foamtree.reset(); } catch(e){} };
+    $crumbbar.appendChild(home);
+
+    chain.forEach((node, i) => {
+      const sep = document.createElement("span");
+      sep.className = "crumb-sep"; sep.textContent = "›";
+      $crumbbar.appendChild(sep);
+
+      const c = document.createElement("span");
+      c.className = "crumb" + (i === chain.length-1 ? " current" : "");
+      c.textContent = node.label || "(unnamed)";
+      c.onclick = () => {
+        try { state.foamtree.open({ groups:[node], open:true, keepPrevious:false }); } catch(e){}
+      };
+      $crumbbar.appendChild(c);
+    });
+  }
+
+  /* =====================================================================
+     RENDER: detail panel
+  ===================================================================== */
+
+  function renderDetail(group){
+    if (!group){
+      $detailPanel.innerHTML = `<div class="detail-empty">Click any tile in the map to see its details here. Click a group to drill in; use the breadcrumb above to step back out.</div>`;
+      return;
+    }
+    if (group.isFile){
+      const f = group.file;
+      $detailPanel.innerHTML = `
+        <div class="detail-title">${f.name}</div>
+        <div class="detail-path">${f.path}</div>
+        <div class="stat-line"><span class="k">Size</span><span class="v">${formatBytes(f.size)}</span></div>
+        <div class="stat-line"><span class="k">Type</span><span class="v">${f.ext}</span></div>
+        <div class="stat-line"><span class="k">Modified</span><span class="v">${formatDate(f.modified)}</span></div>
+        <div class="stat-line"><span class="k">Age</span><span class="v">${relativeDays(f.modified)} days</span></div>
+      `;
+    } else {
+      $detailPanel.innerHTML = `
+        <div class="detail-title">${group.label}</div>
+        <div class="stat-line"><span class="k">Files</span><span class="v">${group.fileCount.toLocaleString()}</span></div>
+        <div class="stat-line"><span class="k">Total size</span><span class="v">${formatBytes(group.totalSize)}</span></div>
+      `;
+    }
+  }
+
+  /* =====================================================================
+     FOAMTREE SETUP
+  ===================================================================== */
+
+  function buildOptions(){
+    return {
+      pixelRatio: window.devicePixelRatio || 1,
+      layout: "relaxed",
+      stacking: state.stacking,
+      descriptionGroupType: "stab",
+      descriptionGroupSize: 0.01,
+      descriptionGroupMaxHeight: 0.1,
+      rolloutDuration: 300,
+      pullbackDuration: 300,
+      groupBorderRadius: 0.15,
+      groupBorderWidth: 1.2,
+      groupInsetWidth: 2,
+      groupSelectionOutlineWidth: 2,
+      groupLabelFontFamily: "'Inter', sans-serif",
+      groupLabelFontWeight: 600,
+      groupLabelMinFontSize: 0,
+      groupLabelVerticalPadding: 0.2,
+      maxGroupLevelsDrawn: 8,
+      maxGroupLabelLevelsDrawn: 8,
+      attributionTheme: "dark",
+
+      groupColorDecorator: function(opts, props, vars){
+        const g = props.group;
+        if (g.isFile){
+          const base = colorForFile(g.file, state.colorBy);
+          vars.groupColor = base;
+          const active = filtersActive(state.filters);
+          const isMatch = !active || matchesFilters(g.file, state.filters);
+          if (active && !isMatch){
+            vars.groupColor = "hsla(220, 8%, 30%, 0.35)";
+            vars.labelColor = "rgba(230,230,235,0.25)";
+          } else if (active && isMatch){
+            vars.groupStrokeColor = "#59d9c4";
+            vars.groupStrokeWidth = 2;
+          }
+        } else {
+          vars.groupColor = "hsla(220, 14%, 22%, 1)";
+        }
+      },
+
+      groupLabelDecorator: function(opts, props, vars){
+        const g = props.group;
+        if (g.isFile && vars.labelText){
+          vars.labelText = g.label;
+        }
+      },
+
+      onGroupClick: function(e){
+        if (!e.group) return;
+        state.selectedFile = e.group;
+        renderDetail(e.group);
+      },
+
+      onGroupOpenOrCloseChanged: function(e){
+        if (!e.groups || e.groups.length === 0) return;
+        const g = e.groups[0];
+        const focused = e.open ? g : (g.parent || null);
+        renderBreadcrumb(focused);
+        if (!g.isFile){ renderDetail(e.open ? g : (g.parent || null)); }
+      }
+    };
+  }
+
+  function ensureFoamtree(){
+    if (state.foamtree) return state.foamtree;
+    state.foamtree = new CarrotSearchFoamTree(Object.assign({
+      element: $viz
+    }, buildOptions()));
+    window.addEventListener("resize", debounce(() => {
+      if (state.foamtree) state.foamtree.resize();
+    }, 250));
+    return state.foamtree;
+  }
+
+  function applyAndRender(){
+    if (state.files.length === 0) return;
+
+    const filters = state.filters;
+    const active = filtersActive(filters);
+    const dataFiles = (active && filters.onlyMatches)
+      ? state.files.filter(f => matchesFilters(f, filters))
+      : state.files;
+
+    const matched = state.files.filter(f => matchesFilters(f, filters));
+
+    computeRanges(state.files);
+    const groups = buildGroups(dataFiles, state.groupBy);
+    const dataObject = { groups };
+    dataObject.groups.forEach(g => finalize(g, null));
+    // root-level weight fix (finalize only rolls up groups with children)
+    const rootFile = groups.every(g => g.isFile);
+
+    const ft = ensureFoamtree();
+    ft.set(Object.assign({ dataObject: dataObject }, buildOptions()));
+
+    renderStats(matched);
+    renderBreadcrumb(null);
+  }
+
+  /* =====================================================================
+     INGESTION
+  ===================================================================== */
+
+  function normalizeBrowserFiles(fileList){
+    const files = [];
+    for (const file of fileList){
+      const path = file.webkitRelativePath || file.name;
+      files.push({
+        name: file.name,
+        path,
+        size: file.size,
+        modified: new Date(file.lastModified || Date.now()),
+        ext: extOf(file.name)
+      });
+    }
+    return files;
+  }
+
+  function readEntry(entry, prefix){
+    return new Promise((resolve) => {
+      if (entry.isFile){
+        entry.file(file => {
+          resolve([{
+            name: file.name,
+            path: prefix + file.name,
+            size: file.size,
+            modified: new Date(file.lastModified || Date.now()),
+            ext: extOf(file.name)
+          }]);
+        }, () => resolve([]));
+      } else if (entry.isDirectory){
+        const reader = entry.createReader();
+        let all = [];
+        function readBatch(){
+          reader.readEntries(async (batch) => {
+            if (batch.length === 0){
+              const nested = await Promise.all(all.map(e2 => readEntry(e2, prefix + entry.name + "/")));
+              resolve(nested.flat());
+            } else {
+              all = all.concat(batch);
+              readBatch();
+            }
+          }, () => resolve([]));
+        }
+        readBatch();
+      } else {
+        resolve([]);
+      }
+    });
+  }
+
+  async function readDataTransferItems(items){
+    const entries = [];
+    for (const item of items){
+      const entry = item.webkitGetAsEntry && item.webkitGetAsEntry();
+      if (entry) entries.push(entry);
+    }
+    const groups = await Promise.all(entries.map(e => readEntry(e, "")));
+    return groups.flat();
+  }
+
+  function loadFiles(files, sourceLabel){
+    if (files.length === 0) return;
+    state.files = files;
+    state.extUniverse = computeExtUniverse(files);
+    state.filters = { text:"", exts:new Set(), sizeMin:null, sizeMax:null, dateFrom:null, dateTo:null, onlyMatches:false };
+    resetFilterInputs();
+    $empty.style.display = "none";
+    renderChips();
+    applyAndRender();
+    $statusbar.innerHTML = `<span class="hl">Loaded ${sourceLabel}</span> — ${files.length.toLocaleString()} files`;
+  }
+
+  function resetFilterInputs(){
+    el("searchInput").value = "";
+    el("sizeMin").value = "";
+    el("sizeMax").value = "";
+    el("dateFrom").value = "";
+    el("dateTo").value = "";
+    el("onlyMatchesToggle").classList.remove("on");
+  }
+
+  /* =====================================================================
+     EVENT WIRING
+  ===================================================================== */
+
+  el("btnDemo").onclick = el("emptyBtnDemo").onclick = () => loadFiles(generateDemoFiles(), "sample project");
+  el("btnFolder").onclick = el("emptyBtnFolder").onclick = () => el("folderInput").click();
+
+  el("folderInput").addEventListener("change", (e) => {
+    const files = normalizeBrowserFiles(e.target.files);
+    loadFiles(files, "folder");
+  });
+
+  ["dragenter","dragover"].forEach(evt => {
+    document.addEventListener(evt, (e) => {
+      if (e.dataTransfer && Array.from(e.dataTransfer.types).includes("Files")){
+        e.preventDefault();
+        $dropzone.classList.add("active");
+      }
+    });
+  });
+  ["dragleave","drop"].forEach(evt => {
+    document.addEventListener(evt, (e) => {
+      if (evt === "dragleave" && e.target !== document && e.relatedTarget) return;
+      $dropzone.classList.remove("active");
+    });
+  });
+  document.addEventListener("drop", async (e) => {
+    if (!e.dataTransfer || !e.dataTransfer.items || e.dataTransfer.items.length === 0) return;
+    e.preventDefault();
+    const items = Array.from(e.dataTransfer.items);
+    const files = await readDataTransferItems(items);
+    loadFiles(files, "dropped folder");
+  });
+
+  el("searchInput").addEventListener("input", debounce((e) => {
+    state.filters.text = e.target.value.trim().toLowerCase();
+    applyAndRender();
+  }, 180));
+
+  el("sizeMin").addEventListener("input", debounce((e) => {
+    state.filters.sizeMin = e.target.value === "" ? null : parseFloat(e.target.value);
+    applyAndRender();
+  }, 180));
+  el("sizeMax").addEventListener("input", debounce((e) => {
+    state.filters.sizeMax = e.target.value === "" ? null : parseFloat(e.target.value);
+    applyAndRender();
+  }, 180));
+  el("dateFrom").addEventListener("change", (e) => {
+    state.filters.dateFrom = e.target.value ? new Date(e.target.value) : null;
+    applyAndRender();
+  });
+  el("dateTo").addEventListener("change", (e) => {
+    state.filters.dateTo = e.target.value ? new Date(e.target.value + "T23:59:59") : null;
+    applyAndRender();
+  });
+
+  el("onlyMatchesToggle").addEventListener("click", (e) => {
+    state.filters.onlyMatches = !state.filters.onlyMatches;
+    e.currentTarget.classList.toggle("on", state.filters.onlyMatches);
+    applyAndRender();
+  });
+
+  el("clearFilters").addEventListener("click", () => {
+    state.filters = { text:"", exts:new Set(), sizeMin:null, sizeMax:null, dateFrom:null, dateTo:null, onlyMatches:false };
+    resetFilterInputs();
+    renderChips();
+    applyAndRender();
+  });
+
+  el("clearSelection").addEventListener("click", () => {
+    state.selectedFile = null;
+    renderDetail(null);
+    try { state.foamtree.select({ groups: [], keepPrevious:false }); } catch(e){}
+  });
+
+  el("groupBySelect").addEventListener("change", (e) => { state.groupBy = e.target.value; applyAndRender(); });
+  el("colorBySelect").addEventListener("change", (e) => { state.colorBy = e.target.value; applyAndRender(); });
+  el("stackingSelect").addEventListener("change", (e) => { state.stacking = e.target.value; applyAndRender(); });
+
+  /* =====================================================================
+     INIT
+  ===================================================================== */
+
+  renderDetail(null);
+  renderBreadcrumb(null);
+})();
+</script>
+</body>
+</html>
