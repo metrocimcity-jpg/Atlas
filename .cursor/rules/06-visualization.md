@@ -2,24 +2,48 @@
 
 ## Goal
 
-Create an original FoamTree-inspired visualization using organic clustered cells and hierarchical navigation.
+Embed **Carrot Search FoamTree** (`@carrotsearch/foamtree`) as the visualization engine.
 
-Do not copy proprietary FoamTree source code or implementation.
+Do not reimplement FoamTree layout, relaxation, or polygon rendering. Atlas adapts the file index into FoamTree `dataObject` groups and maps typed config onto FoamTree options.
 
-## Visualization Concepts
+Reference:
 
-Support:
+- Official package and [API](https://get.carrotsearch.com/foamtree/latest/api/)
+- [Settings demo](https://get.carrotsearch.com/foamtree/latest/demos/settings.html) for defaults and tunable options
+- `context/file-treemap-explorer.html` for the Disk Atlas look (preset, not default)
 
-- organic packed cells
-- hierarchical clusters
-- drill-down
-- zoom
-- pan
-- focus
-- selection
-- hover emphasis
-- animated transitions
-- breadcrumb navigation
+## Adapter Layer
+
+Keep FoamTree behind a thin adapter:
+
+```text
+src/visualization/foamtree/
+  dataObject.ts      VizNode -> FoamTree groups
+  options.ts         VisualizationConfig -> FoamTree options
+  settingsSchema.ts  Settings panel controls
+  stylePresets.ts    Color / style / layout / animation presets
+  host.ts            Active instance helpers
+```
+
+## Layout Modes
+
+Atlas layout modes map to FoamTree:
+
+| Atlas layout | FoamTree |
+| --- | --- |
+| `foam` | `layout: relaxed`, `stacking: hierarchical` |
+| `treemap` | `layout: squarified` |
+| `circles` | `relaxed` + `relaxationInitializer: fisheye` |
+| `sunburst` | `relaxed` + `stacking: flattened` |
+
+Prefer driving layout from `VisualizationStyle` fields (`foamLayout`, `stacking`, `relaxationInitializer`) and keep Atlas `layout` in sync.
+
+## Color Models
+
+Support two color models in style config:
+
+- **`rainbow`** (default) — FoamTree built-in rainbow (`rainbowStartColor` / `rainbowEndColor` / distribution). Do not override with a custom group color decorator unless necessary.
+- **`atlas`** — Disk Atlas extension / category coloring; folders use a neutral fill; files get palette colors. Use `groupColorDecorator` only in this mode.
 
 ## Dimensions
 
@@ -78,42 +102,45 @@ Category
 Hover:
 
 - highlight cell
-- show tooltip
+- title bar / tooltip
 - emphasize cluster
 
 Click:
 
-- select file
-- select folder
+- select file or group
 
 Double click:
 
-- open/drill into item where appropriate
+- drill / open where appropriate; prevent default for leaf files when needed
 
 Escape:
 
-- clear selection
+- clear selection / reset view / navigate up
 
 Wheel:
 
-- zoom
+- zoom (FoamTree `zoomMouseWheelFactor`)
 
 Drag:
 
-- pan
+- pan / expose / open (FoamTree built-ins)
 
 ## Level of Detail
 
-Do not render every label for large datasets.
+Respect FoamTree options:
 
-Use label thresholds and progressive detail.
+- `maxGroupLevelsDrawn`
+- `maxGroupLabelLevelsDrawn`
+- `groupLabelMinFontSize` / `groupLabelMaxFontSize`
 
-## Visualization Abstraction
+Do not invent a second LOD system that fights FoamTree.
 
-Keep the rendering engine behind an interface so future layouts can be added:
+## Defaults
 
-- FoamTree-inspired
-- treemap
-- circle packing
-- sunburst
-- tree
+Factory defaults come from FoamTree (`foamtreeDefaultStyle()`):
+
+- gradient fills, hierarchical stacking, rainbow colors
+- Oxygen font family (demo default)
+- ~2s rollout / 1.5s pullback
+
+Disk Atlas (`diskAtlasStyle()`) is a preset, not the factory default.

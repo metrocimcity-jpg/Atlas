@@ -9,14 +9,15 @@ Recommended separation:
 ```text
 scanner/
 data/
+metadata/
 visualization/
+  foamtree/     FoamTree adapter, options, settings schema, style presets
 filtering/
 search/
 ui/
-themes/
 config/
+state/
 utils/
-tests/
 ```
 
 ## Responsibilities
@@ -31,7 +32,13 @@ Schema, normalization, indexing, aggregation, serialization/deserialization.
 
 ### Visualization
 
-Hierarchy transformation, layout, rendering, interaction, labels.
+Hierarchy transformation (grouping), color/size mappers, and the FoamTree adapter.
+
+Rendering of cells is FoamTree’s job. Atlas only:
+
+- builds `dataObject` groups
+- maps config → FoamTree options
+- hosts the FoamTree instance in the UI
 
 ### Filtering
 
@@ -43,23 +50,19 @@ Search indexing, parsing, fuzzy matching, query evaluation.
 
 ### UI
 
-Controls, panels, dialogs, toolbars, details.
-
-### Themes
-
-Design tokens, palettes, visualization appearance.
+Shell, top bar, crumb bar, left sidebar cards, FoamTree stage, settings panel, dialogs.
 
 ### Config
 
-Application defaults, user presets, saved workspace state.
+Application defaults, analysis presets, FoamTree style presets, saved workspace state.
 
 ## Dependency Direction
 
 Prefer:
 
 ```text
-UI -> application services -> domain/data
-Visualization -> domain/data
+UI -> application state/services -> domain/data
+Visualization/foamtree -> domain/data + typed VisualizationConfig
 Scanner -> filesystem + metadata providers
 Search -> normalized data
 Filtering -> normalized data
@@ -76,17 +79,23 @@ Use interfaces for replaceable systems:
 - `FileClassifier`
 - `SearchEngine`
 - `FilterEngine`
-- `VisualizationEngine`
 - `ColorMapper`
 - `SizeMapper`
 - `GroupingStrategy`
 
+FoamTree itself is the layout/renderer. Keep a thin adapter rather than a second custom layout engine for the main view.
+
 ## Configuration
 
-Do not hard-code user-tunable visualization values in components.
+Do not hard-code user-tunable FoamTree values in components.
 
-Use typed configuration objects and centralized defaults.
+Use typed configuration objects and centralized defaults (`foamtreeDefaultStyle`, `diskAtlasStyle`).
 
 ## Extensibility
 
-New file types, metadata providers, grouping strategies, color mappings, and visualization modes should be addable without modifying unrelated subsystems.
+New file types, metadata providers, grouping strategies, color mappings, and FoamTree style presets should be addable without modifying unrelated subsystems.
+
+## Reference Assets
+
+- `context/file-treemap-explorer.html` — Disk Atlas UI + FoamTree flattened style reference
+- FoamTree settings demo — factory defaults and settings-panel UX reference

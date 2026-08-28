@@ -2,99 +2,88 @@
 
 ## Centralized Tokens
 
-Use design tokens for:
+Use CSS design tokens for chrome UI:
 
 ```text
-background
-surface
-surface-elevated
-border
-text-primary
-text-secondary
-accent
-selection
-hover
-shadow
-radius
-spacing
-font
+--bg, --bg-alt, --panel, --panel-raised
+--border, --border-soft
+--text, --text-dim, --text-faint
+--accent, --accent-dim, --match, --danger
+--font-display, --font-ui, --font-mono
+--radius-sm, --radius-md
 ```
 
-Do not scatter arbitrary colors and spacing values through components.
+Do not scatter arbitrary chrome colors through components.
 
-## Dark Mode
+Disk Atlas chrome reference (`context/file-treemap-explorer.html`):
 
-Dark mode is a primary theme.
+- background `#0f1115`
+- accent gold `#ffb454`
+- match teal `#59d9c4`
+- fonts: Space Grotesk, Inter, JetBrains Mono
 
-Avoid pure black and excessive neon.
+FoamTree **stage** background is controlled by `VisualizationStyle.stageBackground` (factory default is light white; Disk Atlas preset uses dark `#0f1115`).
 
-Use subtle surfaces, controlled saturation, and strong hierarchy.
+## Dark / Light Chrome
 
-## Light Mode
+Dark mode is the primary app chrome theme.
 
-Avoid pure white everywhere.
-
-Use soft neutral surfaces and clear hierarchy.
+Light theme may soft-neutralize panels; keep FoamTree stage color independent via style presets (“For light backgrounds” / “For dark backgrounds”).
 
 ## Visualization Palettes
 
-Provide configurable presets:
+Provide Atlas categorical palettes for `colorModel: "atlas"` and analysis presets:
 
-- Professional
-- Dark
-- Light
-- Monochrome
-- Engineering
-- BIM
-- CAD
-- Rainbow
-- Heatmap
-- Pastel
-- High Contrast
+- Professional / Rainbow (Disk Atlas curated extension palette)
+- Dark, Light, Monochrome
+- Engineering, BIM, CAD
+- Heatmap, Pastel, High Contrast
+
+FoamTree rainbow model uses `rainbowStartColor` / `rainbowEndColor` and related FoamTree options — not the categorical palette list.
 
 ## Appearance Controls
 
-Support live tuning for:
+Expose FoamTree-native tuning live via the Settings panel (see `settingsSchema.ts`), including:
 
-- background
-- panel opacity
-- cell opacity
-- border width
-- border opacity
-- radius
-- padding
-- spacing
-- text size
-- label opacity
-- shadows
-- animation speed
-- hover intensity
-- selection effect
-- cluster separation
-
-## Visualization Tuning
-
-Expose a dedicated tuning model such as:
-
-```ts
-interface VisualizationStyle {
-  groupPadding: number;
-  groupGap: number;
-  cellPadding: number;
-  borderWidth: number;
-  borderOpacity: number;
-  cornerRadius: number;
-  shadowBlur: number;
-  shadowOpacity: number;
-  hoverScale: number;
-  selectionScale: number;
-  animationDuration: number;
-  labelMinSize: number;
-  labelMaxSize: number;
-  labelOpacity: number;
-}
-```
+- layout / stacking / relaxation
+- group border radius, border width, inset
+- fill type and gradients
+- stroke type and width
+- selection outline
+- rainbow colors
+- labels (font, min/max size, levels drawn)
+- rollout / pullback / fade animation
 
 All tuning must update live.
 
-Provide Reset to Defaults.
+Provide:
+
+- **FoamTree defaults** preset (factory)
+- **Disk Atlas** preset (previous UI look)
+- Reset / factory via FoamTree defaults preset
+- Export settings JSON
+
+## Visualization Style Model
+
+Prefer a FoamTree-aligned style object (see `VisualizationStyle` in `src/visualization/types.ts`), for example:
+
+```ts
+interface VisualizationStyle {
+  colorModel: "rainbow" | "atlas";
+  stageBackground: string;
+  foamLayout: "relaxed" | "ordered" | "squarified";
+  stacking: "hierarchical" | "flattened";
+  groupBorderRadius: number;
+  groupBorderWidth: number;
+  groupInsetWidth: number;
+  groupFillType: "none" | "plain" | "gradient";
+  groupStrokeType: "none" | "plain" | "gradient";
+  rainbowStartColor: string;
+  rainbowEndColor: string;
+  groupLabelFontFamily: string;
+  rolloutDuration: number;
+  // …additional FoamTree options mirrored in settingsSchema
+}
+```
+
+Do not reintroduce a parallel “padding / gap / cornerRadius only” model that does not map cleanly to FoamTree.

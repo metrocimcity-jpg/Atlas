@@ -2,7 +2,7 @@
 
 ## Product Feel
 
-The application should feel like a premium professional data-visualization and engineering tool.
+The application should feel like a premium filesystem analytics tool with a FoamTree settings workbench on the side.
 
 Avoid generic Bootstrap-dashboard aesthetics.
 
@@ -19,60 +19,63 @@ Target qualities:
 
 ## Main Layout
 
-Preferred structure:
+Preferred structure (Disk Atlas chrome + FoamTree settings):
 
 ```text
-Toolbar
+Top bar (Disk Atlas brand, Sample data, Load folder, Settings, More)
 ------------------------------------------------
-Filters | Main Visualization | Details
+Breadcrumb bar (⌂ all files › …)
 ------------------------------------------------
-Status / Statistics
+Left sidebar | Visualization stage | FoamTree settings panel
+------------------------------------------------
+Status bar
 ```
+
+Left sidebar cards:
+
+- Search (query, extension chips, size/date filters)
+- View (group by, color by, stacking / display)
+- Overview (totals, top types legend)
+- Selection (selected file / group details)
 
 Panels should be:
 
-- collapsible
-- resizable where practical
+- collapsible (sidebar / settings)
 - keyboard accessible
 
-## Toolbar
+## Top Bar
 
 Include:
 
-- Open Folder
-- Open JSON
-- Search
-- Filter
-- Group By
-- Color By
-- Size By
-- Layout
-- Settings
+- Brand: **Disk** + accent **Atlas**
+- Sample data
+- Load folder (primary)
+- Settings (toggle FoamTree settings panel)
+- More menu: Open JSON, Export JSON/CSV, workspace, analysis presets, theme, commands
+
+## Settings Panel
+
+Model the settings UI on the official [FoamTree settings demo](https://get.carrotsearch.com/foamtree/latest/demos/settings.html):
+
+- search box for option names
+- foldable sections (Layout, Relaxation, Stacking, Borders, Fill, Stroke, Rainbow, Labels, Animation, …)
+- live sliders / enums / booleans
+- **Presets** section for Appearance, Color scheme, Borders & fill, Layout, Animation
+- **Export settings to JSON**
+
+Default visualization style is FoamTree factory. **Disk Atlas** must remain available as an Appearance preset.
 
 ## Details
 
-Selected files should show useful metadata.
+Selected files show useful metadata (name, path, size, type, modified, age).
 
-Selected folders should show aggregated statistics.
-
-## Context Menu
-
-Provide safe actions such as:
-
-- Open
-- Open Containing Folder
-- Copy Path
-- Copy Relative Path
-- Properties
-- Focus
-- Bookmark
-- Exclude
-
-Destructive operations require confirmation.
+Selected folders / groups show aggregated statistics (files, total size).
 
 ## Breadcrumbs
 
 Always make current hierarchy understandable.
+
+Use Disk Atlas crumb style: `⌂ all files` with `›` separators and current accent.
 
 ## Keyboard
 
@@ -83,7 +86,7 @@ Ctrl+O       Open Folder
 Ctrl+Shift+O Open JSON
 Ctrl+F       Search
 Ctrl+K       Command Palette
-Esc          Clear/close
+Esc          Clear/close / navigate up
 Backspace    Back
 Enter        Open
 ```
