@@ -1,8 +1,17 @@
 # Atlas
 
-Visual filesystem analytics explorer. Scan a folder (or load a versioned JSON index) and inspect it with **Carrot Search FoamTree** — the official Voronoi treemap engine — plus search, filters, grouping, coloring, and live appearance tuning.
+Visual filesystem analytics explorer. Scan a folder (or load a versioned JSON index) and inspect it with **Carrot Search FoamTree** — the official Voronoi treemap engine — plus search, filters, grouping, coloring, and a FoamTree settings panel.
 
 The visualization uses the `@carrotsearch/foamtree` package (demo distribution). Atlas does not reimplement FoamTree’s layout.
+
+## Default look vs Disk Atlas
+
+| Mode | Meaning |
+| --- | --- |
+| **Default** | FoamTree factory styling from the [settings demo](https://get.carrotsearch.com/foamtree/latest/demos/settings.html): rainbow colors, gradient fills, hierarchical stacking, Oxygen labels, light stage |
+| **Disk Atlas preset** | Previous Atlas chrome/style from `context/file-treemap-explorer.html`: flattened stacking, plain fills, Inter labels, extension-based file coloring, dark stage |
+
+Apply **Disk Atlas** from Settings → Presets → Appearance (or the Disk Atlas analysis preset under More).
 
 ## Architecture
 
@@ -11,11 +20,12 @@ src/
   scanner/         filesystem traversal
   data/            schema, aggregation, JSON index
   metadata/        classification + metadata providers
-  visualization/   grouping, FoamTree adapter, color/size mappers
+  visualization/   grouping, color/size mappers, FoamTree adapter
+    foamtree/      dataObject, options, settingsSchema, stylePresets
   filtering/       composable filters
   search/          query parser + fuzzy search
-  config/          defaults, presets, workspaces
-  ui/              shell, panels, FoamTree host, dialogs
+  config/          defaults, analysis presets, workspaces
+  ui/              shell, sidebar, FoamTree host, settings panel
 ```
 
 The JSON index is a first-class artifact. Visualization never requires a live rescan.
@@ -39,9 +49,10 @@ npm run dev
 
 Open the printed local URL. Then:
 
-1. **Open folder** — recursive scan with progress, writes an in-memory index you can export as `<root>.index.json`.
-2. **Open JSON** — load a previously exported index (no filesystem walk).
-3. **Load sample project** — Harbor-Bridge fixture for UI review without a local tree.
+1. **Load folder** — recursive scan with progress; export as `<root>.index.json`.
+2. **Open JSON** (More) — load a previously exported index (no filesystem walk).
+3. **Sample data** — Harbor-Bridge fixture for UI review without a local tree.
+4. **Settings** — FoamTree options, color/style presets, export settings JSON.
 
 ## Build
 
@@ -75,13 +86,20 @@ Schema version `1.0`. Shape:
 
 Load this file later with **Open JSON**. Workspaces (`atlas.workspace.json`) store view state only — not a second copy of file metadata.
 
+## UI layout
+
+```text
+Top bar → crumb bar → [ left sidebar | FoamTree stage | settings panel ] → status bar
+```
+
+Left sidebar: Search, View, Overview, Selection.
+
 ## Configuration
 
-Toolbar controls: Group By, Color By, Size By, Layout, Presets, Dark/Light.
-
-Settings exposes live visualization tuning (padding, radius, opacity, labels, palettes). Reset returns to defaults.
-
-Built-in presets: BIM Analysis, CAD Analysis, Large Files, Recently Modified, Engineering, Archive.
+- **View card:** Group By, Color By, Display (flattened / hierarchical)
+- **Settings panel:** FoamTree options (layout, borders, fill, stroke, rainbow, labels, animation) with live updates
+- **Style presets:** Appearance (FoamTree defaults, Disk Atlas), Color scheme, Borders & fill, Layout, Animation
+- **Analysis presets (More):** Disk Atlas, BIM, CAD, Large Files, Recently Modified, Engineering, Archive
 
 ## Search
 
@@ -118,4 +136,5 @@ npm run typecheck
 
 - **Open folder disabled / error** — use Chromium (Chrome, Edge, or a Chromium-based Electron shell). Firefox does not implement `showDirectoryPicker`.
 - **Malformed JSON** — Atlas reports validation errors and does not crash.
-- **Empty visualization after filters** — Clear all filters or widen the query; the status bar shows `Showing X of Y files`.
+- **Empty visualization after filters** — clear all filters or widen the query; the status bar shows matching counts.
+- **Want the old Disk Atlas look** — Settings → Presets → Appearance → Disk Atlas.
