@@ -50,6 +50,9 @@ export function Toolbar(): JSX.Element {
             <button type="button" onClick={() => void actions.openJson()}>
               Open JSON
             </button>
+            <button type="button" onClick={() => void actions.resolveAccLinks()}>
+              Resolve ACC links
+            </button>
             <button type="button" onClick={() => actions.exportJson()}>
               Export JSON
             </button>

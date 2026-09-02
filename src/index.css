@@ -598,6 +598,61 @@ input.search {
   line-height: 1.5;
 }
 
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.detail-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.detail-acc-link {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.detail-acc-link input {
+  flex: 1;
+  min-width: 0;
+}
+
+.acc-settings-card {
+  margin: 12px 0 18px;
+}
+
+.acc-settings-card input {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.detail-hint {
+  font-size: 11px;
+  color: var(--text-faint);
+  line-height: 1.45;
+  margin: 0 0 8px;
+}
+
+.detail-hint code {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-dim);
+}
+
+.detail-section {
+  margin-top: 12px;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
 .stage,
 .viz-main {
   flex: 1;

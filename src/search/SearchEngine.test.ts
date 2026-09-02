@@ -78,4 +78,21 @@ describe("IndexedSearchEngine", () => {
     expect(engine.search(nodes, "category:BIM AND name:harbor").map((hit) => hit.id)).toEqual(["1"]);
     expect(engine.search(nodes, "size:>500").map((hit) => hit.id)).toEqual(["1"]);
   });
+
+  it("matches document metadata fields from loaded JSON", () => {
+    const withMeta: IndexNode[] = [
+      {
+        ...nodes[0],
+        metadata: {
+          discipline: "ELEO",
+          projectLocation: "FEC A",
+          documentTitle: "FEC A Building - Electrical Model",
+        },
+      },
+      nodes[1],
+    ];
+    expect(engine.search(withMeta, "discipline:ELEO").map((hit) => hit.id)).toEqual(["1"]);
+    expect(engine.search(withMeta, "FEC A").map((hit) => hit.id)).toEqual(["1"]);
+    expect(engine.search(withMeta, "projectLocation:FEC").map((hit) => hit.id)).toEqual(["1"]);
+  });
 });

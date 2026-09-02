@@ -120,10 +120,65 @@ export function createSampleIndex(): FileIndex {
   ];
 
   const entries = [...folders.map(folder), ...files];
-  return buildFileIndex({
+  const index = buildFileIndex({
     rootName: "Harbor-Bridge",
     rootPath: "Harbor-Bridge",
     entries,
     generatedAt: new Date().toISOString(),
   });
+
+  const documentMeta: Record<string, Record<string, string | number>> = {
+    "BIM/Architecture/Harbor-Arch.rvt": {
+      firstLevelLocation: "F0326",
+      discipline: "ELEO",
+      documentType: "M3D",
+      sequenceNumber: 10002,
+      projectNumber: "AE02",
+      projectLocation: "FEC A",
+      designStage: "IFC",
+      securityClassification: "Internal",
+      documentAuthor: "Oluwatobi OLUMUYIWA",
+      documentCreationDate: "2026-06-26",
+      documentTitle: "FEC A Building - Electrical Model",
+      previousFileName: "L-AC-AE-PD-B52-ELEO-M3D-10002",
+      accUrl:
+        "https://acc.autodesk.com/docs/files/projects/00000000-0000-0000-0000-000000000001?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.sample&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3AsampleArch",
+    },
+    "BIM/Structure/Harbor-STR.rvt": {
+      firstLevelLocation: "F0327",
+      discipline: "ELEO",
+      documentType: "M3D",
+      sequenceNumber: 20003,
+      projectNumber: "AE03",
+      projectLocation: "FEC B",
+      designStage: "IFC",
+      securityClassification: "Internal",
+      documentAuthor: "Oluwatobi OLUMUYIWA",
+      documentCreationDate: "2025-12-15",
+      documentTitle: "FEC B Building - Electrical Model",
+      previousFileName: "L-AC-AE-PD-B52-ELEO-M3D-20003",
+    },
+    "BIM/MEP/Harbor-MEP.rvt": {
+      firstLevelLocation: "F0328",
+      discipline: "ELEO",
+      documentType: "M3D",
+      sequenceNumber: 30004,
+      projectNumber: "AE04",
+      projectLocation: "FEC C",
+      designStage: "IFC",
+      securityClassification: "Internal",
+      documentAuthor: "Oluwatobi OLUMUYIWA",
+      documentCreationDate: "2026-06-08",
+      documentTitle: "FEC C Building - Electrical Model",
+      previousFileName: "L-AC-AE-PD-B52-ELEO-M3D-30004",
+    },
+  };
+
+  return {
+    ...index,
+    items: index.items.map((item) => {
+      const meta = documentMeta[item.relativePath];
+      return meta ? { ...item, metadata: meta } : item;
+    }),
+  };
 }

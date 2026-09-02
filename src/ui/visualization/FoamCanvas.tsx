@@ -36,10 +36,20 @@ export function FoamCanvas(): JSX.Element {
       },
       onGroupDoubleClick: (event: FoamTreeEvent) => {
         const group = event.group as AtlasFoamGroup | undefined;
-        if (group?.nodeType === "file") {
-          event.preventDefault?.();
-          actions.select(sourceIdFrom(group));
+        if (!group) {
+          return;
         }
+        const isFile = group.isFile === true || group.nodeType === "file";
+        if (!isFile) {
+          return;
+        }
+        event.preventDefault?.();
+        const id = sourceIdFrom(group);
+        if (!id) {
+          return;
+        }
+        actions.select(id);
+        void actions.openNode(id);
       },
       onGroupHover: (event: FoamTreeEvent) => {
         actions.hover(event.group ? String((event.group as AtlasFoamGroup).id) : null);

@@ -17,6 +17,8 @@ export function CommandPalette(): JSX.Element | null {
     () => [
       { id: "open-folder", label: "Open Folder", shortcut: "Ctrl+O", run: () => void actions.openFolder() },
       { id: "open-json", label: "Open JSON", shortcut: "Ctrl+Shift+O", run: () => void actions.openJson() },
+      { id: "resolve-acc", label: "Resolve ACC Links", run: () => void actions.resolveAccLinks() },
+      { id: "open-selected", label: "Open Selected File", shortcut: "Enter", run: () => void actions.openSelected() },
       { id: "export-json", label: "Export JSON", run: () => actions.exportJson() },
       { id: "export-csv", label: "Export CSV", run: () => actions.exportCsv() },
       { id: "save-workspace", label: "Save Workspace", run: () => actions.exportWorkspace() },

@@ -52,6 +52,17 @@ export function useKeyboard(): void {
         actions.navigateBack();
         return;
       }
+      if (event.key === "Enter") {
+        const target = event.target as HTMLElement | null;
+        if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable)) {
+          return;
+        }
+        if (selectedId) {
+          event.preventDefault();
+          void actions.openSelected();
+        }
+        return;
+      }
       if (event.key === "Backspace") {
         const target = event.target as HTMLElement | null;
         if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable)) {

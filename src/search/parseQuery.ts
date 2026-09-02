@@ -41,16 +41,14 @@ export function parseQuery(input: string): ParsedQuery {
       combinator = "or";
       continue;
     }
-    const fieldMatch = /^([a-zA-Z]+):(>=|<=|>|<)?(.+)$/.exec(token);
+    const fieldMatch = /^([a-zA-Z][a-zA-Z0-9_]*):(>=|<=|>|<)?(.+)$/.exec(token);
     if (fieldMatch) {
-      const rawField = fieldMatch[1].toLowerCase();
-      const field = FIELD_ALIASES[rawField];
-      if (field) {
-        const opSymbol = fieldMatch[2] ?? "";
-        const operator = opSymbol === ">" || opSymbol === ">=" ? "gt" : opSymbol === "<" || opSymbol === "<=" ? "lt" : "eq";
-        terms.push({ kind: "field", field, operator, value: stripQuotes(fieldMatch[3]) });
-        continue;
-      }
+      const rawField = fieldMatch[1];
+      const field = FIELD_ALIASES[rawField.toLowerCase()] ?? rawField;
+      const opSymbol = fieldMatch[2] ?? "";
+      const operator = opSymbol === ">" || opSymbol === ">=" ? "gt" : opSymbol === "<" || opSymbol === "<=" ? "lt" : "eq";
+      terms.push({ kind: "field", field, operator, value: stripQuotes(fieldMatch[3]) });
+      continue;
     }
     terms.push({ kind: "text", value: stripQuotes(token) });
   }

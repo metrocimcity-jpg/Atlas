@@ -1,4 +1,5 @@
 import { actions, useAtlas } from "@/state/store";
+import { accUrlFromMetadata } from "@/utils/accLinks";
 import { formatBytes, formatDate, formatNumber } from "@/utils/format";
 import { findVizNode } from "@/visualization/tree";
 
@@ -13,10 +14,37 @@ function daysAgo(value: string | null): string {
   return String(Math.max(0, Math.round((Date.now() - then) / 86_400_000)));
 }
 
+function formatMetadataLabel(key: string): string {
+  return key
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/[_-]+/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+function formatMetadataValue(value: unknown): string {
+  if (value === null || value === undefined) {
+    return "—";
+  }
+  if (typeof value === "string") {
+    return value.trim().length === 0 ? "—" : value;
+  }
+  if (typeof value === "number" || typeof value === "boolean") {
+    return String(value);
+  }
+  try {
+    return JSON.stringify(value);
+  } catch {
+    return String(value);
+  }
+}
+
 export function DetailsPanel(): JSX.Element {
-  const { selectedId, index, vizTree } = useAtlas();
+  const { selectedId, index, vizTree, handles } = useAtlas();
   const node = selectedId ? index?.items.find((item) => item.id === selectedId) ?? null : null;
   const group = !node && selectedId && vizTree ? findVizNode(vizTree, selectedId) : null;
+  const hasAccUrl = Boolean(node?.nodeType === "file" && accUrlFromMetadata(node.metadata));
+  const canDownload = Boolean(node?.nodeType === "file" && handles.get(node.id)?.kind === "file");
+  const canOpen = hasAccUrl || canDownload;
 
   return (
     <div className="card">
@@ -30,6 +58,23 @@ export function DetailsPanel(): JSX.Element {
         <>
           <div className="detail-title">{node.name}</div>
           <div className="detail-path">{node.path}</div>
+          <div className="detail-actions">
+            <button
+              className="primary"
+              type="button"
+              disabled={!canOpen}
+              title={
+                hasAccUrl
+                  ? "Open in ACC Docs (Enter or double-click)"
+                  : canDownload
+                    ? "Double-click the tile or press open to get a local copy"
+                    : "Load folder first (not JSON/sample)"
+              }
+              onClick={() => void actions.openSelected()}
+            >
+              open
+            </button>
+          </div>
           <div className="stat-line">
             <span className="k">Size</span>
             <span className="v">{formatBytes(node.size)}</span>
@@ -46,6 +91,21 @@ export function DetailsPanel(): JSX.Element {
             <span className="k">Age</span>
             <span className="v">{daysAgo(node.modifiedAt)} days</span>
           </div>
+          {node.metadata && Object.keys(node.metadata).length > 0 ? (
+            <>
+              <div className="detail-section">Document metadata</div>
+              {Object.entries(node.metadata).map(([key, value]) => (
+                <div className="stat-line" key={key}>
+                  <span className="k" title={key}>
+                    {formatMetadataLabel(key)}
+                  </span>
+                  <span className="v" title={formatMetadataValue(value)}>
+                    {formatMetadataValue(value)}
+                  </span>
+                </div>
+              ))}
+            </>
+          ) : null}
         </>
       ) : node || group ? (
         <>
@@ -61,8 +121,7 @@ export function DetailsPanel(): JSX.Element {
         </>
       ) : (
         <div className="detail-empty">
-          Click any tile in the map to see its details here. Click a group to drill in; use the breadcrumb above to step
-          back out.
+          Click any tile in the map to see its details. Use open to view in ACC when linked, or get a local copy when not.
         </div>
       )}
     </div>

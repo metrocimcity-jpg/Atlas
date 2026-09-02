@@ -11,6 +11,17 @@ export interface SearchEngine {
   search(nodes: IndexNode[], query: string): SearchHit[];
 }
 
+function metadataValue(node: IndexNode, field: string): string | number | null {
+  const value = node.metadata?.[field];
+  if (typeof value === "string" || typeof value === "number") {
+    return value;
+  }
+  if (typeof value === "boolean") {
+    return String(value);
+  }
+  return null;
+}
+
 function fieldValue(node: IndexNode, field: string): string | number | null {
   switch (field) {
     case "extension":
@@ -30,7 +41,7 @@ function fieldValue(node: IndexNode, field: string): string | number | null {
     case "path":
       return node.relativePath;
     default:
-      return null;
+      return metadataValue(node, field);
   }
 }
 
@@ -65,6 +76,12 @@ function matchField(node: IndexNode, term: Extract<ParsedQuery["terms"][number],
 }
 
 function textHaystack(node: IndexNode): string {
+  const metadataText = node.metadata
+    ? Object.values(node.metadata)
+        .filter((value) => value !== null && value !== undefined)
+        .map((value) => String(value))
+        .join(" ")
+    : "";
   return [
     node.name,
     node.relativePath,
@@ -73,6 +90,7 @@ function textHaystack(node: IndexNode): string {
     node.fileType ?? "",
     node.category ?? "",
     node.subcategory ?? "",
+    metadataText,
   ]
     .join(" ")
     .toLowerCase();

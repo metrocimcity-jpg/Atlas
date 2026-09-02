@@ -1,3 +1,4 @@
+import { AccSettingsCard } from "@/ui/dialogs/AccSettingsCard";
 import { actions, useAtlas } from "@/state/store";
 import { atlasLayoutFromFoam } from "@/visualization/defaultStyle";
 import { settingGroups, type SettingControl } from "@/visualization/foamtree/settingsSchema";
@@ -167,6 +168,8 @@ export function SettingsPanel(): JSX.Element | null {
           </button>
         </p>
       </div>
+
+      <AccSettingsCard />
 
       <section className={folded.presets ? "settings-section folded" : "settings-section"}>
         <header onClick={() => setFolded((prev) => ({ ...prev, presets: !prev.presets }))}>

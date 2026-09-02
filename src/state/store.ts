@@ -10,6 +10,11 @@ import { defaultSearchEngine } from "@/search/SearchEngine";
 import { startDirectoryScan } from "@/scanner/scanJob";
 import type { HandleMap } from "@/scanner/FileScanner";
 import { downloadText } from "@/utils/format";
+import { beginAccLogin, clearAccToken, completeAccLoginFromUrl, isAccSignedIn } from "@/acc/auth";
+import { resolveAccLinks as enrichIndexWithAccLinks } from "@/acc/resolveLinks";
+import { loadAccSettings, saveAccSettings, type AccSettings } from "@/acc/settings";
+import { accUrlFromMetadata, describeAccLinkError, normalizeAccWebUrl, openAccWebUrl } from "@/utils/accLinks";
+import { copyText, openLocalFileHandle } from "@/utils/openFile";
 import { buildGroupedTree } from "@/visualization/grouping";
 import { applyStylePreset as composeStylePreset, stylePresets } from "@/visualization/foamtree/stylePresets";
 import type { VisualizationStyle, VizNode } from "@/visualization/types";
@@ -32,6 +37,12 @@ export interface AtlasState {
   visibleIds: Set<string>;
   visibleCount: number;
   vizTree: VizNode | null;
+  acc: {
+    settings: AccSettings;
+    signedIn: boolean;
+    resolving: boolean;
+    resolveMessage: string | null;
+  };
 }
 
 const listeners = new Set<() => void>();
@@ -55,6 +66,12 @@ let state: AtlasState = {
   visibleIds: new Set(),
   visibleCount: 0,
   vizTree: null,
+  acc: {
+    settings: loadAccSettings(),
+    signedIn: isAccSignedIn(),
+    resolving: false,
+    resolveMessage: null,
+  },
 };
 
 function emit(): void {
@@ -379,7 +396,292 @@ export const actions = {
       focusPath: [],
     });
   },
+  canOpenSelected(): boolean {
+    const node = selectedNode();
+    if (!node || node.nodeType !== "file") {
+      return false;
+    }
+    if (accUrlFromMetadata(node.metadata)) {
+      return true;
+    }
+    const handle = state.handles.get(node.id);
+    return Boolean(handle && handle.kind === "file");
+  },
+  canDownloadSelected(): boolean {
+    const node = selectedNode();
+    if (!node || node.nodeType !== "file") {
+      return false;
+    }
+    const handle = state.handles.get(node.id);
+    return Boolean(handle && handle.kind === "file");
+  },
+  async openSelected(): Promise<void> {
+    const node = selectedNode();
+    await actions.openNodeInBrowser(node?.id ?? null);
+  },
+  async downloadSelected(): Promise<void> {
+    const node = selectedNode();
+    await actions.downloadNode(node?.id ?? null);
+  },
+  async openNode(id: string | null): Promise<void> {
+    await actions.openNodeInBrowser(id);
+  },
+  async openNodeInBrowser(id: string | null): Promise<void> {
+    if (!id || !state.index) {
+      setState({ loadError: "Select a file first." });
+      return;
+    }
+    // FoamTree may pass a viz/group id — resolve to the index file id when needed.
+    let node = state.index.items.find((item) => item.id === id) ?? null;
+    if (!node || node.nodeType !== "file") {
+      const fromTree = state.vizTree ? findFileSourceId(state.vizTree, id) : null;
+      if (fromTree) {
+        node = state.index.items.find((item) => item.id === fromTree) ?? null;
+      }
+    }
+    if (!node || node.nodeType !== "file") {
+      setState({ loadError: "Select a file tile, then open (or double-click it)." });
+      return;
+    }
+    const accUrl = accUrlFromMetadata(node.metadata);
+    if (accUrl) {
+      try {
+        openAccWebUrl(accUrl);
+        clearLoadError();
+      } catch (error) {
+        setState({
+          loadError: error instanceof Error ? error.message : "Could not open the file in ACC",
+        });
+      }
+      return;
+    }
+    const handle = state.handles.get(node.id);
+    if (!handle || handle.kind !== "file") {
+      setState({
+        loadError: "Cannot open this file locally. Load the folder again (not JSON/sample), then double-click the file.",
+      });
+      return;
+    }
+    try {
+      const result = await openLocalFileHandle(handle as FileSystemFileHandle);
+      setState({
+        loadError: null,
+        acc: {
+          ...state.acc,
+          resolveMessage:
+            result === "saved"
+              ? `Saved ${node.name} — open it from that location in Revit/CAD.`
+              : `Downloaded ${node.name} — open it from your Downloads folder.`,
+        },
+      });
+    } catch (error) {
+      setState({
+        loadError: error instanceof Error ? error.message : "Could not open the selected file",
+      });
+    }
+  },
+  async downloadNode(id: string | null): Promise<void> {
+    await actions.openNodeInBrowser(id);
+  },
+  setSelectedAccUrl(url: string): void {
+    const node = selectedNode();
+    if (!node || node.nodeType !== "file" || !state.index) {
+      setState({ loadError: "Select a file first." });
+      return;
+    }
+    const trimmed = url.trim();
+    if (trimmed.length === 0) {
+      const nextMeta = { ...(node.metadata ?? {}) };
+      delete nextMeta.accUrl;
+      patchNodeMetadata(node.id, Object.keys(nextMeta).length > 0 ? nextMeta : undefined);
+      clearLoadError();
+      return;
+    }
+    const normalized = normalizeAccWebUrl(trimmed);
+    if (!normalized) {
+      setState({ loadError: describeAccLinkError(trimmed) });
+      return;
+    }
+    patchNodeMetadata(node.id, { ...(node.metadata ?? {}), accUrl: normalized });
+    clearLoadError();
+  },
+  async copySelectedPath(): Promise<void> {
+    const node = selectedNode();
+    if (!node) {
+      setState({ loadError: "Select a file or folder first." });
+      return;
+    }
+    try {
+      await copyText(node.path);
+      clearLoadError();
+    } catch (error) {
+      setState({
+        loadError: error instanceof Error ? error.message : "Could not copy path",
+      });
+    }
+  },
+  saveAccSettings(settings: AccSettings): void {
+    saveAccSettings(settings);
+    setState({
+      acc: {
+        ...state.acc,
+        settings: loadAccSettings(),
+      },
+    });
+  },
+  async signInAcc(): Promise<void> {
+    try {
+      await beginAccLogin(state.acc.settings.clientId);
+    } catch (error) {
+      setState({
+        loadError: error instanceof Error ? error.message : "Could not start ACC sign-in",
+      });
+    }
+  },
+  signOutAcc(): void {
+    clearAccToken();
+    setState({
+      acc: {
+        ...state.acc,
+        signedIn: false,
+        resolveMessage: null,
+      },
+    });
+  },
+  async completeAccOAuth(): Promise<void> {
+    try {
+      const completed = await completeAccLoginFromUrl();
+      if (completed) {
+        setState({
+          acc: {
+            ...state.acc,
+            signedIn: true,
+          },
+          loadError: null,
+        });
+      } else {
+        setState({
+          acc: {
+            ...state.acc,
+            signedIn: isAccSignedIn(),
+          },
+        });
+      }
+    } catch (error) {
+      setState({
+        acc: {
+          ...state.acc,
+          signedIn: false,
+        },
+        loadError: error instanceof Error ? error.message : "ACC sign-in failed",
+      });
+    }
+  },
+  async resolveAccLinks(): Promise<void> {
+    if (!state.index) {
+      setState({ loadError: "Load an ACC folder first." });
+      return;
+    }
+    const projectId = state.acc.settings.projectId.trim();
+    if (!projectId) {
+      setState({
+        loadError:
+          "Set ACC Project ID in Settings (from any ACC Docs URL: /docs/files/projects/<project-id>).",
+      });
+      return;
+    }
+    if (!isAccSignedIn()) {
+      setState({ loadError: "Sign in to ACC in Settings before resolving links." });
+      return;
+    }
+    setState({
+      acc: {
+        ...state.acc,
+        resolving: true,
+        resolveMessage: "Resolving ACC Docs links…",
+      },
+      loadError: null,
+    });
+    try {
+      const result = await enrichIndexWithAccLinks(state.index, projectId, (progress) => {
+        setState({
+          acc: {
+            ...state.acc,
+            resolving: true,
+            resolveMessage: progress.message,
+          },
+        });
+      });
+      recompute({
+        index: result.index,
+        acc: {
+          ...state.acc,
+          resolving: false,
+          resolveMessage: `ACC links: ${result.resolved} resolved, ${result.missing} missing`,
+          signedIn: true,
+        },
+      });
+    } catch (error) {
+      setState({
+        acc: {
+          ...state.acc,
+          resolving: false,
+          resolveMessage: null,
+        },
+        loadError: error instanceof Error ? error.message : "Could not resolve ACC links",
+      });
+    }
+  },
 };
+
+function selectedNode(): IndexNode | null {
+  if (!state.selectedId || !state.index) {
+    return null;
+  }
+  return state.index.items.find((item) => item.id === state.selectedId) ?? null;
+}
+
+function findFileSourceId(node: VizNode, id: string): string | null {
+  if (node.id === id || node.sourceId === id) {
+    return node.nodeType === "file" ? node.sourceId ?? node.id : null;
+  }
+  for (const child of node.children) {
+    const found = findFileSourceId(child, id);
+    if (found) {
+      return found;
+    }
+  }
+  return null;
+}
+
+function clearLoadError(): void {
+  if (state.loadError) {
+    setState({ loadError: null });
+  }
+}
+
+function patchNodeMetadata(id: string, metadata: Record<string, unknown> | undefined): void {
+  if (!state.index) {
+    return;
+  }
+  const items = state.index.items.map((item) => {
+    if (item.id !== id) {
+      return item;
+    }
+    if (metadata === undefined) {
+      const { metadata: _removed, ...rest } = item;
+      void _removed;
+      return rest;
+    }
+    return { ...item, metadata };
+  });
+  recompute({
+    index: {
+      ...state.index,
+      items,
+    },
+  });
+}
 
 function applyWorkspace(workspace: WorkspaceFile): void {
   document.documentElement.dataset.theme = workspace.config.theme;

@@ -3,7 +3,7 @@ import { useAtlas } from "@/state/store";
 import { formatBytes, formatDuration, formatNumber } from "@/utils/format";
 
 export function StatusBar(): JSX.Element {
-  const { index, visibleCount, scan, scanning, loadError, search, filters } = useAtlas();
+  const { index, visibleCount, scan, scanning, loadError, search, filters, acc } = useAtlas();
   const totalFiles = index?.statistics.totalFiles ?? 0;
   const totalSize = index?.statistics.totalSize ?? 0;
   const filtering = Boolean(index) && (search.trim().length > 0 || isFilterActive(filters));
@@ -11,6 +11,7 @@ export function StatusBar(): JSX.Element {
   return (
     <footer className="statusbar">
       {loadError ? <span className="error-banner">{loadError}</span> : null}
+      {!loadError && acc.resolveMessage ? <span className="hl">{acc.resolveMessage}</span> : null}
       {!index && !loadError ? <span>Ready.</span> : null}
       {index && filtering ? (
         <span>

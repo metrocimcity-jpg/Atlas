@@ -1,6 +1,7 @@
 import { FilterPanel } from "@/ui/layout/FilterPanel";
 import { DetailsPanel } from "@/ui/layout/DetailsPanel";
 import { actions, useAtlas } from "@/state/store";
+import { collectMetadataKeys } from "@/data/metadataKeys";
 import { colorForExt } from "@/visualization/palettes";
 import { formatBytes, formatNumber } from "@/utils/format";
 import { isFilterActive } from "@/filtering/FilterEngine";
@@ -10,7 +11,17 @@ function groupValue(groupBy: GroupBy[]): string {
   if (groupBy[0] === "folder") {
     return "folder";
   }
+  if (groupBy[0] === "custom") {
+    return "custom";
+  }
   return groupBy.join(",");
+}
+
+function formatPropertyLabel(key: string): string {
+  return key
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/[_-]+/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
 }
 
 export function Sidebar(): JSX.Element {
@@ -19,6 +30,7 @@ export function Sidebar(): JSX.Element {
   const files = index?.items.filter((item) => item.nodeType === "file") ?? [];
   const totalSize = index?.statistics.totalSize ?? 0;
   const matching = search.trim().length > 0 || isFilterActive(filters);
+  const metadataKeys = collectMetadataKeys(index);
 
   const extUniverse = Object.entries(
     files.reduce<Record<string, { count: number; size: number }>>((acc, file) => {
@@ -49,7 +61,15 @@ export function Sidebar(): JSX.Element {
         <select
           id="group-by"
           value={groupValue(viz.groupBy)}
-          onChange={(event) => actions.patchVisualization({ groupBy: event.target.value.split(",") as GroupBy[] })}
+          onChange={(event) => {
+            const value = event.target.value;
+            if (value === "custom") {
+              const property = viz.customProperty || metadataKeys[0] || "";
+              actions.patchVisualization({ groupBy: ["custom"], customProperty: property });
+              return;
+            }
+            actions.patchVisualization({ groupBy: value.split(",") as GroupBy[] });
+          }}
         >
           <option value="folder">Folder structure</option>
           <option value="extension">File type</option>
@@ -59,6 +79,7 @@ export function Sidebar(): JSX.Element {
           <option value="date,extension">Date modified → type</option>
           <option value="category">Category</option>
           <option value="category,fileType,extension">Category → Type → Ext</option>
+          {metadataKeys.length > 0 ? <option value="custom">Document metadata…</option> : null}
         </select>
 
         <label className="field-label" htmlFor="color-by">
@@ -67,14 +88,42 @@ export function Sidebar(): JSX.Element {
         <select
           id="color-by"
           value={viz.colorBy}
-          onChange={(event) => actions.patchVisualization({ colorBy: event.target.value as ColorBy })}
+          onChange={(event) => {
+            const value = event.target.value as ColorBy;
+            if (value === "custom") {
+              const property = viz.customProperty || metadataKeys[0] || "";
+              actions.patchVisualization({ colorBy: "custom", customProperty: property });
+              return;
+            }
+            actions.patchVisualization({ colorBy: value });
+          }}
         >
           <option value="extension">File type</option>
           <option value="fileSize">Size</option>
           <option value="modifiedDate">Recency</option>
           <option value="category">Category</option>
           <option value="folder">Folder</option>
+          {metadataKeys.length > 0 ? <option value="custom">Document metadata…</option> : null}
         </select>
+
+        {metadataKeys.length > 0 && (viz.groupBy[0] === "custom" || viz.colorBy === "custom") ? (
+          <>
+            <label className="field-label" htmlFor="custom-property">
+              Metadata property
+            </label>
+            <select
+              id="custom-property"
+              value={viz.customProperty || metadataKeys[0]}
+              onChange={(event) => actions.patchVisualization({ customProperty: event.target.value })}
+            >
+              {metadataKeys.map((key) => (
+                <option key={key} value={key}>
+                  {formatPropertyLabel(key)}
+                </option>
+              ))}
+            </select>
+          </>
+        ) : null}
 
         <label className="field-label" htmlFor="display">
           Display
