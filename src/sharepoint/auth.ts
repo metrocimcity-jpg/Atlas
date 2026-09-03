@@ -1,8 +1,18 @@
-const AUTH_BASE = "https://developer.api.autodesk.com/authentication/v2";
-const TOKEN_KEY = "atlas.acc.token.v1";
-const PKCE_KEY = "atlas.acc.pkce.v1";
+const TENANT = "organizations";
+const AUTH_BASE = `https://login.microsoftonline.com/${TENANT}/oauth2/v2.0`;
+const TOKEN_KEY = "atlas.ms.token.v1";
+const PKCE_KEY = "atlas.ms.pkce.v1";
 
-export interface AccToken {
+export const SHAREPOINT_SCOPES = [
+  "openid",
+  "profile",
+  "offline_access",
+  "User.Read",
+  "Sites.Read.All",
+  "Files.Read.All",
+].join(" ");
+
+export interface SharePointToken {
   accessToken: string;
   expiresAt: number;
   refreshToken?: string;
@@ -30,13 +40,13 @@ export function redirectUri(): string {
   return `${window.location.origin}${window.location.pathname}`;
 }
 
-export function loadAccToken(): AccToken | null {
+export function loadSharePointToken(): SharePointToken | null {
   try {
     const raw = sessionStorage.getItem(TOKEN_KEY);
     if (!raw) {
       return null;
     }
-    const token = JSON.parse(raw) as AccToken;
+    const token = JSON.parse(raw) as SharePointToken;
     if (!token.accessToken || !token.expiresAt) {
       return null;
     }
@@ -49,33 +59,34 @@ export function loadAccToken(): AccToken | null {
   }
 }
 
-export function clearAccToken(): void {
+export function clearSharePointToken(): void {
   sessionStorage.removeItem(TOKEN_KEY);
   sessionStorage.removeItem(PKCE_KEY);
 }
 
-function saveAccToken(token: AccToken): void {
+function saveSharePointToken(token: SharePointToken): void {
   sessionStorage.setItem(TOKEN_KEY, JSON.stringify(token));
 }
 
-export function isAccSignedIn(): boolean {
-  return loadAccToken() !== null;
+export function isSharePointSignedIn(): boolean {
+  return loadSharePointToken() !== null;
 }
 
-export async function beginAccLogin(clientId: string, scopes = "data:read account:read"): Promise<void> {
+export async function beginSharePointLogin(clientId: string, scopes = SHAREPOINT_SCOPES): Promise<void> {
   const trimmed = clientId.trim();
   if (!trimmed) {
-    throw new Error("Set your Autodesk APS Client ID in Settings first.");
+    throw new Error("Set your Microsoft Azure AD Client ID in Settings first.");
   }
   const verifier = randomString(64);
   const challenge = base64Url(await sha256(verifier));
-  const state = randomString(16);
+  const state = `sp.${randomString(16)}`;
   sessionStorage.setItem(PKCE_KEY, JSON.stringify({ verifier, state, clientId: trimmed }));
 
   const url = new URL(`${AUTH_BASE}/authorize`);
-  url.searchParams.set("response_type", "code");
   url.searchParams.set("client_id", trimmed);
+  url.searchParams.set("response_type", "code");
   url.searchParams.set("redirect_uri", redirectUri());
+  url.searchParams.set("response_mode", "query");
   url.searchParams.set("scope", scopes);
   url.searchParams.set("code_challenge", challenge);
   url.searchParams.set("code_challenge_method", "S256");
@@ -83,37 +94,35 @@ export async function beginAccLogin(clientId: string, scopes = "data:read accoun
   window.location.assign(url.toString());
 }
 
-export async function completeAccLoginFromUrl(currentUrl = window.location.href): Promise<boolean> {
+export async function completeSharePointLoginFromUrl(currentUrl = window.location.href): Promise<boolean> {
   const url = new URL(currentUrl);
   const code = url.searchParams.get("code");
   const state = url.searchParams.get("state");
   const error = url.searchParams.get("error");
-  if (error) {
-    throw new Error(url.searchParams.get("error_description") || error);
-  }
-  if (!code || !state) {
-    return false;
-  }
 
   const raw = sessionStorage.getItem(PKCE_KEY);
   if (!raw) {
-    // Another provider (e.g. Microsoft) may own this OAuth callback.
     return false;
   }
-  if (typeof state === "string" && state.startsWith("sp.")) {
+  if (error && state?.startsWith("sp.")) {
+    throw new Error(url.searchParams.get("error_description") || error);
+  }
+  if (!code || !state || !state.startsWith("sp.")) {
     return false;
   }
+
   const pkce = JSON.parse(raw) as { verifier: string; state: string; clientId: string };
   if (pkce.state !== state) {
-    throw new Error("ACC sign-in state mismatch. Try Sign in to ACC again.");
+    throw new Error("Microsoft sign-in state mismatch. Try Sign in to Microsoft again.");
   }
 
   const body = new URLSearchParams({
-    grant_type: "authorization_code",
     client_id: pkce.clientId,
-    code_verifier: pkce.verifier,
+    scope: SHAREPOINT_SCOPES,
     code,
     redirect_uri: redirectUri(),
+    grant_type: "authorization_code",
+    code_verifier: pkce.verifier,
   });
 
   const response = await fetch(`${AUTH_BASE}/token`, {
@@ -123,14 +132,14 @@ export async function completeAccLoginFromUrl(currentUrl = window.location.href)
   });
   if (!response.ok) {
     const text = await response.text();
-    throw new Error(`ACC token exchange failed (${response.status}): ${text}`);
+    throw new Error(`Microsoft token exchange failed (${response.status}): ${text}`);
   }
   const json = (await response.json()) as {
     access_token: string;
     expires_in: number;
     refresh_token?: string;
   };
-  saveAccToken({
+  saveSharePointToken({
     accessToken: json.access_token,
     expiresAt: Date.now() + json.expires_in * 1000,
     refreshToken: json.refresh_token,
@@ -139,14 +148,15 @@ export async function completeAccLoginFromUrl(currentUrl = window.location.href)
 
   url.searchParams.delete("code");
   url.searchParams.delete("state");
+  url.searchParams.delete("session_state");
   window.history.replaceState({}, document.title, url.pathname + url.search + url.hash);
   return true;
 }
 
-export function requireAccAccessToken(): string {
-  const token = loadAccToken();
+export function requireSharePointAccessToken(): string {
+  const token = loadSharePointToken();
   if (!token) {
-    throw new Error("Sign in to ACC first (Settings → Autodesk Construction Cloud).");
+    throw new Error("Sign in to Microsoft first (Settings → SharePoint).");
   }
   return token.accessToken;
 }

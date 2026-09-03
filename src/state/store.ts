@@ -9,11 +9,22 @@ import { defaultFilterEngine, emptyFilterState, isFilterActive, type FilterState
 import { defaultSearchEngine } from "@/search/SearchEngine";
 import { startDirectoryScan } from "@/scanner/scanJob";
 import type { HandleMap } from "@/scanner/FileScanner";
+import { mergeFileIndexes } from "@/data/mergeIndex";
 import { downloadText } from "@/utils/format";
 import { beginAccLogin, clearAccToken, completeAccLoginFromUrl, isAccSignedIn } from "@/acc/auth";
 import { resolveAccLinks as enrichIndexWithAccLinks } from "@/acc/resolveLinks";
 import { loadAccSettings, saveAccSettings, type AccSettings } from "@/acc/settings";
-import { accUrlFromMetadata, describeAccLinkError, normalizeAccWebUrl, openAccWebUrl } from "@/utils/accLinks";
+import {
+  beginSharePointLogin,
+  clearSharePointToken,
+  completeSharePointLoginFromUrl,
+  isSharePointSignedIn,
+} from "@/sharepoint/auth";
+import { listAccessibleSites, listSiteDrives, resolveDriveFromLibraryUrl, type GraphDrive, type GraphSite } from "@/sharepoint/graph";
+import { importSharePointDrive as buildSharePointIndex } from "@/sharepoint/importDrive";
+import { loadSharePointSettings, saveSharePointSettings, type SharePointSettings } from "@/sharepoint/settings";
+import { describeAccLinkError, normalizeAccWebUrl } from "@/utils/accLinks";
+import { openWebUrl, openableWebUrlFromMetadata } from "@/utils/webLinks";
 import { copyText, openLocalFileHandle } from "@/utils/openFile";
 import { buildGroupedTree } from "@/visualization/grouping";
 import { applyStylePreset as composeStylePreset, stylePresets } from "@/visualization/foamtree/stylePresets";
@@ -32,7 +43,13 @@ export interface AtlasState {
   search: string;
   filters: FilterState;
   config: AppConfig;
-  panels: { filters: boolean; details: boolean; settings: boolean; commandPalette: boolean };
+  panels: {
+    filters: boolean;
+    details: boolean;
+    settings: boolean;
+    commandPalette: boolean;
+    sharePointBrowser: boolean;
+  };
   presets: SavedPreset[];
   visibleIds: Set<string>;
   visibleCount: number;
@@ -43,11 +60,18 @@ export interface AtlasState {
     resolving: boolean;
     resolveMessage: string | null;
   };
+  sharePoint: {
+    settings: SharePointSettings;
+    signedIn: boolean;
+    importing: boolean;
+    message: string | null;
+  };
 }
 
 const listeners = new Set<() => void>();
 
 let scanCancel: (() => void) | null = null;
+let sharePointImportCancel = false;
 
 let state: AtlasState = {
   index: null,
@@ -61,7 +85,7 @@ let state: AtlasState = {
   search: "",
   filters: emptyFilterState(),
   config: defaultAppConfig(),
-  panels: { filters: true, details: true, settings: true, commandPalette: false },
+  panels: { filters: true, details: true, settings: true, commandPalette: false, sharePointBrowser: false },
   presets: builtinPresets,
   visibleIds: new Set(),
   visibleCount: 0,
@@ -71,6 +95,12 @@ let state: AtlasState = {
     signedIn: isAccSignedIn(),
     resolving: false,
     resolveMessage: null,
+  },
+  sharePoint: {
+    settings: loadSharePointSettings(),
+    signedIn: isSharePointSignedIn(),
+    importing: false,
+    message: null,
   },
 };
 
@@ -257,7 +287,7 @@ export const actions = {
   togglePanel(panel: "filters" | "details"): void {
     setState({ panels: { ...state.panels, [panel]: !state.panels[panel] } });
   },
-  setPanel(panel: "settings" | "commandPalette", open: boolean): void {
+  setPanel(panel: "settings" | "commandPalette" | "sharePointBrowser", open: boolean): void {
     setState({ panels: { ...state.panels, [panel]: open } });
   },
   applyPreset(preset: SavedPreset): void {
@@ -361,6 +391,105 @@ export const actions = {
       setState({ loadError: error instanceof Error ? error.message : "Could not open JSON" });
     }
   },
+  async mergeFolder(): Promise<void> {
+    if (!window.showDirectoryPicker) {
+      setState({ loadError: "Folder picking requires Chrome or Edge with the File System Access API." });
+      return;
+    }
+    try {
+      const handle = await window.showDirectoryPicker({ mode: "read" });
+      scanCancel?.();
+      const job = startDirectoryScan(handle, (progress) => {
+        setState({ scan: progress, scanning: progress.phase !== "complete" && progress.phase !== "cancelled" });
+      });
+      scanCancel = job.cancel;
+      setState({ scanning: true, loadError: null, scan: null });
+      const result = await job.done;
+      if (!state.index) {
+        recompute({
+          index: result.index,
+          handles: result.handles,
+          scanning: false,
+          selectedId: null,
+          focusPath: [],
+          loadError: null,
+          acc: {
+            ...state.acc,
+            resolveMessage: `Loaded “${result.index.root.name}”. Use Merge folder to add more batches.`,
+          },
+        });
+        return;
+      }
+      const merged = mergeFileIndexes(state.index, state.handles, result.index, result.handles, handle.name);
+      recompute({
+        index: merged.index,
+        handles: merged.handles,
+        scanning: false,
+        selectedId: null,
+        focusPath: [],
+        loadError: null,
+        acc: {
+          ...state.acc,
+          resolveMessage: `Merged “${merged.batchName}” · ${merged.index.statistics.totalFiles} files total`,
+        },
+      });
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        setState({ scanning: false });
+        return;
+      }
+      setState({
+        scanning: false,
+        loadError: error instanceof Error ? error.message : "Merge folder failed",
+      });
+    }
+  },
+  async mergeJson(): Promise<void> {
+    try {
+      const text = await pickTextFile([
+        { description: "Atlas index JSON", accept: { "application/json": [".json"] } },
+      ]);
+      if (text === null) {
+        return;
+      }
+      const parsed: unknown = JSON.parse(text);
+      if (isWorkspaceFile(parsed)) {
+        setState({ loadError: "Workspace files cannot be merged. Open an index JSON, or use Merge folder." });
+        return;
+      }
+      const result = parseIndexJson(text);
+      if (!result.ok || !result.index) {
+        setState({ loadError: result.errors.join("; ") });
+        return;
+      }
+      if (!state.index) {
+        actions.loadIndex(result.index);
+        setState({
+          acc: {
+            ...state.acc,
+            resolveMessage: `Loaded “${result.index.root.name}” from JSON. Use Merge folder/JSON to add more batches.`,
+          },
+        });
+        return;
+      }
+      const merged = mergeFileIndexes(state.index, state.handles, result.index, new Map(), result.index.root.name);
+      recompute({
+        index: merged.index,
+        handles: merged.handles,
+        selectedId: null,
+        focusPath: [],
+        loadError: null,
+        acc: {
+          ...state.acc,
+          resolveMessage: `Merged “${merged.batchName}” from JSON · ${merged.index.statistics.totalFiles} files total`,
+        },
+      });
+    } catch (error) {
+      setState({
+        loadError: error instanceof Error ? error.message : "Merge JSON failed",
+      });
+    }
+  },
   exportJson(): void {
     if (!state.index) {
       return;
@@ -401,7 +530,7 @@ export const actions = {
     if (!node || node.nodeType !== "file") {
       return false;
     }
-    if (accUrlFromMetadata(node.metadata)) {
+    if (openableWebUrlFromMetadata(node.metadata)) {
       return true;
     }
     const handle = state.handles.get(node.id);
@@ -443,14 +572,14 @@ export const actions = {
       setState({ loadError: "Select a file tile, then open (or double-click it)." });
       return;
     }
-    const accUrl = accUrlFromMetadata(node.metadata);
-    if (accUrl) {
+    const cloudUrl = openableWebUrlFromMetadata(node.metadata);
+    if (cloudUrl) {
       try {
-        openAccWebUrl(accUrl);
+        openWebUrl(cloudUrl);
         clearLoadError();
       } catch (error) {
         setState({
-          loadError: error instanceof Error ? error.message : "Could not open the file in ACC",
+          loadError: error instanceof Error ? error.message : "Could not open the file on the web",
         });
       }
       return;
@@ -458,7 +587,8 @@ export const actions = {
     const handle = state.handles.get(node.id);
     if (!handle || handle.kind !== "file") {
       setState({
-        loadError: "Cannot open this file locally. Load the folder again (not JSON/sample), then double-click the file.",
+        loadError:
+          "Cannot open this file. Import from SharePoint (opens on the web), Resolve ACC links, or Load folder for local open.",
       });
       return;
     }
@@ -629,6 +759,196 @@ export const actions = {
           resolveMessage: null,
         },
         loadError: error instanceof Error ? error.message : "Could not resolve ACC links",
+      });
+    }
+  },
+  saveSharePointSettings(settings: SharePointSettings): void {
+    saveSharePointSettings(settings);
+    setState({
+      sharePoint: {
+        ...state.sharePoint,
+        settings: loadSharePointSettings(),
+      },
+    });
+  },
+  async signInSharePoint(): Promise<void> {
+    try {
+      await beginSharePointLogin(state.sharePoint.settings.clientId);
+    } catch (error) {
+      setState({
+        loadError: error instanceof Error ? error.message : "Could not start Microsoft sign-in",
+      });
+    }
+  },
+  signOutSharePoint(): void {
+    clearSharePointToken();
+    setState({
+      sharePoint: {
+        ...state.sharePoint,
+        signedIn: false,
+        message: null,
+      },
+    });
+  },
+  async completeSharePointOAuth(): Promise<void> {
+    try {
+      const completed = await completeSharePointLoginFromUrl();
+      if (completed) {
+        setState({
+          sharePoint: {
+            ...state.sharePoint,
+            signedIn: true,
+            message: "Signed in to Microsoft. Open Browse SharePoint to import a library.",
+          },
+          panels: { ...state.panels, sharePointBrowser: true, settings: true },
+          loadError: null,
+        });
+      } else {
+        setState({
+          sharePoint: {
+            ...state.sharePoint,
+            signedIn: isSharePointSignedIn(),
+          },
+        });
+      }
+    } catch (error) {
+      setState({
+        sharePoint: {
+          ...state.sharePoint,
+          signedIn: false,
+        },
+        loadError: error instanceof Error ? error.message : "Microsoft sign-in failed",
+      });
+    }
+  },
+  async listSharePointSites(): Promise<GraphSite[]> {
+    return listAccessibleSites();
+  },
+  async listSharePointDrives(siteId: string): Promise<GraphDrive[]> {
+    return listSiteDrives(siteId);
+  },
+  cancelSharePointImport(): void {
+    sharePointImportCancel = true;
+  },
+  async importSharePointDrive(site: GraphSite, drive: GraphDrive, merge: boolean): Promise<void> {
+    if (!isSharePointSignedIn()) {
+      setState({ loadError: "Sign in to Microsoft in Settings → SharePoint first." });
+      return;
+    }
+    sharePointImportCancel = false;
+    setState({
+      sharePoint: {
+        ...state.sharePoint,
+        importing: true,
+        message: `Importing “${drive.name}”…`,
+      },
+      scanning: true,
+      scan: {
+        phase: "scanning",
+        currentPath: drive.name,
+        filesScanned: 0,
+        foldersScanned: 0,
+        totalSize: 0,
+        errors: 0,
+        elapsedMs: 0,
+      },
+      loadError: null,
+    });
+    const startedAt = performance.now();
+    try {
+      const result = await buildSharePointIndex(site, drive, {
+        isCancelled: () => sharePointImportCancel,
+        onProgress: (progress) => {
+          setState({
+            sharePoint: {
+              ...state.sharePoint,
+              importing: true,
+              message: `Importing “${drive.name}” · ${progress.files} files · ${progress.folders} folders`,
+            },
+            scanning: true,
+            scan: {
+              phase: "scanning",
+              currentPath: progress.currentPath,
+              filesScanned: progress.files,
+              foldersScanned: progress.folders,
+              totalSize: 0,
+              errors: 0,
+              elapsedMs: performance.now() - startedAt,
+            },
+          });
+        },
+      });
+
+      if (!state.index || !merge) {
+        recompute({
+          index: result.index,
+          handles: new Map(),
+          scanning: false,
+          scan: null,
+          selectedId: null,
+          focusPath: [],
+          loadError: null,
+          sharePoint: {
+            ...state.sharePoint,
+            importing: false,
+            message: `Imported “${result.drive.name}” · ${result.index.statistics.totalFiles} files`,
+            signedIn: true,
+          },
+          panels: { ...state.panels, sharePointBrowser: false },
+        });
+        return;
+      }
+
+      const merged = mergeFileIndexes(state.index, state.handles, result.index, new Map(), result.drive.name);
+      recompute({
+        index: merged.index,
+        handles: merged.handles,
+        scanning: false,
+        scan: null,
+        selectedId: null,
+        focusPath: [],
+        loadError: null,
+        sharePoint: {
+          ...state.sharePoint,
+          importing: false,
+          message: `Merged “${merged.batchName}” · ${merged.index.statistics.totalFiles} files total`,
+          signedIn: true,
+        },
+        panels: { ...state.panels, sharePointBrowser: false },
+      });
+    } catch (error) {
+      setState({
+        sharePoint: {
+          ...state.sharePoint,
+          importing: false,
+          message: null,
+        },
+        scanning: false,
+        scan: null,
+        loadError: error instanceof Error ? error.message : "SharePoint import failed",
+      });
+    }
+  },
+  async importSharePointFromUrl(libraryUrl: string, merge: boolean): Promise<void> {
+    try {
+      setState({
+        sharePoint: {
+          ...state.sharePoint,
+          message: "Resolving SharePoint library URL…",
+        },
+        loadError: null,
+      });
+      const resolved = await resolveDriveFromLibraryUrl(libraryUrl);
+      await actions.importSharePointDrive(resolved.site, resolved.drive, merge);
+    } catch (error) {
+      setState({
+        sharePoint: {
+          ...state.sharePoint,
+          importing: false,
+        },
+        scanning: false,
+        scan: null,
+        loadError: error instanceof Error ? error.message : "Could not resolve SharePoint URL",
       });
     }
   },

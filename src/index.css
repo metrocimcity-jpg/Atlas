@@ -625,9 +625,19 @@ input.search {
   margin: 12px 0 18px;
 }
 
-.acc-settings-card input {
+.acc-settings-card input,
+.acc-settings-card select {
   width: 100%;
   margin-bottom: 8px;
+}
+
+.sharepoint-browser {
+  width: min(560px, calc(100vw - 32px));
+}
+
+.sharepoint-browser select {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .detail-hint {

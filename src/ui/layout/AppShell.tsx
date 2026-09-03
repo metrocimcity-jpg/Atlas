@@ -1,6 +1,7 @@
 import { CommandPalette } from "@/ui/dialogs/CommandPalette";
 import { ScanProgressDialog } from "@/ui/dialogs/ScanProgress";
 import { SettingsDialog } from "@/ui/dialogs/SettingsDialog";
+import { SharePointBrowserDialog } from "@/ui/dialogs/SharePointBrowserDialog";
 import { EmptyState } from "@/ui/empty/EmptyState";
 import { useKeyboard } from "@/ui/hooks/useKeyboard";
 import { Sidebar } from "@/ui/layout/Sidebar";
@@ -43,6 +44,7 @@ export function AppShell(): JSX.Element {
       </div>
       <StatusBar />
       <CommandPalette />
+      <SharePointBrowserDialog />
       <ScanProgressDialog />
     </div>
   );

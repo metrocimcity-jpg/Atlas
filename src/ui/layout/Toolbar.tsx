@@ -39,6 +39,17 @@ export function Toolbar(): JSX.Element {
           <FolderIcon />
           Load folder
         </button>
+        <button
+          type="button"
+          title="Add another ACC or local folder into the current map"
+          onClick={() => void actions.mergeFolder()}
+        >
+          <FolderIcon />
+          Merge folder
+        </button>
+        <button type="button" title="Browse SharePoint sites and import a library" onClick={() => actions.setPanel("sharePointBrowser", true)}>
+          SharePoint
+        </button>
         <button type="button" title="FoamTree settings" onClick={() => actions.setPanel("settings", !panels.settings)}>
           Settings
         </button>
@@ -49,6 +60,15 @@ export function Toolbar(): JSX.Element {
           <div className="more-pop">
             <button type="button" onClick={() => void actions.openJson()}>
               Open JSON
+            </button>
+            <button type="button" onClick={() => void actions.mergeJson()}>
+              Merge JSON
+            </button>
+            <button type="button" onClick={() => void actions.mergeFolder()}>
+              Merge folder
+            </button>
+            <button type="button" onClick={() => actions.setPanel("sharePointBrowser", true)}>
+              Browse SharePoint
             </button>
             <button type="button" onClick={() => void actions.resolveAccLinks()}>
               Resolve ACC links

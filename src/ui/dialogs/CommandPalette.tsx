@@ -16,7 +16,10 @@ export function CommandPalette(): JSX.Element | null {
   const commands: Command[] = useMemo(
     () => [
       { id: "open-folder", label: "Open Folder", shortcut: "Ctrl+O", run: () => void actions.openFolder() },
+      { id: "merge-folder", label: "Merge Folder", run: () => void actions.mergeFolder() },
       { id: "open-json", label: "Open JSON", shortcut: "Ctrl+Shift+O", run: () => void actions.openJson() },
+      { id: "merge-json", label: "Merge JSON", run: () => void actions.mergeJson() },
+      { id: "browse-sharepoint", label: "Browse SharePoint", run: () => actions.setPanel("sharePointBrowser", true) },
       { id: "resolve-acc", label: "Resolve ACC Links", run: () => void actions.resolveAccLinks() },
       { id: "open-selected", label: "Open Selected File", shortcut: "Enter", run: () => void actions.openSelected() },
       { id: "export-json", label: "Export JSON", run: () => actions.exportJson() },

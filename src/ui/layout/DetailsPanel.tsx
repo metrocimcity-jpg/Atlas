@@ -1,5 +1,5 @@
 import { actions, useAtlas } from "@/state/store";
-import { accUrlFromMetadata } from "@/utils/accLinks";
+import { openableWebUrlFromMetadata } from "@/utils/webLinks";
 import { formatBytes, formatDate, formatNumber } from "@/utils/format";
 import { findVizNode } from "@/visualization/tree";
 
@@ -42,9 +42,9 @@ export function DetailsPanel(): JSX.Element {
   const { selectedId, index, vizTree, handles } = useAtlas();
   const node = selectedId ? index?.items.find((item) => item.id === selectedId) ?? null : null;
   const group = !node && selectedId && vizTree ? findVizNode(vizTree, selectedId) : null;
-  const hasAccUrl = Boolean(node?.nodeType === "file" && accUrlFromMetadata(node.metadata));
+  const hasCloudUrl = Boolean(node?.nodeType === "file" && openableWebUrlFromMetadata(node.metadata));
   const canDownload = Boolean(node?.nodeType === "file" && handles.get(node.id)?.kind === "file");
-  const canOpen = hasAccUrl || canDownload;
+  const canOpen = hasCloudUrl || canDownload;
 
   return (
     <div className="card">
@@ -64,11 +64,11 @@ export function DetailsPanel(): JSX.Element {
               type="button"
               disabled={!canOpen}
               title={
-                hasAccUrl
-                  ? "Open in ACC Docs (Enter or double-click)"
+                hasCloudUrl
+                  ? "Open on the web (Enter or double-click)"
                   : canDownload
                     ? "Double-click the tile or press open to get a local copy"
-                    : "Load folder first (not JSON/sample)"
+                    : "Import from SharePoint, Resolve ACC links, or Load folder first"
               }
               onClick={() => void actions.openSelected()}
             >
