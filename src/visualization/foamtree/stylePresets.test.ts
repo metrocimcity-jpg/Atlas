@@ -21,7 +21,15 @@ describe("FoamTree style presets", () => {
     expect(applied.style.colorModel).toBe("atlas");
     expect(applied.style.stacking).toBe("flattened");
     expect(applied.groupBy).toEqual(["extension"]);
+    expect(applied.renderer).toBe("foamtree");
     expect(applied.style.groupLabelFontFamily).toBe(diskAtlasStyle().groupLabelFontFamily);
     expect(foamtreeDefaultStyle().colorModel).toBe("rainbow");
+  });
+
+  it("switches to D3 appearance presets via renderer", () => {
+    const packing = stylePresets.find((preset) => preset.id === "zoomable-circle-packing");
+    expect(packing).toBeDefined();
+    const applied = applyStylePreset(defaultAppConfig().visualization, packing!);
+    expect(applied.renderer).toBe("circlePacking");
   });
 });

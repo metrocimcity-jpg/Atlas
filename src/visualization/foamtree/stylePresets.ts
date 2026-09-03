@@ -18,6 +18,7 @@ export const stylePresets: StylePreset[] = [
     description: "Official factory look from the FoamTree settings demo",
     visualization: {
       layout: "foam",
+      renderer: "foamtree",
       groupBy: ["folder"],
       colorBy: "category",
       palette: "rainbow",
@@ -33,6 +34,7 @@ export const stylePresets: StylePreset[] = [
     description: "Flattened file-type coloring used by the previous Atlas UI",
     visualization: {
       layout: "sunburst",
+      renderer: "foamtree",
       groupBy: ["extension"],
       colorBy: "extension",
       palette: "rainbow",
@@ -42,10 +44,54 @@ export const stylePresets: StylePreset[] = [
     style: diskAtlasStyle(),
   },
   {
+    id: "zoomable-circle-packing",
+    group: "Appearance",
+    label: "Zoomable circle packing",
+    description: "D3 zoomable circle packing of the current map",
+    visualization: {
+      layout: "circles",
+      renderer: "circlePacking",
+      showLabels: true,
+      animation: true,
+    },
+    style: {
+      stageBackground: "hsl(152,80%,80%)",
+    },
+  },
+  {
+    id: "sequences-sunburst",
+    group: "Appearance",
+    label: "Sequences Sunburst",
+    description: "D3 sequences sunburst with path highlight and center percentage",
+    visualization: {
+      layout: "sunburst",
+      renderer: "sequencesSunburst",
+      showLabels: true,
+      animation: true,
+    },
+    style: {
+      stageBackground: "#ffffff",
+    },
+  },
+  {
+    id: "d3-sunburst",
+    group: "Appearance",
+    label: "Sunburst",
+    description: "D3 sunburst with labeled arcs",
+    visualization: {
+      layout: "sunburst",
+      renderer: "sunburst",
+      showLabels: true,
+      animation: true,
+    },
+    style: {
+      stageBackground: "#ffffff",
+    },
+  },
+  {
     id: "light-bg",
     group: "Color scheme",
-    label: "For light backgrounds",
-    style: {
+    label: "For light backgrounds",    style: {
       stageBackground: "#ffffff",
       attributionTheme: "light",
       groupSelectionOutlineColor: "#222",
