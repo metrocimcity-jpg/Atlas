@@ -20,6 +20,26 @@ export function CommandPalette(): JSX.Element | null {
       { id: "open-json", label: "Open JSON", shortcut: "Ctrl+Shift+O", run: () => void actions.openJson() },
       { id: "merge-json", label: "Merge JSON", run: () => void actions.mergeJson() },
       { id: "browse-sharepoint", label: "Browse SharePoint", run: () => actions.setPanel("sharePointBrowser", true) },
+      {
+        id: "style-foamtree",
+        label: "Style: FoamTree",
+        run: () => actions.patchVisualization({ renderer: "foamtree", layout: "foam" }),
+      },
+      {
+        id: "style-circle-packing",
+        label: "Style: Zoomable Circle Packing",
+        run: () => actions.patchVisualization({ renderer: "circlePacking", layout: "circles" }),
+      },
+      {
+        id: "style-sequences-sunburst",
+        label: "Style: Sequences Sunburst",
+        run: () => actions.patchVisualization({ renderer: "sequencesSunburst", layout: "sunburst" }),
+      },
+      {
+        id: "style-sunburst",
+        label: "Style: Sunburst",
+        run: () => actions.patchVisualization({ renderer: "sunburst", layout: "sunburst" }),
+      },
       { id: "resolve-acc", label: "Resolve ACC Links", run: () => void actions.resolveAccLinks() },
       { id: "open-selected", label: "Open Selected File", shortcut: "Enter", run: () => void actions.openSelected() },
       { id: "export-json", label: "Export JSON", run: () => actions.exportJson() },

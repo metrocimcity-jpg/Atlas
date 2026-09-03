@@ -22,6 +22,7 @@ export function defaultAppConfig(): AppConfig {
     theme: "dark",
     visualization: {
       layout: "foam",
+      renderer: "foamtree",
       sizeBy: "fileSize",
       colorBy: "category",
       groupBy: ["folder"],

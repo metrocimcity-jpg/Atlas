@@ -241,7 +241,7 @@ select {
   position: absolute;
   right: 0;
   top: calc(100% + 6px);
-  min-width: 180px;
+  min-width: 240px;
   background: var(--panel-raised);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -254,9 +254,28 @@ select {
 
 .more-pop button {
   width: 100%;
+  display: flex;
   justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  white-space: nowrap;
   background: transparent;
   border-color: transparent;
+}
+
+.more-section-label {
+  margin: 8px 6px 2px;
+  padding: 0;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-align: left;
+}
+
+.more-pop button.more-active {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
 }
 
 .crumbbar,
@@ -673,7 +692,10 @@ input.search {
 }
 
 .viz-stage,
-.foamtree-host {
+.foamtree-host,
+.circle-pack-host,
+.sequences-sunburst-host,
+.sunburst-host {
   position: absolute;
   inset: 0;
   display: block;
@@ -681,6 +703,15 @@ input.search {
   height: 100%;
   min-height: 0;
   background: transparent;
+}
+
+.circle-pack-host,
+.sequences-sunburst-host,
+.sunburst-host {
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: #fff;
 }
 
 .foamtree-host canvas {

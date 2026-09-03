@@ -7,6 +7,7 @@ function viz(partial: Partial<VisualizationConfig>, filters?: Partial<FilterStat
   return {
     visualization: {
       layout: "foam",
+      renderer: "foamtree",
       sizeBy: "fileSize",
       colorBy: "category",
       groupBy: ["folder"],

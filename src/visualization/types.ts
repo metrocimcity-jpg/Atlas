@@ -35,6 +35,9 @@ export type GroupBy =
 
 export type LayoutMode = "foam" | "treemap" | "circles" | "sunburst";
 
+/** Which canvas renderer draws the map */
+export type VizRenderer = "foamtree" | "circlePacking" | "sequencesSunburst" | "sunburst";
+
 export type PaletteId =
   | "professional"
   | "dark"
@@ -118,6 +121,8 @@ export interface VisualizationStyle {
 
 export interface VisualizationConfig {
   layout: LayoutMode;
+  /** FoamTree (default) or D3 zoomable circle packing */
+  renderer: VizRenderer;
   sizeBy: SizeBy;
   colorBy: ColorBy;
   groupBy: GroupBy[];

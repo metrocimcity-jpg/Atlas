@@ -21,6 +21,7 @@ function LayersIcon(): JSX.Element {
 
 export function Toolbar(): JSX.Element {
   const { config, panels } = useAtlas();
+  const renderer = config.visualization.renderer ?? "foamtree";
 
   return (
     <header className="topbar">
@@ -46,9 +47,6 @@ export function Toolbar(): JSX.Element {
         >
           <FolderIcon />
           Merge folder
-        </button>
-        <button type="button" title="Browse SharePoint sites and import a library" onClick={() => actions.setPanel("sharePointBrowser", true)}>
-          SharePoint
         </button>
         <button type="button" title="FoamTree settings" onClick={() => actions.setPanel("settings", !panels.settings)}>
           Settings
@@ -87,6 +85,38 @@ export function Toolbar(): JSX.Element {
                 {preset.name}
               </button>
             ))}
+            <div className="more-section-label">Style</div>
+            <button
+              type="button"
+              className={renderer === "foamtree" ? "more-active" : undefined}
+              onClick={() => actions.patchVisualization({ renderer: "foamtree", layout: "foam" })}
+            >
+              FoamTree
+            </button>
+            <button
+              type="button"
+              className={renderer === "circlePacking" ? "more-active" : undefined}
+              title="D3 zoomable circle packing"
+              onClick={() => actions.patchVisualization({ renderer: "circlePacking", layout: "circles" })}
+            >
+              Zoomable circle packing
+            </button>
+            <button
+              type="button"
+              className={renderer === "sequencesSunburst" ? "more-active" : undefined}
+              title="D3 sequences sunburst"
+              onClick={() => actions.patchVisualization({ renderer: "sequencesSunburst", layout: "sunburst" })}
+            >
+              Sequences Sunburst
+            </button>
+            <button
+              type="button"
+              className={renderer === "sunburst" ? "more-active" : undefined}
+              title="D3 sunburst with arc labels"
+              onClick={() => actions.patchVisualization({ renderer: "sunburst", layout: "sunburst" })}
+            >
+              Sunburst
+            </button>
             <button type="button" onClick={() => actions.setTheme(config.theme === "dark" ? "light" : "dark")}>
               {config.theme === "dark" ? "Light theme" : "Dark theme"}
             </button>

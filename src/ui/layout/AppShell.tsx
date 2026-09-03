@@ -8,7 +8,7 @@ import { Sidebar } from "@/ui/layout/Sidebar";
 import { StatusBar } from "@/ui/layout/StatusBar";
 import { Toolbar } from "@/ui/layout/Toolbar";
 import { Breadcrumbs } from "@/ui/visualization/Breadcrumbs";
-import { FoamCanvas } from "@/ui/visualization/FoamCanvas";
+import { VizStage } from "@/ui/visualization/VizStage";
 import { useAtlas } from "@/state/store";
 
 function stageTone(background: string): "stage-dark" | "stage-light" {
@@ -38,7 +38,7 @@ export function AppShell(): JSX.Element {
       <div className="layout">
         {panels.filters ? <Sidebar /> : null}
         <main className={`stage ${tone}`} style={{ background }}>
-          {index ? <FoamCanvas /> : <EmptyState />}
+          {index ? <VizStage /> : <EmptyState />}
         </main>
         {panels.settings ? <SettingsDialog /> : null}
       </div>
