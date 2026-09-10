@@ -1,0 +1,5532 @@
+{
+  "version": "003",
+  "source": "The New Taxonomy Structure for the Accelerator Program (003).xlsx",
+  "generatedAt": "2026-09-10T22:53:42.918Z",
+  "levels": [
+    {
+      "id": "L1",
+      "key": "ACC-Portfolio",
+      "label": "ACC-Portfolio",
+      "sheet": "L1 - Portfolio",
+      "items": [
+        {
+          "code": "L",
+          "name": "Long Term Investment in Facilities and Terminals"
+        }
+      ]
+    },
+    {
+      "id": "L2",
+      "key": "ACC-Program",
+      "label": "ACC-Program",
+      "sheet": "L2 - Program",
+      "items": [
+        {
+          "code": "AC",
+          "name": "Accelerator"
+        }
+      ]
+    },
+    {
+      "id": "L3",
+      "key": "ACC-Sub Program",
+      "label": "ACC-Sub Program",
+      "sheet": "L3 - Sub Program",
+      "items": [
+        {
+          "program": "AC",
+          "code": "PW",
+          "name": "Programwide"
+        },
+        {
+          "program": "AC",
+          "code": "AE",
+          "name": "Airfield Electrical & Civil"
+        },
+        {
+          "program": "AC",
+          "code": "AP",
+          "name": "Accelerator Priority Projects"
+        },
+        {
+          "program": "AC",
+          "code": "GH",
+          "name": "Green House Gas Reduction"
+        },
+        {
+          "program": "AC",
+          "code": "IN",
+          "name": "Interim Infrastructure"
+        }
+      ]
+    },
+    {
+      "id": "L4",
+      "key": "ACC-Originator",
+      "label": "ACC-Originator",
+      "sheet": "L4 - Originator",
+      "items": [
+        {
+          "code": "GT",
+          "name": "Greater Toronto Airports Authority"
+        },
+        {
+          "code": "JC",
+          "name": "Jacobs"
+        },
+        {
+          "code": "AE",
+          "name": "AECOM Engineering Company"
+        },
+        {
+          "code": "TT",
+          "name": "Turner & Townsend"
+        },
+        {
+          "code": "PD",
+          "name": "PACT"
+        },
+        {
+          "code": "AR",
+          "name": "Arup Group Limited"
+        },
+        {
+          "code": "BN",
+          "name": "BNP Associates"
+        },
+        {
+          "code": "XX",
+          "name": "null"
+        }
+      ]
+    },
+    {
+      "id": "L5",
+      "key": "ACC-Location",
+      "label": "ACC-Location",
+      "sheet": "L5 - Location",
+      "items": [
+        {
+          "code": "AAP08",
+          "name": "AP08, APRON - ACCESS TO; TERMINAL 1 and TERMINAL 3 COMBINED"
+        },
+        {
+          "code": "AAP11",
+          "name": "AP11, APRON TERMINAL 1"
+        },
+        {
+          "code": "AAP23",
+          "name": "AP23, APRON - VISTA CARGO"
+        },
+        {
+          "code": "AAP44",
+          "name": "AP44, APRON - TERMINAL 3"
+        },
+        {
+          "code": "AAP90",
+          "name": "AP90, APRONS - OTHER"
+        },
+        {
+          "code": "AASGN",
+          "name": "ASGN, (AIRSIDE)-GENERAL"
+        },
+        {
+          "code": "AASTW",
+          "name": "TAXIWAYS - ALL"
+        },
+        {
+          "code": "ARW01",
+          "name": "RUNWAY 06L-24R"
+        },
+        {
+          "code": "ARW02",
+          "name": "RUNWAY  06R-24L"
+        },
+        {
+          "code": "ARW03",
+          "name": "RUNWAY 15L-33R"
+        },
+        {
+          "code": "ARW04",
+          "name": "RUNWAY  15R-33L"
+        },
+        {
+          "code": "ARW05",
+          "name": "RUNWAY 05-23"
+        },
+        {
+          "code": "F0001",
+          "name": "0001, 3 BAY HANGAR 2 [AIRLINE MAINTENANCE AREA10]"
+        },
+        {
+          "code": "F0002",
+          "name": "0002, 6BPG [VALUE PARK GARAGE]"
+        },
+        {
+          "code": "F0004",
+          "name": "0004, ADM, ADMINISTRATION BUILDING GTAA"
+        },
+        {
+          "code": "F0005",
+          "name": "0005, AIR CANADA GROUND EQUIP MTCE BLDG AREA 2A GSE"
+        },
+        {
+          "code": "F0006",
+          "name": "0006, AMF, AIRSIDE MAINTENANCE FACILITY AREA 2A"
+        },
+        {
+          "code": "F0007",
+          "name": "0007, ASDE NORTH"
+        },
+        {
+          "code": "F0008",
+          "name": "0008, ASDE SOUTH"
+        },
+        {
+          "code": "F0009",
+          "name": "0009, ASDE CENTRAL (OLD NEAR CDF)"
+        },
+        {
+          "code": "F0010",
+          "name": "0010, ATCT [NAV CANADA AIR TRAFFIC CONTROL TOWER]"
+        },
+        {
+          "code": "F0011",
+          "name": "0011, AVITAT [AIRLINE MAINTENANCE HANGAR AREA 10]"
+        },
+        {
+          "code": "F0012",
+          "name": "0012, AS-NAVAIDS, NAVAIDS BACK-UP TRANSMITTER"
+        },
+        {
+          "code": "F0013",
+          "name": "0013, CABLE HUB AREA 13 (NAV CAN)"
+        },
+        {
+          "code": "F0014",
+          "name": "0014, CAE FLIGHT SIMULATOR CENTRE"
+        },
+        {
+          "code": "F0016",
+          "name": "0016, CGO1 [AIR CANADA CARGO A AREA 10 BLDG 1, 2580 BRITANNIA RD.]"
+        },
+        {
+          "code": "F0017",
+          "name": "0017, CGO2 [AIR CARGO B AREA 10 BUILDING B]"
+        },
+        {
+          "code": "F0018",
+          "name": "0018, CGO3 [AIR CARGO C AREA 10 BUILDING C]"
+        },
+        {
+          "code": "F0019",
+          "name": "0019, CLS CATERING SERVICES LTD."
+        },
+        {
+          "code": "F0020",
+          "name": "0020, COGEN [COGENERATION PLANT] ADMIN BUILDING"
+        },
+        {
+          "code": "F0022",
+          "name": "0022, CUP, CENTRAL UTILITIES PLANT (AREA 6C]"
+        },
+        {
+          "code": "F0023",
+          "name": "0023, CVHA ELECT BLDG FOR T3"
+        },
+        {
+          "code": "F0024",
+          "name": "0024, CVHA B1 PRE-ARRANGED CHARTER BUS OPERATIONS"
+        },
+        {
+          "code": "F0025",
+          "name": "0025, CVHA B2 TAXI/LIMO DRIVERS BLDG(CLOSE TO T3)"
+        },
+        {
+          "code": "F0026",
+          "name": "0026 CVT COMPOUND VEHICLE TOWING TRAILER"
+        },
+        {
+          "code": "F0027",
+          "name": "0027, CWS CENTRAL WORKSHOPS"
+        },
+        {
+          "code": "F0028",
+          "name": "0028, CDF OIL STORAGE BUILDING"
+        },
+        {
+          "code": "F0029",
+          "name": "0029, DEICING SERVICE AND CONTROL BUILDING"
+        },
+        {
+          "code": "F0030",
+          "name": "0030, DVOR/DME NORTH"
+        },
+        {
+          "code": "F0031",
+          "name": "0031, DVOR/DME SOUTH"
+        },
+        {
+          "code": "F0032",
+          "name": "0032, ECH [EAST COMMUNICATIONS HUB]"
+        },
+        {
+          "code": "F0036",
+          "name": "0036, FEC1 FIELD ELECTRICAL CENTRE 1 (NEAR 401)"
+        },
+        {
+          "code": "F0037",
+          "name": "0037, FEC3 FIELD ELECTRICAL CENTRE 3/ W.SWITCH UNIT"
+        },
+        {
+          "code": "F0038",
+          "name": "0038, FEC4 FIELD ELECTRICAL CENTRE 4 (PAPA TAXIWAY)"
+        },
+        {
+          "code": "F0039",
+          "name": "0039, FEC5 FIELD ELECTRICAL CENTRE 5 (T1 NODE E)"
+        },
+        {
+          "code": "F0040",
+          "name": "0040, FEC6 FIELD ELECTRICAL CENTRE 6 (TNEW)"
+        },
+        {
+          "code": "F0041",
+          "name": "0041, FESTI [FIRE EMERG. SRVCS. TRAINING INSTITUTE]"
+        },
+        {
+          "code": "F0042",
+          "name": "0042, FHN FIRE HALL NORTH END STATION 2 AREA 8"
+        },
+        {
+          "code": "F0043",
+          "name": "0043, FHS FIRE HALL SOUTH END STATION 1 AREA 2A"
+        },
+        {
+          "code": "F0044",
+          "name": "0044, FESTI FIRE TRAINING INSTITUTE BURN BLDG."
+        },
+        {
+          "code": "F0045",
+          "name": "0045, FIRE TRAINING INSTITUTE CONFINED SPACE RESCUE"
+        },
+        {
+          "code": "F0046",
+          "name": "0046, FIRE TRAINING INSTITUTE RESCUE TOWER"
+        },
+        {
+          "code": "F0047",
+          "name": "0047, FIREHALL STATION 3 MISSISSAUGA 119 (AREA 6C)"
+        },
+        {
+          "code": "F0048",
+          "name": "0048, FLIGHT KITCHEN A AREA 10 (CARA)"
+        },
+        {
+          "code": "F0050",
+          "name": "0050, FLIGHT SIMULATOR AREA 2 (AIR CANADA)"
+        },
+        {
+          "code": "F0052",
+          "name": "0052, FORT KNOX 2 - AIRPORT SECURE STORAGE AREA 13"
+        },
+        {
+          "code": "F0054",
+          "name": "0054, GLYCOL PROCESSING FACILITY (DEICING)"
+        },
+        {
+          "code": "F0055",
+          "name": "0055, GLYCOL PUMPING STATION"
+        },
+        {
+          "code": "F0076",
+          "name": "0076, HGR1 [LANDMARK AVIATION HANGAR 1 AREA 8]"
+        },
+        {
+          "code": "F0077",
+          "name": "0077, HGR10 [GTA AVIATION GROUND HANGAR 10 AREA 8]"
+        },
+        {
+          "code": "F0078",
+          "name": "0078, HGR11 [LANDMARK N. LOUNGE HANGAR 11 AREA 8]"
+        },
+        {
+          "code": "F0079",
+          "name": "0079, HGR12 [PIEDMONT/HAWTHORNE SHELL AEROCENTRE]"
+        },
+        {
+          "code": "F0080",
+          "name": "0080, HGR2 [LANDMARK AVIATION HANGAR 2  AREA 8]"
+        },
+        {
+          "code": "F0081",
+          "name": "0081, HGR3 [LANDMARK AVIATION HANGAR 3 AREA 8]"
+        },
+        {
+          "code": "F0082",
+          "name": "0082, HGR4 [MILLARD HOLDINGS HANGAR 4  AREA 8]"
+        },
+        {
+          "code": "F0084",
+          "name": "0084, HGR6 [SKYSERVICE AIRLINES HANGAR 6 AREA 8]"
+        },
+        {
+          "code": "F0085",
+          "name": "0085, HGR6A [SKYSERVICE AIRLINES HANGAR 6A AREA 8]"
+        },
+        {
+          "code": "F0086",
+          "name": "0086, HGR7 [I.M.P. GROUP INT'L HANGAR 7 AREA 8]"
+        },
+        {
+          "code": "F0087",
+          "name": "0087, HGR8A [SKYCHARTER LTD. HANGAR 8A AREA 8]"
+        },
+        {
+          "code": "F0088",
+          "name": "0088, HGR8B [SKYCHARTER LTD. HANGAR 8B  AREA 8]"
+        },
+        {
+          "code": "F0089",
+          "name": "0089, HGRA [LANDMARK AVIATION HANGAR 9 AREA 8]"
+        },
+        {
+          "code": "F0093",
+          "name": "0093, HGRB [AIRLINE MAINTENANCE HANGAR B AREA 2]"
+        },
+        {
+          "code": "F0097",
+          "name": "0097, HOTEL SHERATON ( T3)"
+        },
+        {
+          "code": "F0098",
+          "name": "0098, HWDP HOT WATER DISTRIBUTION PLANT (AREA 10)"
+        },
+        {
+          "code": "F0099",
+          "name": "0099, IFC AIR TERMINAL INFIELD AREA 10"
+        },
+        {
+          "code": "F0110",
+          "name": "0110, INTERNATIONAL WASTE FACILITY - AREA 10"
+        },
+        {
+          "code": "F0112",
+          "name": "0112, MONITORING STATION AIR QUALITY"
+        },
+        {
+          "code": "F0113",
+          "name": "0113, MONITORING STATION WATER  (WM4A)"
+        },
+        {
+          "code": "F0114",
+          "name": "0114, MONITORING STATION WATER (STORM) AEROQUAY"
+        },
+        {
+          "code": "F0115",
+          "name": "0115, MONITORING STATION WATER (STORM) CARLINGVIEW"
+        },
+        {
+          "code": "F0116",
+          "name": "0116, MONITORING STATION WATER (STORM) ETOBICOKE"
+        },
+        {
+          "code": "F0117",
+          "name": "0117, MONITORING STATION WATER (STORM) MOORES CREEK"
+        },
+        {
+          "code": "F0120",
+          "name": "0120, IBH, INFIELD BOILER HOUSE"
+        },
+        {
+          "code": "F0122",
+          "name": "0122, PEARSON INT'L FUELING FACILITY BUILDING"
+        },
+        {
+          "code": "F0123",
+          "name": "0123, PRP [OFFICE BLDG PEEL POLICE/TRANSPORT]"
+        },
+        {
+          "code": "F0125",
+          "name": "0125, RENTAL CAR AGENCY AREA 2B AVIS"
+        },
+        {
+          "code": "F0126",
+          "name": "0126, RENTAL CAR AGENCY AREA 2B HERTZ"
+        },
+        {
+          "code": "F0131",
+          "name": "0131, SAND STORAGE [AIRSIDE MAINTENANCE FACILITY]"
+        },
+        {
+          "code": "F0132",
+          "name": "0132, SEWAGE LIFT STATION AREA 6A (T3)"
+        },
+        {
+          "code": "F0133",
+          "name": "0133, SLS9, (T1PG) SEWAGE LIFT STATION AREA 9"
+        },
+        {
+          "code": "F0134",
+          "name": "0134, SEWAGE LIFT STATIONS"
+        },
+        {
+          "code": "F0135",
+          "name": "0135, SEWAGE PUMPING STATION AREA 2B"
+        },
+        {
+          "code": "F0136",
+          "name": "0136, SEWAGE PUMPING STATION AREA 5 NORTH"
+        },
+        {
+          "code": "F0137",
+          "name": "0137, SEWAGE PUMPING STATION T3"
+        },
+        {
+          "code": "F0138",
+          "name": "0138, STORM PUMPING STATION AREA 10 (TANGO)"
+        },
+        {
+          "code": "F0139",
+          "name": "0139, SWITCHING UNIT NORTH"
+        },
+        {
+          "code": "F0140",
+          "name": "0140, SWITCHING UNIT SOUTH"
+        },
+        {
+          "code": "F0141",
+          "name": "0141, T1 [AIR TERMINAL 1]"
+        },
+        {
+          "code": "F0142",
+          "name": "0142, T1APM [AUTO. PEOPLE MOVER STN AT1]"
+        },
+        {
+          "code": "F0143",
+          "name": "0143, T1PG AIR TERMINAL 1 PARKING GARAGE"
+        },
+        {
+          "code": "F0145",
+          "name": "0145, T3 AIR TERMINAL 3"
+        },
+        {
+          "code": "F0146",
+          "name": "0146, T3APM AUTO. PEOPLE MOVER STN AT3"
+        },
+        {
+          "code": "F0147",
+          "name": "0147, T3PG AIR TERMINAL THREE PARKING GARAGE"
+        },
+        {
+          "code": "F0148",
+          "name": "0148, T3SAT PIER A [AIR TERMINAL 3 SATELLITE]"
+        },
+        {
+          "code": "F0149",
+          "name": "0149, TACC [TORONTO AREA CONTROL CENTRE]"
+        },
+        {
+          "code": "F0158",
+          "name": "0158, TRITURATOR (T1 EAST HOLD SATELLITE)"
+        },
+        {
+          "code": "F0160",
+          "name": "0160, UNION EXPRESS STATION"
+        },
+        {
+          "code": "F0162",
+          "name": "0162, 40, UTILIDOR 2, FROM CUP - VISCOUNT RD, PUMP 2, P88B"
+        },
+        {
+          "code": "F0163",
+          "name": "0163, 35, C, UTILIDOR FROM CUP - T1 NEW, UTILIDOR 3 FROM CUP - T1 NEW,"
+        },
+        {
+          "code": "F0164",
+          "name": "0164, 35, C, UTILIDOR FROM CUP - T1 NEW CENTRE, UTILIDOR 5 FROM CUP - T1 NEW CENTRE,"
+        },
+        {
+          "code": "F0165",
+          "name": "0165, 35, C, UTILIDOR FROM CUP - T1 NEW EAST, UTILIDOR 6 FROM CUP - T1 NEW EAST,"
+        },
+        {
+          "code": "F0166",
+          "name": "0166, 35, C, UTILIDOR FROM CUP - T1 NEW WEST, UTILIDOR 4 FROM CUP - T1 NEW WEST,"
+        },
+        {
+          "code": "F0167",
+          "name": "0167, 40, UTILIDOR 1, FROM CUP - VISCOUNT RD, PUMP 1, P90A"
+        },
+        {
+          "code": "F0168",
+          "name": "0168, 35, C, UTILIDOR S. AIRPORT RD, UTILIDOR 8 S. AIRPORT RD,"
+        },
+        {
+          "code": "F0169",
+          "name": "0169, AIRPORT BUSSING FACILITY"
+        },
+        {
+          "code": "F0170",
+          "name": "0170, VISAPM [AREA/LOT 6A VISCOUNT PEOPLE MOVER]"
+        },
+        {
+          "code": "F0176",
+          "name": "0176, WCH COMMUNICATIONS HUB INFIELD"
+        },
+        {
+          "code": "F0177",
+          "name": "0177, WILDLIFE CONTROL CENTRE (BIRD MAN) AREA 8"
+        },
+        {
+          "code": "F0178",
+          "name": "0178, FEDEX PROCESSOR"
+        },
+        {
+          "code": "F0179",
+          "name": "0179, FEDEX COURIER FACILITY"
+        },
+        {
+          "code": "F0180",
+          "name": "0180, FEDEX GROUND SUPPORT EQUIPMENT"
+        },
+        {
+          "code": "F0183",
+          "name": "0183, INFIELD VEHICLE TUNNEL"
+        },
+        {
+          "code": "F0187",
+          "name": "0187, T3 PARKING PERMIT OFFICE"
+        },
+        {
+          "code": "F0188",
+          "name": "0188, COGEN TURBINE BUILDING"
+        },
+        {
+          "code": "F0189",
+          "name": "0189, COGEN COMPRESSOR BUILDING"
+        },
+        {
+          "code": "F0190",
+          "name": "0190, COGEN PUMP HOUSE BUILDING"
+        },
+        {
+          "code": "F0191",
+          "name": "PIFFC OFFICE AND FUELLING FACILITY"
+        },
+        {
+          "code": "F0192",
+          "name": "0192, NPSV SOUTH – CORNER OF RENFORTH AND CONVAIR NEXT TO THE GTAA ADMIN"
+        },
+        {
+          "code": "F0193",
+          "name": "0193, NPSV NORTH – BETWEEN THE AIR CANADA MAINTENANCE HANGARS AND T3 ALONG THE SOUTH VEHICLE CORRIDOR"
+        },
+        {
+          "code": "F0195",
+          "name": "0195, NPSV NW AIR CDA CARGO INFIELD AT EAST END OF CARGO 1"
+        },
+        {
+          "code": "F0302",
+          "name": "0302, FESTI CANDIDATE TESTING SERVICES BUILDING (CTS)"
+        },
+        {
+          "code": "F0308",
+          "name": "0308, ADMINISTRATION BUILDING, AIR CANADA ANNEX"
+        },
+        {
+          "code": "F0314",
+          "name": "0314, 12, UTL7, UTILIDOR 7, ROOMS"
+        },
+        {
+          "code": "F0318",
+          "name": "FESTI SKILLS BUILDING"
+        },
+        {
+          "code": "F0319",
+          "name": "NPSV PIFFC"
+        },
+        {
+          "code": "F0321",
+          "name": "NAVAIDS REMOTE RECEIVER BUILDING"
+        },
+        {
+          "code": "F0322",
+          "name": "NAVAIDS MAIN TRANSMITTER"
+        },
+        {
+          "code": "F0323",
+          "name": "0323, SKYSERVICE SOUTH - HANGAR"
+        },
+        {
+          "code": "F0324",
+          "name": "0324, SKYSERVICE SOUTH - LOUNGE"
+        },
+        {
+          "code": "F0325",
+          "name": "0325, GATEWAY TERMINAL"
+        },
+        {
+          "code": "F0326",
+          "name": "FEC A (Reserved)"
+        },
+        {
+          "code": "F0327",
+          "name": "FEC B (Reserved)"
+        },
+        {
+          "code": "F0328",
+          "name": "FEC C (Reserved)"
+        },
+        {
+          "code": "F0329",
+          "name": "FEC D (Reserved)"
+        },
+        {
+          "code": "F0330",
+          "name": "FEC E  (Reserved)"
+        },
+        {
+          "code": "F0331",
+          "name": "NEW FEC RESERVED"
+        },
+        {
+          "code": "F0332",
+          "name": "NEW FEC RESERVED"
+        },
+        {
+          "code": "F0333",
+          "name": "FESTI ARFF PROP CONTROL TOWER"
+        },
+        {
+          "code": "F0340",
+          "name": "0340, INTERIM TERMINAL"
+        },
+        {
+          "code": "FAPGN",
+          "name": "AIRPORT WIDE - GENERAL"
+        },
+        {
+          "code": "S0015",
+          "name": "0015, CENTRAL PARK"
+        },
+        {
+          "code": "S0016",
+          "name": "0016, CGO1 [AIR CANADA CARGO A AREA 10 BLDG 1, 2580 BRITANNIA RD.]"
+        },
+        {
+          "code": "S0029",
+          "name": "SITE-0029, DEICING SERVICE AND CONTROL BUILDING"
+        },
+        {
+          "code": "S0041",
+          "name": "SITE-0041, FESTI [FIRE EMERG. SRVCS. TRAINING INSTITUTE]"
+        },
+        {
+          "code": "S0111",
+          "name": "0111, METEORLOGICAL EQUIPMENT SITE"
+        },
+        {
+          "code": "S0153",
+          "name": "SITE - 0153, SPECIAL OPS TRAINING AREA"
+        },
+        {
+          "code": "S0320",
+          "name": "SITE-0320, AIRWAY CENTER COMPLEX"
+        },
+        {
+          "code": "SGSGN",
+          "name": "GROUNDSIDE-General (All Planning Areas except Area 13 - Airside)"
+        },
+        {
+          "code": "SP005",
+          "name": "GTAA PLANNING AREA 5"
+        },
+        {
+          "code": "SP007",
+          "name": "GTAA PLANNING AREA 7"
+        },
+        {
+          "code": "SP008",
+          "name": "GTAA PLANNING AREA 8"
+        },
+        {
+          "code": "SP010",
+          "name": "GTAA PLANNING AREA 10 - INFIELD"
+        },
+        {
+          "code": "SP011",
+          "name": "GTAA PLANNING AREA11 - (T1&T3 Bridges, Ramps, Roadworks and Civil works Cluster)"
+        },
+        {
+          "code": "SP012",
+          "name": "GTAA PLANNING AREA 12 - Aviation Fuel Tank Farm"
+        },
+        {
+          "code": "SP014",
+          "name": "GTAA PPLANNING AREA 14 - FedEx"
+        },
+        {
+          "code": "SP015",
+          "name": "GTAA PLANNING AREA15A, 15B and 15C"
+        },
+        {
+          "code": "SP016",
+          "name": "GTAA PLANNING AREA 16 (Bombardier-Tenant Managed)"
+        },
+        {
+          "code": "SP017",
+          "name": "GTAA PPLANNING AREA 17 (Hilton Hotel and Convention Center)"
+        },
+        {
+          "code": "SP02A",
+          "name": "GTAA PlPLANNING AREA 2A"
+        },
+        {
+          "code": "SP02B",
+          "name": "GTAA PLANNING AREA 2B"
+        },
+        {
+          "code": "SP06A",
+          "name": "GTAA PLANNING AREA6A"
+        },
+        {
+          "code": "SP06B",
+          "name": "GTAA PLANNING AREA 6B"
+        },
+        {
+          "code": "SP06C",
+          "name": "GTAA PLANNING AREA 6C"
+        },
+        {
+          "code": "SP06E",
+          "name": "GTAA PLANNING AREA 6E"
+        },
+        {
+          "code": "SP06F",
+          "name": "GTAA PLANNING AREA 6F"
+        },
+        {
+          "code": "SP06Z",
+          "name": "GTAA PLANNING AREA6Z (Ramps, Bridges Roads and Civilworks)"
+        },
+        {
+          "code": "SP098",
+          "name": "GTAA PLANNING AREA 98"
+        },
+        {
+          "code": "SP099",
+          "name": "GTAA PLANNING AREA 99"
+        },
+        {
+          "code": "SP13A",
+          "name": "GTAA PLANNING AREA13A"
+        },
+        {
+          "code": "SP13B",
+          "name": "GTAA PLANNING AREA 13B"
+        },
+        {
+          "code": "SP13C",
+          "name": "GTAA PLANNING AREA 13C"
+        },
+        {
+          "code": "SP13E",
+          "name": "GTAA PPLANNING AREA 13E"
+        }
+      ]
+    },
+    {
+      "id": "L6",
+      "key": "ACC-Discipline",
+      "label": "ACC-Discipline",
+      "sheet": "L6 - Discipline",
+      "items": [
+        {
+          "code": "ACS0",
+          "disciplineCode": "ACS",
+          "discipline": "Aeronautical Communication System",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "ACS1",
+          "disciplineCode": "ACS",
+          "discipline": "Aeronautical Communication System",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Voice Communication Systems",
+          "notes": null
+        },
+        {
+          "code": "ACS2",
+          "disciplineCode": "ACS",
+          "discipline": "Aeronautical Communication System",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Data Communication Systems",
+          "notes": null
+        },
+        {
+          "code": "ACS3",
+          "disciplineCode": "ACS",
+          "discipline": "Aeronautical Communication System",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Equipment & Hardware",
+          "notes": null
+        },
+        {
+          "code": "ACS4",
+          "disciplineCode": "ACS",
+          "discipline": "Aeronautical Communication System",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Cabling and Termination",
+          "notes": null
+        },
+        {
+          "code": "ACS5",
+          "disciplineCode": "ACS",
+          "discipline": "Aeronautical Communication System",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Network and Integration",
+          "notes": null
+        },
+        {
+          "code": "ACS6",
+          "disciplineCode": "ACS",
+          "discipline": "Aeronautical Communication System",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Software and Control Logic",
+          "notes": null
+        },
+        {
+          "code": "ACS7",
+          "disciplineCode": "ACS",
+          "discipline": "Aeronautical Communication System",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "ACS8",
+          "disciplineCode": "ACS",
+          "discipline": "Aeronautical Communication System",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "ACS9",
+          "disciplineCode": "ACS",
+          "discipline": "Aeronautical Communication System",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "AES0",
+          "disciplineCode": "AES",
+          "discipline": "Airfield Electrical Systems",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "AES1",
+          "disciplineCode": "AES",
+          "discipline": "Airfield Electrical Systems",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Airfield Ground Lighting",
+          "notes": null
+        },
+        {
+          "code": "AES2",
+          "disciplineCode": "AES",
+          "discipline": "Airfield Electrical Systems",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Visual Navigation Aids (lighting-based only)",
+          "notes": null
+        },
+        {
+          "code": "AES3",
+          "disciplineCode": "AES",
+          "discipline": "Airfield Electrical Systems",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Power Supply and Distribution (included emergency power)",
+          "notes": null
+        },
+        {
+          "code": "AES4",
+          "disciplineCode": "AES",
+          "discipline": "Airfield Electrical Systems",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Controls and Monitoring (CCR, AGL control systems)",
+          "notes": null
+        },
+        {
+          "code": "AES5",
+          "disciplineCode": "AES",
+          "discipline": "Airfield Electrical Systems",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Electrical Vaults & Infrastructure",
+          "notes": null
+        },
+        {
+          "code": "AES6",
+          "disciplineCode": "AES",
+          "discipline": "Airfield Electrical Systems",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Compliance and Safety Systems",
+          "notes": null
+        },
+        {
+          "code": "AES7",
+          "disciplineCode": "AES",
+          "discipline": "Airfield Electrical Systems",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "AES8",
+          "disciplineCode": "AES",
+          "discipline": "Airfield Electrical Systems",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "AES9",
+          "disciplineCode": "AES",
+          "discipline": "Airfield Electrical Systems",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "ANV0",
+          "disciplineCode": "ANV",
+          "discipline": "Acoustics, Noise and Vibration",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "ANV1",
+          "disciplineCode": "ANV",
+          "discipline": "Acoustics, Noise and Vibration",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Acoustic Modeling & Analysis (noise contour maps, simulation reports)",
+          "notes": null
+        },
+        {
+          "code": "ANV2",
+          "disciplineCode": "ANV",
+          "discipline": "Acoustics, Noise and Vibration",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Sound Insulation Systems (Other than buildings)",
+          "notes": null
+        },
+        {
+          "code": "ANV3",
+          "disciplineCode": "ANV",
+          "discipline": "Acoustics, Noise and Vibration",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Noise Mitigation Measures (Other than buildings)",
+          "notes": null
+        },
+        {
+          "code": "ANV4",
+          "disciplineCode": "ANV",
+          "discipline": "Acoustics, Noise and Vibration",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Vibration Control Systems (Other than Buildings)",
+          "notes": null
+        },
+        {
+          "code": "ANV5",
+          "disciplineCode": "ANV",
+          "discipline": "Acoustics, Noise and Vibration",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Outdoor Noise Barriers (airside/landside layouts)",
+          "notes": null
+        },
+        {
+          "code": "ANV6",
+          "disciplineCode": "ANV",
+          "discipline": "Acoustics, Noise and Vibration",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Compliance & Monitoring Systems (noise monitoring stations, layouts)",
+          "notes": null
+        },
+        {
+          "code": "ANV7",
+          "disciplineCode": "ANV",
+          "discipline": "Acoustics, Noise and Vibration",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Specialized Systems (engine run-up enclosures, advanced sensors)",
+          "notes": null
+        },
+        {
+          "code": "ANV8",
+          "disciplineCode": "ANV",
+          "discipline": "Acoustics, Noise and Vibration",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": "Interface & Coordination (architectural, structural, MEP)"
+        },
+        {
+          "code": "ANV9",
+          "disciplineCode": "ANV",
+          "discipline": "Acoustics, Noise and Vibration",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "APE0",
+          "disciplineCode": "APE",
+          "discipline": "Airfield Pavement Engineering",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "APE1",
+          "disciplineCode": "APE",
+          "discipline": "Airfield Pavement Engineering",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Earthworks & Grading",
+          "notes": null
+        },
+        {
+          "code": "APE2",
+          "disciplineCode": "APE",
+          "discipline": "Airfield Pavement Engineering",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Utility Infrastructure- Raceways, Hand Wells, Duct Banks, Trenches and Cabling Tunnels",
+          "notes": null
+        },
+        {
+          "code": "APE3",
+          "disciplineCode": "APE",
+          "discipline": "Airfield Pavement Engineering",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Taxiways, Runway Pavement",
+          "notes": null
+        },
+        {
+          "code": "APE4",
+          "disciplineCode": "APE",
+          "discipline": "Airfield Pavement Engineering",
+          "subdisciplineCode": "4",
+          "subdiscipline": "External works-Fencing, Bollards & site specialties, Light Poles",
+          "notes": null
+        },
+        {
+          "code": "APE5",
+          "disciplineCode": "APE",
+          "discipline": "Airfield Pavement Engineering",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Paint and Markings",
+          "notes": null
+        },
+        {
+          "code": "APE6",
+          "disciplineCode": "APE",
+          "discipline": "Airfield Pavement Engineering",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Roadworks, Sidewalks and Curbs",
+          "notes": null
+        },
+        {
+          "code": "APE7",
+          "disciplineCode": "APE",
+          "discipline": "Airfield Pavement Engineering",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Demolition, Removals, Staging, Temporary Works",
+          "notes": null
+        },
+        {
+          "code": "APE8",
+          "disciplineCode": "APE",
+          "discipline": "Airfield Pavement Engineering",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "APE9",
+          "disciplineCode": "APE",
+          "discipline": "Airfield Pavement Engineering",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "ARC0",
+          "disciplineCode": "ARC",
+          "discipline": "Architectural",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "ARC1",
+          "disciplineCode": "ARC",
+          "discipline": "Architectural",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Spatial Planning and Design",
+          "notes": null
+        },
+        {
+          "code": "ARC2",
+          "disciplineCode": "ARC",
+          "discipline": "Architectural",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Building Envelope (Façade, Glazing, Roofing)",
+          "notes": null
+        },
+        {
+          "code": "ARC3",
+          "disciplineCode": "ARC",
+          "discipline": "Architectural",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Interior Architecture (Partitions, Ceilings, Finishes, Lighting, FF&E, Special Design Features)",
+          "notes": null
+        },
+        {
+          "code": "ARC4",
+          "disciplineCode": "ARC",
+          "discipline": "Architectural",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Doors, Windows, and Hardware",
+          "notes": null
+        },
+        {
+          "code": "ARC5",
+          "disciplineCode": "ARC",
+          "discipline": "Architectural",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Accessibility and Universal Design",
+          "notes": null
+        },
+        {
+          "code": "ARC6",
+          "disciplineCode": "ARC",
+          "discipline": "Architectural",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Wayfinding and Signage",
+          "notes": null
+        },
+        {
+          "code": "ARC7",
+          "disciplineCode": "ARC",
+          "discipline": "Architectural",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Code Compliance - Fire Safety, Egress Planning, and Acoustic Design",
+          "notes": null
+        },
+        {
+          "code": "ARC8",
+          "disciplineCode": "ARC",
+          "discipline": "Architectural",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "ARC9",
+          "disciplineCode": "ARC",
+          "discipline": "Architectural",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Smart Building Features, and Future Technologies"
+        },
+        {
+          "code": "AVP0",
+          "disciplineCode": "AVP",
+          "discipline": "Aviation Planning",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "AVP1",
+          "disciplineCode": "AVP",
+          "discipline": "Aviation Planning",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Airside Capacity & Layout Planning",
+          "notes": null
+        },
+        {
+          "code": "AVP2",
+          "disciplineCode": "AVP",
+          "discipline": "Aviation Planning",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Landside Capacity & Layout Planning",
+          "notes": null
+        },
+        {
+          "code": "AVP3",
+          "disciplineCode": "AVP",
+          "discipline": "Aviation Planning",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Terminal Planning",
+          "notes": null
+        },
+        {
+          "code": "AVP4",
+          "disciplineCode": "AVP",
+          "discipline": "Aviation Planning",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Airspace & Flight Procedures",
+          "notes": null
+        },
+        {
+          "code": "AVP5",
+          "disciplineCode": "AVP",
+          "discipline": "Aviation Planning",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Demand Forecasting & Modeling",
+          "notes": null
+        },
+        {
+          "code": "AVP6",
+          "disciplineCode": "AVP",
+          "discipline": "Aviation Planning",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Operational Readiness & Contingency Planning",
+          "notes": null
+        },
+        {
+          "code": "AVP7",
+          "disciplineCode": "AVP",
+          "discipline": "Aviation Planning",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "AVP8",
+          "disciplineCode": "AVP",
+          "discipline": "Aviation Planning",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "AVP9",
+          "disciplineCode": "AVP",
+          "discipline": "Aviation Planning",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation & Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "BHS0",
+          "disciplineCode": "BHS",
+          "discipline": "Baggage Handling Systems",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "BHS1",
+          "disciplineCode": "BHS",
+          "discipline": "Baggage Handling Systems",
+          "subdisciplineCode": "1",
+          "subdiscipline": "System Layout and routing",
+          "notes": null
+        },
+        {
+          "code": "BHS2",
+          "disciplineCode": "BHS",
+          "discipline": "Baggage Handling Systems",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Check-In and induction system",
+          "notes": null
+        },
+        {
+          "code": "BHS3",
+          "disciplineCode": "BHS",
+          "discipline": "Baggage Handling Systems",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Screening & Security",
+          "notes": null
+        },
+        {
+          "code": "BHS4",
+          "disciplineCode": "BHS",
+          "discipline": "Baggage Handling Systems",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Sorting and Distribution",
+          "notes": null
+        },
+        {
+          "code": "BHS5",
+          "disciplineCode": "BHS",
+          "discipline": "Baggage Handling Systems",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Make-Up and Reclaim system",
+          "notes": null
+        },
+        {
+          "code": "BHS6",
+          "disciplineCode": "BHS",
+          "discipline": "Baggage Handling Systems",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Mechanical and Electrical systems",
+          "notes": null
+        },
+        {
+          "code": "BHS7",
+          "disciplineCode": "BHS",
+          "discipline": "Baggage Handling Systems",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Controls Maintenance and Access",
+          "notes": null
+        },
+        {
+          "code": "BHS8",
+          "disciplineCode": "BHS",
+          "discipline": "Baggage Handling Systems",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "BHS9",
+          "disciplineCode": "BHS",
+          "discipline": "Baggage Handling Systems",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "IT, Data Systems, and Future Technologies"
+        },
+        {
+          "code": "BST0",
+          "disciplineCode": "BST",
+          "discipline": "Building Structures and Framing",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "BST1",
+          "disciplineCode": "BST",
+          "discipline": "Building Structures and Framing",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Structural Concept and Planning",
+          "notes": null
+        },
+        {
+          "code": "BST2",
+          "disciplineCode": "BST",
+          "discipline": "Building Structures and Framing",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Substructure & Foundation (Cast-in-place, Precast)",
+          "notes": null
+        },
+        {
+          "code": "BST3",
+          "disciplineCode": "BST",
+          "discipline": "Building Structures and Framing",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Superstructure - Walls, Floors, Roof Structure (Including Composite Systems)",
+          "notes": null
+        },
+        {
+          "code": "BST4",
+          "disciplineCode": "BST",
+          "discipline": "Building Structures and Framing",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Concrete Works - Detailing, Reinforcement, Precast Components",
+          "notes": null
+        },
+        {
+          "code": "BST5",
+          "disciplineCode": "BST",
+          "discipline": "Building Structures and Framing",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Steel Works - Members, Connections, Long-Span Trusses etc.",
+          "notes": null
+        },
+        {
+          "code": "BST6",
+          "disciplineCode": "BST",
+          "discipline": "Building Structures and Framing",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Load and Support Systems - Bracing, Shear Walls, Lateral Load Resistance",
+          "notes": null
+        },
+        {
+          "code": "BST7",
+          "disciplineCode": "BST",
+          "discipline": "Building Structures and Framing",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Structural Details - Expansion Joints, Movement Joints, Fireproofing, Corrosion Protection",
+          "notes": null
+        },
+        {
+          "code": "BST8",
+          "disciplineCode": "BST",
+          "discipline": "Building Structures and Framing",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "BST9",
+          "disciplineCode": "BST",
+          "discipline": "Building Structures and Framing",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Temporary Works and Future Technologies (Modular, Advanced Materials)"
+        },
+        {
+          "code": "CIV0",
+          "disciplineCode": "CIV",
+          "discipline": "Civil and Site Structural",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "CIV1",
+          "disciplineCode": "CIV",
+          "discipline": "Civil and Site Structural",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Earthworks & Grading",
+          "notes": null
+        },
+        {
+          "code": "CIV2",
+          "disciplineCode": "CIV",
+          "discipline": "Civil and Site Structural",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Pavements, Sidewalks and Curbs",
+          "notes": null
+        },
+        {
+          "code": "CIV3",
+          "disciplineCode": "CIV",
+          "discipline": "Civil and Site Structural",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Civil Structures - Bridges, Culverts, Retaining Walls",
+          "notes": null
+        },
+        {
+          "code": "CIV4",
+          "disciplineCode": "CIV",
+          "discipline": "Civil and Site Structural",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Civil Structures - Tunnels and Underpasses",
+          "notes": null
+        },
+        {
+          "code": "CIV5",
+          "disciplineCode": "CIV",
+          "discipline": "Civil and Site Structural",
+          "subdisciplineCode": "5",
+          "subdiscipline": "External Works - Fencing, Bollards & Site Specialties, Light Poles",
+          "notes": null
+        },
+        {
+          "code": "CIV6",
+          "disciplineCode": "CIV",
+          "discipline": "Civil and Site Structural",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Paint and Markings",
+          "notes": null
+        },
+        {
+          "code": "CIV7",
+          "disciplineCode": "CIV",
+          "discipline": "Civil and Site Structural",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Roadworks",
+          "notes": null
+        },
+        {
+          "code": "CIV8",
+          "disciplineCode": "CIV",
+          "discipline": "Civil and Site Structural",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "CIV9",
+          "disciplineCode": "CIV",
+          "discipline": "Civil and Site Structural",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Demolition, Removals, Staging, Temporary Works"
+        },
+        {
+          "code": "CNT0",
+          "disciplineCode": "CNT",
+          "discipline": "Construction Management",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "CNT1",
+          "disciplineCode": "CNT",
+          "discipline": "Construction Management",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Logistics, Construction Staging & Sequencing",
+          "notes": null
+        },
+        {
+          "code": "CNT2",
+          "disciplineCode": "CNT",
+          "discipline": "Construction Management",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Progress Monitoring & Reporting",
+          "notes": null
+        },
+        {
+          "code": "CNT3",
+          "disciplineCode": "CNT",
+          "discipline": "Construction Management",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Safety Oversight (Coordination with EHS)",
+          "notes": null
+        },
+        {
+          "code": "CNT4",
+          "disciplineCode": "CNT",
+          "discipline": "Construction Management",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Resource & Workforce Management",
+          "notes": null
+        },
+        {
+          "code": "CNT5",
+          "disciplineCode": "CNT",
+          "discipline": "Construction Management",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Temporary Works Management",
+          "notes": null
+        },
+        {
+          "code": "CNT6",
+          "disciplineCode": "CNT",
+          "discipline": "Construction Management",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Closeout & Handover Documentation",
+          "notes": null
+        },
+        {
+          "code": "CNT7",
+          "disciplineCode": "CNT",
+          "discipline": "Construction Management",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "CNT8",
+          "disciplineCode": "CNT",
+          "discipline": "Construction Management",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "CNT9",
+          "disciplineCode": "CNT",
+          "discipline": "Construction Management",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "CPE0",
+          "disciplineCode": "CPE",
+          "discipline": "Digital Communication and Public Engagement",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "CPE1",
+          "disciplineCode": "CPE",
+          "discipline": "Digital Communication and Public Engagement",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Public Address and Voice Paging Systems",
+          "notes": null
+        },
+        {
+          "code": "CPE2",
+          "disciplineCode": "CPE",
+          "discipline": "Digital Communication and Public Engagement",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Digital Signage and Display Systems",
+          "notes": null
+        },
+        {
+          "code": "CPE3",
+          "disciplineCode": "CPE",
+          "discipline": "Digital Communication and Public Engagement",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Passenger Information Systems (FIDS, GIDS)",
+          "notes": null
+        },
+        {
+          "code": "CPE4",
+          "disciplineCode": "CPE",
+          "discipline": "Digital Communication and Public Engagement",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Dynamic Messaging, and Advertising Systems",
+          "notes": null
+        },
+        {
+          "code": "CPE5",
+          "disciplineCode": "CPE",
+          "discipline": "Digital Communication and Public Engagement",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Interactive Kiosks and Self-Service Platforms",
+          "notes": null
+        },
+        {
+          "code": "CPE6",
+          "disciplineCode": "CPE",
+          "discipline": "Digital Communication and Public Engagement",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Public Engagement Platforms (Web, Mobile Apps, Social Media Integration)",
+          "notes": null
+        },
+        {
+          "code": "CPE7",
+          "disciplineCode": "CPE",
+          "discipline": "Digital Communication and Public Engagement",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "CPE8",
+          "disciplineCode": "CPE",
+          "discipline": "Digital Communication and Public Engagement",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": "Accessibility Features, Future Technologies (AI-driven Engagement, AR/VR Solutions)"
+        },
+        {
+          "code": "CPE9",
+          "disciplineCode": "CPE",
+          "discipline": "Digital Communication and Public Engagement",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "CPM0",
+          "disciplineCode": "CPM",
+          "discipline": "Commercials and Procurement Management",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "CPM1",
+          "disciplineCode": "CPM",
+          "discipline": "Commercials and Procurement Management",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Procurement Strategy and Planning",
+          "notes": null
+        },
+        {
+          "code": "CPM2",
+          "disciplineCode": "CPM",
+          "discipline": "Commercials and Procurement Management",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Tendering and Bid Management",
+          "notes": null
+        },
+        {
+          "code": "CPM3",
+          "disciplineCode": "CPM",
+          "discipline": "Commercials and Procurement Management",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Contract Administration and Compliance",
+          "notes": null
+        },
+        {
+          "code": "CPM4",
+          "disciplineCode": "CPM",
+          "discipline": "Commercials and Procurement Management",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Vendor and Supplier Management",
+          "notes": null
+        },
+        {
+          "code": "CPM5",
+          "disciplineCode": "CPM",
+          "discipline": "Commercials and Procurement Management",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Change Management and Claims",
+          "notes": null
+        },
+        {
+          "code": "CPM6",
+          "disciplineCode": "CPM",
+          "discipline": "Commercials and Procurement Management",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Performance Monitoring and Reporting",
+          "notes": null
+        },
+        {
+          "code": "CPM7",
+          "disciplineCode": "CPM",
+          "discipline": "Commercials and Procurement Management",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "CPM8",
+          "disciplineCode": "CPM",
+          "discipline": "Commercials and Procurement Management",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": "Digital Procurement Systems and Future Technologies (AI, Blockchain)"
+        },
+        {
+          "code": "CPM9",
+          "disciplineCode": "CPM",
+          "discipline": "Commercials and Procurement Management",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "CON0",
+          "disciplineCode": "CON",
+          "discipline": "Control Systems - Operational Technology and Industrial Control Systems",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "CON1",
+          "disciplineCode": "CON",
+          "discipline": "Control Systems - Operational Technology and Industrial Control Systems",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Core Network Infrastructure layouts, Network architecture diagrams and specifications, (Servers, Workstations/HMI's,Switches, Routers, Firewalls)",
+          "notes": null
+        },
+        {
+          "code": "CON2",
+          "disciplineCode": "CON",
+          "discipline": "Control Systems - Operational Technology and Industrial Control Systems",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Field Networks & Edge Devices (Controllers, Gateways)",
+          "notes": null
+        },
+        {
+          "code": "CON3",
+          "disciplineCode": "CON",
+          "discipline": "Control Systems - Operational Technology and Industrial Control Systems",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Wireless & IoT Networks (Wi-Fi, LoRa, BLE for sensors)",
+          "notes": null
+        },
+        {
+          "code": "CON4",
+          "disciplineCode": "CON",
+          "discipline": "Control Systems - Operational Technology and Industrial Control Systems",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Cybersecurity & Access Control",
+          "notes": null
+        },
+        {
+          "code": "CON5",
+          "disciplineCode": "CON",
+          "discipline": "Control Systems - Operational Technology and Industrial Control Systems",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Network Monitoring & Management Systems (NMS, SCADA integration)",
+          "notes": null
+        },
+        {
+          "code": "CON6",
+          "disciplineCode": "CON",
+          "discipline": "Control Systems - Operational Technology and Industrial Control Systems",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Data Integration & Interoperability (BMS, FMS, baggage, security)",
+          "notes": null
+        },
+        {
+          "code": "CON7",
+          "disciplineCode": "CON",
+          "discipline": "Control Systems - Operational Technology and Industrial Control Systems",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "CON8",
+          "disciplineCode": "CON",
+          "discipline": "Control Systems - Operational Technology and Industrial Control Systems",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": "Interface & Coordination (IT, Telecom, Building Systems)"
+        },
+        {
+          "code": "CON9",
+          "disciplineCode": "CON",
+          "discipline": "Control Systems - Operational Technology and Industrial Control Systems",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Future Technologies & Adaptability (5G, SDN, Zero Trust, AI-driven OT security)"
+        },
+        {
+          "code": "DES0",
+          "disciplineCode": "DES",
+          "discipline": "Design and Engineering Management",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "DES1",
+          "disciplineCode": "DES",
+          "discipline": "Design and Engineering Management",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Design Review & Validation",
+          "notes": null
+        },
+        {
+          "code": "DES2",
+          "disciplineCode": "DES",
+          "discipline": "Design and Engineering Management",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Engineering Standards & QA/QC",
+          "notes": null
+        },
+        {
+          "code": "DES3",
+          "disciplineCode": "DES",
+          "discipline": "Design and Engineering Management",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Compliance & Regulatory",
+          "notes": null
+        },
+        {
+          "code": "DES4",
+          "disciplineCode": "DES",
+          "discipline": "Design and Engineering Management",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Risk & Value Engineering",
+          "notes": null
+        },
+        {
+          "code": "DES5",
+          "disciplineCode": "DES",
+          "discipline": "Design and Engineering Management",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Design Governance & Reporting",
+          "notes": null
+        },
+        {
+          "code": "DES6",
+          "disciplineCode": "DES",
+          "discipline": "Design and Engineering Management",
+          "subdisciplineCode": "6",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "DES7",
+          "disciplineCode": "DES",
+          "discipline": "Design and Engineering Management",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "DES8",
+          "disciplineCode": "DES",
+          "discipline": "Design and Engineering Management",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "DES9",
+          "disciplineCode": "DES",
+          "discipline": "Design and Engineering Management",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "ELE0",
+          "disciplineCode": "ELE",
+          "discipline": "Electrical and Emergency Power",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "ELE1",
+          "disciplineCode": "ELE",
+          "discipline": "Electrical and Emergency Power",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Grounding and lightning protection",
+          "notes": null
+        },
+        {
+          "code": "ELE2",
+          "disciplineCode": "ELE",
+          "discipline": "Electrical and Emergency Power",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Power distribution System -Site Utilities (Duct Structures, Conduit, Chambers, Manholes, etc.)",
+          "notes": null
+        },
+        {
+          "code": "ELE3",
+          "disciplineCode": "ELE",
+          "discipline": "Electrical and Emergency Power",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Lighting System - (cables, circuits, pulpits, light fixtures, etc.)",
+          "notes": null
+        },
+        {
+          "code": "ELE4",
+          "disciplineCode": "ELE",
+          "discipline": "Electrical and Emergency Power",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Power and Circuit Panel Distribution - Buildings",
+          "notes": null
+        },
+        {
+          "code": "ELE5",
+          "disciplineCode": "ELE",
+          "discipline": "Electrical and Emergency Power",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Emergency Power Systems (Generators, ATS etc..)",
+          "notes": null
+        },
+        {
+          "code": "ELE6",
+          "disciplineCode": "ELE",
+          "discipline": "Electrical and Emergency Power",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Renewable Energy interface",
+          "notes": null
+        },
+        {
+          "code": "ELE7",
+          "disciplineCode": "ELE",
+          "discipline": "Electrical and Emergency Power",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Compliance and regulatory",
+          "notes": null
+        },
+        {
+          "code": "ELE8",
+          "disciplineCode": "ELE",
+          "discipline": "Electrical and Emergency Power",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "ELE9",
+          "disciplineCode": "ELE",
+          "discipline": "Electrical and Emergency Power",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Specialized Electrical Equipment and Systems (Nav Aids and Systems, Electrified Signage, etc.)"
+        },
+        {
+          "code": "ENE0",
+          "disciplineCode": "ENE",
+          "discipline": "Energy",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "ENE1",
+          "disciplineCode": "ENE",
+          "discipline": "Energy",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Power Generation and Supply - Grid Connection",
+          "notes": null
+        },
+        {
+          "code": "ENE2",
+          "disciplineCode": "ENE",
+          "discipline": "Energy",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Power Distribution",
+          "notes": null
+        },
+        {
+          "code": "ENE3",
+          "disciplineCode": "ENE",
+          "discipline": "Energy",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Energy Monitoring and Management",
+          "notes": null
+        },
+        {
+          "code": "ENE4",
+          "disciplineCode": "ENE",
+          "discipline": "Energy",
+          "subdisciplineCode": "4",
+          "subdiscipline": "EV Infrastructure",
+          "notes": null
+        },
+        {
+          "code": "ENE5",
+          "disciplineCode": "ENE",
+          "discipline": "Energy",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Renewable Energy Systems",
+          "notes": null
+        },
+        {
+          "code": "ENE6",
+          "disciplineCode": "ENE",
+          "discipline": "Energy",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Energy Storage Systems",
+          "notes": null
+        },
+        {
+          "code": "ENE7",
+          "disciplineCode": "ENE",
+          "discipline": "Energy",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Energy Efficiency and Optimization",
+          "notes": null
+        },
+        {
+          "code": "ENE8",
+          "disciplineCode": "ENE",
+          "discipline": "Energy",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "ENE9",
+          "disciplineCode": "ENE",
+          "discipline": "Energy",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "ENV0",
+          "disciplineCode": "ENV",
+          "discipline": "Environmental",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": "Including Permits, Licenses & Reg Approvals"
+        },
+        {
+          "code": "ENV1",
+          "disciplineCode": "ENV",
+          "discipline": "Environmental",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Impact Assessment Act",
+          "notes": null
+        },
+        {
+          "code": "ENV2",
+          "disciplineCode": "ENV",
+          "discipline": "Environmental",
+          "subdisciplineCode": "2",
+          "subdiscipline": "EMS & Auditing",
+          "notes": null
+        },
+        {
+          "code": "ENV3",
+          "disciplineCode": "ENV",
+          "discipline": "Environmental",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Air Quality, Noise, Vibration",
+          "notes": null
+        },
+        {
+          "code": "ENV4",
+          "disciplineCode": "ENV",
+          "discipline": "Environmental",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Surface Water, Stormwater Modelling & Management",
+          "notes": null
+        },
+        {
+          "code": "ENV5",
+          "disciplineCode": "ENV",
+          "discipline": "Environmental",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Ecology, Species at Risk and Archaeology & Cultural Heritage",
+          "notes": null
+        },
+        {
+          "code": "ENV6",
+          "disciplineCode": "ENV",
+          "discipline": "Environmental",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Waste Management",
+          "notes": "All types"
+        },
+        {
+          "code": "ENV7",
+          "disciplineCode": "ENV",
+          "discipline": "Environmental",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Contaminated Site Management and Incident Response Management",
+          "notes": null
+        },
+        {
+          "code": "ENV8",
+          "disciplineCode": "ENV",
+          "discipline": "Environmental",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "ENV9",
+          "disciplineCode": "ENV",
+          "discipline": "Environmental",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "FLS0",
+          "disciplineCode": "FLS",
+          "discipline": "Fire Life Safety",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "FLS1",
+          "disciplineCode": "FLS",
+          "discipline": "Fire Life Safety",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Fire Detection and Alarm Systems",
+          "notes": null
+        },
+        {
+          "code": "FLS2",
+          "disciplineCode": "FLS",
+          "discipline": "Fire Life Safety",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Fire Suppression Systems",
+          "notes": "Sprinklers, Foam, Gas"
+        },
+        {
+          "code": "FLS3",
+          "disciplineCode": "FLS",
+          "discipline": "Fire Life Safety",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Emergency Lighting and Exit Signage",
+          "notes": null
+        },
+        {
+          "code": "FLS4",
+          "disciplineCode": "FLS",
+          "discipline": "Fire Life Safety",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Smoke Control and Ventilation Systems",
+          "notes": null
+        },
+        {
+          "code": "FLS5",
+          "disciplineCode": "FLS",
+          "discipline": "Fire Life Safety",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Fireproofing and Passive Protection",
+          "notes": null
+        },
+        {
+          "code": "FLS6",
+          "disciplineCode": "FLS",
+          "discipline": "Fire Life Safety",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Evacuation Planning and Egress Design",
+          "notes": null
+        },
+        {
+          "code": "FLS7",
+          "disciplineCode": "FLS",
+          "discipline": "Fire Life Safety",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Compliance and Regulatory Documentation",
+          "notes": "NFPA, ICAO, Local Codes"
+        },
+        {
+          "code": "FLS8",
+          "disciplineCode": "FLS",
+          "discipline": "Fire Life Safety",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "FLS9",
+          "disciplineCode": "FLS",
+          "discipline": "Fire Life Safety",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Future Technologies and Smart Fire Safety Solutions"
+        },
+        {
+          "code": "FSE0",
+          "disciplineCode": "FSE",
+          "discipline": "Fuel Systems Engineering",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "FSE1",
+          "disciplineCode": "FSE",
+          "discipline": "Fuel Systems Engineering",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Fuel Storage and Tank Farm Design",
+          "notes": null
+        },
+        {
+          "code": "FSE2",
+          "disciplineCode": "FSE",
+          "discipline": "Fuel Systems Engineering",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Fuel Hydrant and Distribution Systems",
+          "notes": null
+        },
+        {
+          "code": "FSE3",
+          "disciplineCode": "FSE",
+          "discipline": "Fuel Systems Engineering",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Fuel Transfer and Pumping Systems",
+          "notes": null
+        },
+        {
+          "code": "FSE4",
+          "disciplineCode": "FSE",
+          "discipline": "Fuel Systems Engineering",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Fuel Quality Control, Testing and Metering",
+          "notes": null
+        },
+        {
+          "code": "FSE5",
+          "disciplineCode": "FSE",
+          "discipline": "Fuel Systems Engineering",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Spill Prevention, Containment and Emergency Shutdown Systems",
+          "notes": null
+        },
+        {
+          "code": "FSE6",
+          "disciplineCode": "FSE",
+          "discipline": "Fuel Systems Engineering",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Safety and Compliance (NFPA, ICAO, Transport Canada)",
+          "notes": null
+        },
+        {
+          "code": "FSE7",
+          "disciplineCode": "FSE",
+          "discipline": "Fuel Systems Engineering",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Containment and Leak Detection",
+          "notes": "Environmental containment protection"
+        },
+        {
+          "code": "FSE8",
+          "disciplineCode": "FSE",
+          "discipline": "Fuel Systems Engineering",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "FSE9",
+          "disciplineCode": "FSE",
+          "discipline": "Fuel Systems Engineering",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "E.g. Sustainable Aviation Fuel (SAF) Integration"
+        },
+        {
+          "code": "GEO0",
+          "disciplineCode": "GEO",
+          "discipline": "Geotechnical",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "GEO1",
+          "disciplineCode": "GEO",
+          "discipline": "Geotechnical",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Site Investigation and Soil Testing",
+          "notes": null
+        },
+        {
+          "code": "GEO2",
+          "disciplineCode": "GEO",
+          "discipline": "Geotechnical",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Geotechnical Analysis and Design",
+          "notes": null
+        },
+        {
+          "code": "GEO3",
+          "disciplineCode": "GEO",
+          "discipline": "Geotechnical",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Foundation Design and Recommendations",
+          "notes": null
+        },
+        {
+          "code": "GEO4",
+          "disciplineCode": "GEO",
+          "discipline": "Geotechnical",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Earthworks, Excavation Support and Dewatering",
+          "notes": null
+        },
+        {
+          "code": "GEO5",
+          "disciplineCode": "GEO",
+          "discipline": "Geotechnical",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Ground Improvement, Stabilization and Slope Analysis",
+          "notes": null
+        },
+        {
+          "code": "GEO6",
+          "disciplineCode": "GEO",
+          "discipline": "Geotechnical",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Pavement Subgrade Evaluation and Frost Protection",
+          "notes": null
+        },
+        {
+          "code": "GEO7",
+          "disciplineCode": "GEO",
+          "discipline": "Geotechnical",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Geotechnical Risk Assessment and Instrumentation Monitoring",
+          "notes": null
+        },
+        {
+          "code": "GEO8",
+          "disciplineCode": "GEO",
+          "discipline": "Geotechnical",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": "Interface and Coordination"
+        },
+        {
+          "code": "GEO9",
+          "disciplineCode": "GEO",
+          "discipline": "Geotechnical",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Future Technologies and Advanced Geotechnical Solutions"
+        },
+        {
+          "code": "HVC0",
+          "disciplineCode": "HVC",
+          "discipline": "Heat Ventillation and Air Conditioning including Thermal Systems",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "HVC1",
+          "disciplineCode": "HVC",
+          "discipline": "Heat Ventillation and Air Conditioning including Thermal Systems",
+          "subdisciplineCode": "1",
+          "subdiscipline": "HVAC System Design & Analysis",
+          "notes": null
+        },
+        {
+          "code": "HVC2",
+          "disciplineCode": "HVC",
+          "discipline": "Heat Ventillation and Air Conditioning including Thermal Systems",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Thermal Systems (Heating, Cooling, Heat Recovery)",
+          "notes": null
+        },
+        {
+          "code": "HVC3",
+          "disciplineCode": "HVC",
+          "discipline": "Heat Ventillation and Air Conditioning including Thermal Systems",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Ventilation & Air Quality Control",
+          "notes": null
+        },
+        {
+          "code": "HVC4",
+          "disciplineCode": "HVC",
+          "discipline": "Heat Ventillation and Air Conditioning including Thermal Systems",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Chilled Water & Hot Water Distribution",
+          "notes": null
+        },
+        {
+          "code": "HVC5",
+          "disciplineCode": "HVC",
+          "discipline": "Heat Ventillation and Air Conditioning including Thermal Systems",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Mechanical Plant Rooms & Equipment",
+          "notes": null
+        },
+        {
+          "code": "HVC6",
+          "disciplineCode": "HVC",
+          "discipline": "Heat Ventillation and Air Conditioning including Thermal Systems",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Specialized Mechanical Systems Integration (Pressurization, Smoke Control)",
+          "notes": null
+        },
+        {
+          "code": "HVC7",
+          "disciplineCode": "HVC",
+          "discipline": "Heat Ventillation and Air Conditioning including Thermal Systems",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Controls & Automation (BMS Integration)",
+          "notes": null
+        },
+        {
+          "code": "HVC8",
+          "disciplineCode": "HVC",
+          "discipline": "Heat Ventillation and Air Conditioning including Thermal Systems",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": "Interface/Coordination"
+        },
+        {
+          "code": "HVC9",
+          "disciplineCode": "HVC",
+          "discipline": "Heat Ventillation and Air Conditioning including Thermal Systems",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Future Technologies / Smart HVAC Systems"
+        },
+        {
+          "code": "COM0",
+          "disciplineCode": "COM",
+          "discipline": "Information and Communications Technology",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "COM1",
+          "disciplineCode": "COM",
+          "discipline": "Information and Communications Technology",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Structured Cabling System",
+          "notes": null
+        },
+        {
+          "code": "COM2",
+          "disciplineCode": "COM",
+          "discipline": "Information and Communications Technology",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Network Infrastructure",
+          "notes": null
+        },
+        {
+          "code": "COM3",
+          "disciplineCode": "COM",
+          "discipline": "Information and Communications Technology",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Telecommunications and Unified Communications",
+          "notes": null
+        },
+        {
+          "code": "COM4",
+          "disciplineCode": "COM",
+          "discipline": "Information and Communications Technology",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Data Centers and Server Rooms",
+          "notes": null
+        },
+        {
+          "code": "COM5",
+          "disciplineCode": "COM",
+          "discipline": "Information and Communications Technology",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Audio Visual and Collaboration Systems",
+          "notes": null
+        },
+        {
+          "code": "COM6",
+          "disciplineCode": "COM",
+          "discipline": "Information and Communications Technology",
+          "subdisciplineCode": "6",
+          "subdiscipline": "COM Systems Integration and Cybersecurity",
+          "notes": null
+        },
+        {
+          "code": "COM7",
+          "disciplineCode": "COM",
+          "discipline": "Information and Communications Technology",
+          "subdisciplineCode": "7",
+          "subdiscipline": "ICT Power and Redundancy",
+          "notes": null
+        },
+        {
+          "code": "COM8",
+          "disciplineCode": "COM",
+          "discipline": "Information and Communications Technology",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "COM9",
+          "disciplineCode": "COM",
+          "discipline": "Information and Communications Technology",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "IoT, Edge Computing, AI"
+        },
+        {
+          "code": "INF0",
+          "disciplineCode": "INF",
+          "discipline": "Information Management",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "INF1",
+          "disciplineCode": "INF",
+          "discipline": "Information Management",
+          "subdisciplineCode": "1",
+          "subdiscipline": "BIM Execution Planning and Standards",
+          "notes": null
+        },
+        {
+          "code": "INF2",
+          "disciplineCode": "INF",
+          "discipline": "Information Management",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Model Coordination and Clash Detection",
+          "notes": null
+        },
+        {
+          "code": "INF3",
+          "disciplineCode": "INF",
+          "discipline": "Information Management",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Information Exchange and ISO 19650 Compliance",
+          "notes": null
+        },
+        {
+          "code": "INF4",
+          "disciplineCode": "INF",
+          "discipline": "Information Management",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Document Control",
+          "notes": null
+        },
+        {
+          "code": "INF5",
+          "disciplineCode": "INF",
+          "discipline": "Information Management",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Digital Delivery, Asset Information and Workflow Automation",
+          "notes": null
+        },
+        {
+          "code": "INF6",
+          "disciplineCode": "INF",
+          "discipline": "Information Management",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Data Management, Goverance, Security and Archiving",
+          "notes": null
+        },
+        {
+          "code": "INF7",
+          "disciplineCode": "INF",
+          "discipline": "Information Management",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Information Management Systems",
+          "notes": null
+        },
+        {
+          "code": "INF8",
+          "disciplineCode": "INF",
+          "discipline": "Information Management",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "INF9",
+          "disciplineCode": "INF",
+          "discipline": "Information Management",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Future Technologies (Digital Twins, AI-driven Information Management)"
+        },
+        {
+          "code": "LND0",
+          "disciplineCode": "LND",
+          "discipline": "Landscape",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "LND1",
+          "disciplineCode": "LND",
+          "discipline": "Landscape",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Hardscape & Softscape",
+          "notes": null
+        },
+        {
+          "code": "LND2",
+          "disciplineCode": "LND",
+          "discipline": "Landscape",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Vegetation & Botanics",
+          "notes": null
+        },
+        {
+          "code": "LND3",
+          "disciplineCode": "LND",
+          "discipline": "Landscape",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Irrigation Systems",
+          "notes": null
+        },
+        {
+          "code": "LND4",
+          "disciplineCode": "LND",
+          "discipline": "Landscape",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Site Furniture & Amenities",
+          "notes": null
+        },
+        {
+          "code": "LND5",
+          "disciplineCode": "LND",
+          "discipline": "Landscape",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Special Features",
+          "notes": null
+        },
+        {
+          "code": "LND6",
+          "disciplineCode": "LND",
+          "discipline": "Landscape",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Environmental & Sustainability-Assessments and  imrovements",
+          "notes": null
+        },
+        {
+          "code": "LND7",
+          "disciplineCode": "LND",
+          "discipline": "Landscape",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": null
+        },
+        {
+          "code": "LND8",
+          "disciplineCode": "LND",
+          "discipline": "Landscape",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "LND9",
+          "disciplineCode": "LND",
+          "discipline": "Landscape",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "LPB0",
+          "disciplineCode": "LPB",
+          "discipline": "Lease, property and legal boundaries",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "LPB1",
+          "disciplineCode": "LPB",
+          "discipline": "Lease, property and legal boundaries",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Design Coordination",
+          "notes": null
+        },
+        {
+          "code": "LPB2",
+          "disciplineCode": "LPB",
+          "discipline": "Lease, property and legal boundaries",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Legal Surveys",
+          "notes": null
+        },
+        {
+          "code": "LPB3",
+          "disciplineCode": "LPB",
+          "discipline": "Lease, property and legal boundaries",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Survey Control records",
+          "notes": null
+        },
+        {
+          "code": "LPB4",
+          "disciplineCode": "LPB",
+          "discipline": "Lease, property and legal boundaries",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Leased Property Boundary",
+          "notes": null
+        },
+        {
+          "code": "LPB5",
+          "disciplineCode": "LPB",
+          "discipline": "Lease, property and legal boundaries",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Leased Space/s (buildings)",
+          "notes": null
+        },
+        {
+          "code": "LPB6",
+          "disciplineCode": "LPB",
+          "discipline": "Lease, property and legal boundaries",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Leagal property records, (Agreements, ROW's, Easements, Encroachments, etc)",
+          "notes": null
+        },
+        {
+          "code": "LPB7",
+          "disciplineCode": "LPB",
+          "discipline": "Lease, property and legal boundaries",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "LPB8",
+          "disciplineCode": "LPB",
+          "discipline": "Lease, property and legal boundaries",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "LPB9",
+          "disciplineCode": "LPB",
+          "discipline": "Lease, property and legal boundaries",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "NGS0",
+          "disciplineCode": "NGS",
+          "discipline": "Natural Gas Distribution Systems",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "NGS1",
+          "disciplineCode": "NGS",
+          "discipline": "Natural Gas Distribution Systems",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Natural Gas Distribution - Piping type, size & layouts",
+          "notes": null
+        },
+        {
+          "code": "NGS2",
+          "disciplineCode": "NGS",
+          "discipline": "Natural Gas Distribution Systems",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Code/Regulatory Compliance",
+          "notes": null
+        },
+        {
+          "code": "NGS3",
+          "disciplineCode": "NGS",
+          "discipline": "Natural Gas Distribution Systems",
+          "subdisciplineCode": "3",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "NGS4",
+          "disciplineCode": "NGS",
+          "discipline": "Natural Gas Distribution Systems",
+          "subdisciplineCode": "4",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "NGS5",
+          "disciplineCode": "NGS",
+          "discipline": "Natural Gas Distribution Systems",
+          "subdisciplineCode": "5",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "NGS6",
+          "disciplineCode": "NGS",
+          "discipline": "Natural Gas Distribution Systems",
+          "subdisciplineCode": "6",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "NGS7",
+          "disciplineCode": "NGS",
+          "discipline": "Natural Gas Distribution Systems",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "NGS8",
+          "disciplineCode": "NGS",
+          "discipline": "Natural Gas Distribution Systems",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "NGS9",
+          "disciplineCode": "NGS",
+          "discipline": "Natural Gas Distribution Systems",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "OHS0",
+          "disciplineCode": "OHS",
+          "discipline": "Occupational Health and Safety",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": "Including Communication, Training, and Competency"
+        },
+        {
+          "code": "OHS1",
+          "disciplineCode": "OHS",
+          "discipline": "Occupational Health and Safety",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Governance: Plans, Systems and Policies",
+          "notes": null
+        },
+        {
+          "code": "OHS2",
+          "disciplineCode": "OHS",
+          "discipline": "Occupational Health and Safety",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Hazard and Risk Assessment",
+          "notes": null
+        },
+        {
+          "code": "OHS3",
+          "disciplineCode": "OHS",
+          "discipline": "Occupational Health and Safety",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Incident Investigation",
+          "notes": null
+        },
+        {
+          "code": "OHS4",
+          "disciplineCode": "OHS",
+          "discipline": "Occupational Health and Safety",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Contractor Safety and Emergency Response",
+          "notes": null
+        },
+        {
+          "code": "OHS5",
+          "disciplineCode": "OHS",
+          "discipline": "Occupational Health and Safety",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Assurance and Performance Analysis",
+          "notes": null
+        },
+        {
+          "code": "OHS6",
+          "disciplineCode": "OHS",
+          "discipline": "Occupational Health and Safety",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Occupational Health and Hygiene",
+          "notes": null
+        },
+        {
+          "code": "OHS7",
+          "disciplineCode": "OHS",
+          "discipline": "Occupational Health and Safety",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Safety Control Procedures",
+          "notes": null
+        },
+        {
+          "code": "OHS8",
+          "disciplineCode": "OHS",
+          "discipline": "Occupational Health and Safety",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "OHS9",
+          "disciplineCode": "OHS",
+          "discipline": "Occupational Health and Safety",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "OPM0",
+          "disciplineCode": "OPM",
+          "discipline": "Operations and Maintenance",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "OPM1",
+          "disciplineCode": "OPM",
+          "discipline": "Operations and Maintenance",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Preventive Maintenance Systems",
+          "notes": null
+        },
+        {
+          "code": "OPM2",
+          "disciplineCode": "OPM",
+          "discipline": "Operations and Maintenance",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Corrective Maintenance Systems",
+          "notes": null
+        },
+        {
+          "code": "OPM3",
+          "disciplineCode": "OPM",
+          "discipline": "Operations and Maintenance",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Asset Management and Lifecycle Planning",
+          "notes": null
+        },
+        {
+          "code": "OPM4",
+          "disciplineCode": "OPM",
+          "discipline": "Operations and Maintenance",
+          "subdisciplineCode": "4",
+          "subdiscipline": "CMMS / Digital Maintenance Platforms Integration",
+          "notes": null
+        },
+        {
+          "code": "OPM5",
+          "disciplineCode": "OPM",
+          "discipline": "Operations and Maintenance",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Spare Parts and Inventory Management",
+          "notes": null
+        },
+        {
+          "code": "OPM6",
+          "disciplineCode": "OPM",
+          "discipline": "Operations and Maintenance",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Reliability, Compliance & Training",
+          "notes": null
+        },
+        {
+          "code": "OPM7",
+          "disciplineCode": "OPM",
+          "discipline": "Operations and Maintenance",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "OPM8",
+          "disciplineCode": "OPM",
+          "discipline": "Operations and Maintenance",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "OPM9",
+          "disciplineCode": "OPM",
+          "discipline": "Operations and Maintenance",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "PAE0",
+          "disciplineCode": "PAE",
+          "discipline": "Passenger Experience",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "PAE1",
+          "disciplineCode": "PAE",
+          "discipline": "Passenger Experience",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Diversity and Inclusion",
+          "notes": null
+        },
+        {
+          "code": "PAE2",
+          "disciplineCode": "PAE",
+          "discipline": "Passenger Experience",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Check-in & Self-Service Technologies",
+          "notes": null
+        },
+        {
+          "code": "PAE3",
+          "disciplineCode": "PAE",
+          "discipline": "Passenger Experience",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Security & Passenger Flow Optimization",
+          "notes": null
+        },
+        {
+          "code": "PAE4",
+          "disciplineCode": "PAE",
+          "discipline": "Passenger Experience",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Baggage Handling Interfaces",
+          "notes": null
+        },
+        {
+          "code": "PAE5",
+          "disciplineCode": "PAE",
+          "discipline": "Passenger Experience",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Retail, Food & Beverage Experience",
+          "notes": null
+        },
+        {
+          "code": "PAE6",
+          "disciplineCode": "PAE",
+          "discipline": "Passenger Experience",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Comfort & Amenities (Lounges, Seating, PRM facilities)",
+          "notes": null
+        },
+        {
+          "code": "PAE7",
+          "disciplineCode": "PAE",
+          "discipline": "Passenger Experience",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Digital Passenger Interaction (Apps, FIDS, Wi-Fi portals, Branding & Advertising)",
+          "notes": null
+        },
+        {
+          "code": "PAE8",
+          "disciplineCode": "PAE",
+          "discipline": "Passenger Experience",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "PAE9",
+          "disciplineCode": "PAE",
+          "discipline": "Passenger Experience",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Future Technologies & Adaptability (Biometrics, AI, VR, AR)"
+        },
+        {
+          "code": "PLA0",
+          "disciplineCode": "PLA",
+          "discipline": "Permits, Licenses, and Approvals",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "PLA1",
+          "disciplineCode": "PLA",
+          "discipline": "Permits, Licenses, and Approvals",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Design related approvals",
+          "notes": null
+        },
+        {
+          "code": "PLA2",
+          "disciplineCode": "PLA",
+          "discipline": "Permits, Licenses, and Approvals",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Permits and Approvals",
+          "notes": null
+        },
+        {
+          "code": "PLA3",
+          "disciplineCode": "PLA",
+          "discipline": "Permits, Licenses, and Approvals",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Operational Licensing & Permitting",
+          "notes": null
+        },
+        {
+          "code": "PLA4",
+          "disciplineCode": "PLA",
+          "discipline": "Permits, Licenses, and Approvals",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Aviation authority approvals",
+          "notes": null
+        },
+        {
+          "code": "PLA5",
+          "disciplineCode": "PLA",
+          "discipline": "Permits, Licenses, and Approvals",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Vendor and Contractor Licensing",
+          "notes": null
+        },
+        {
+          "code": "PLA6",
+          "disciplineCode": "PLA",
+          "discipline": "Permits, Licenses, and Approvals",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Security and Safety Clearances",
+          "notes": null
+        },
+        {
+          "code": "PLA7",
+          "disciplineCode": "PLA",
+          "discipline": "Permits, Licenses, and Approvals",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Compliance Audits and Closeout",
+          "notes": null
+        },
+        {
+          "code": "PLA8",
+          "disciplineCode": "PLA",
+          "discipline": "Permits, Licenses, and Approvals",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "PLA9",
+          "disciplineCode": "PLA",
+          "discipline": "Permits, Licenses, and Approvals",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "PLN0",
+          "disciplineCode": "PLN",
+          "discipline": "Planning",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "PLN1",
+          "disciplineCode": "PLN",
+          "discipline": "Planning",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Airport Master Planning (Capacity, phasing, expansion)",
+          "notes": null
+        },
+        {
+          "code": "PLN2",
+          "disciplineCode": "PLN",
+          "discipline": "Planning",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Land Acquisition & Zoning (Planning & Compliance)",
+          "notes": null
+        },
+        {
+          "code": "PLN3",
+          "disciplineCode": "PLN",
+          "discipline": "Planning",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Stakeholder & Community Engagement",
+          "notes": null
+        },
+        {
+          "code": "PLN4",
+          "disciplineCode": "PLN",
+          "discipline": "Planning",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Interface/Coordination (with all disciplines and authorities)",
+          "notes": null
+        },
+        {
+          "code": "PLN5",
+          "disciplineCode": "PLN",
+          "discipline": "Planning",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Future Technologies & Adaptability (Digital twins, AI-based forecasting)",
+          "notes": null
+        },
+        {
+          "code": "PLN6",
+          "disciplineCode": "PLN",
+          "discipline": "Planning",
+          "subdisciplineCode": "6",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "PLN7",
+          "disciplineCode": "PLN",
+          "discipline": "Planning",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "PLN8",
+          "disciplineCode": "PLN",
+          "discipline": "Planning",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "PLN9",
+          "disciplineCode": "PLN",
+          "discipline": "Planning",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "PMD0",
+          "disciplineCode": "PMD",
+          "discipline": "Horizontal and Vertical People Moving Devices",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "PMD1",
+          "disciplineCode": "PMD",
+          "discipline": "Horizontal and Vertical People Moving Devices",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Elevators & Lift Systems",
+          "notes": null
+        },
+        {
+          "code": "PMD2",
+          "disciplineCode": "PMD",
+          "discipline": "Horizontal and Vertical People Moving Devices",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Escalators & Moving Walkways",
+          "notes": null
+        },
+        {
+          "code": "PMD3",
+          "disciplineCode": "PMD",
+          "discipline": "Horizontal and Vertical People Moving Devices",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Passenger Boarding Bridges (PBB)",
+          "notes": null
+        },
+        {
+          "code": "PMD4",
+          "disciplineCode": "PMD",
+          "discipline": "Horizontal and Vertical People Moving Devices",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Hoist & Special Lifting Equipment",
+          "notes": null
+        },
+        {
+          "code": "PMD5",
+          "disciplineCode": "PMD",
+          "discipline": "Horizontal and Vertical People Moving Devices",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Structural Integration & Anchorage",
+          "notes": null
+        },
+        {
+          "code": "PMD6",
+          "disciplineCode": "PMD",
+          "discipline": "Horizontal and Vertical People Moving Devices",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Electrical & Control Systems Integration",
+          "notes": null
+        },
+        {
+          "code": "PMD7",
+          "disciplineCode": "PMD",
+          "discipline": "Horizontal and Vertical People Moving Devices",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Safety & Emergency Features",
+          "notes": null
+        },
+        {
+          "code": "PMD8",
+          "disciplineCode": "PMD",
+          "discipline": "Horizontal and Vertical People Moving Devices",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": "Interface/Coordination"
+        },
+        {
+          "code": "PMD9",
+          "disciplineCode": "PMD",
+          "discipline": "Horizontal and Vertical People Moving Devices",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Future Technologies / Automated Boarding & Smart VT Systems"
+        },
+        {
+          "code": "PRO0",
+          "disciplineCode": "PRO",
+          "discipline": "Project Controls",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "PRO1",
+          "disciplineCode": "PRO",
+          "discipline": "Project Controls",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Metadata and Attribute Management",
+          "notes": null
+        },
+        {
+          "code": "PRO2",
+          "disciplineCode": "PRO",
+          "discipline": "Project Controls",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Cost Estimation and Budget Control",
+          "notes": null
+        },
+        {
+          "code": "PRO3",
+          "disciplineCode": "PRO",
+          "discipline": "Project Controls",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Cost Control & Forecasting",
+          "notes": null
+        },
+        {
+          "code": "PRO4",
+          "disciplineCode": "PRO",
+          "discipline": "Project Controls",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Estimating",
+          "notes": null
+        },
+        {
+          "code": "PRO5",
+          "disciplineCode": "PRO",
+          "discipline": "Project Controls",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Change Management",
+          "notes": null
+        },
+        {
+          "code": "PRO6",
+          "disciplineCode": "PRO",
+          "discipline": "Project Controls",
+          "subdisciplineCode": "6",
+          "subdiscipline": "",
+          "notes": null
+        },
+        {
+          "code": "PRO7",
+          "disciplineCode": "PRO",
+          "discipline": "Project Controls",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": null
+        },
+        {
+          "code": "PRO8",
+          "disciplineCode": "PRO",
+          "discipline": "Project Controls",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "PRO9",
+          "disciplineCode": "PRO",
+          "discipline": "Project Controls",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "PLU0",
+          "disciplineCode": "PLU",
+          "discipline": "Plumbing and Sanitary - Buildings/Structures",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "PLU1",
+          "disciplineCode": "PLU",
+          "discipline": "Plumbing and Sanitary - Buildings/Structures",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Domestic Water Supply Systems",
+          "notes": null
+        },
+        {
+          "code": "PLU2",
+          "disciplineCode": "PLU",
+          "discipline": "Plumbing and Sanitary - Buildings/Structures",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Sanitary Drainage Systems",
+          "notes": null
+        },
+        {
+          "code": "PLU3",
+          "disciplineCode": "PLU",
+          "discipline": "Plumbing and Sanitary - Buildings/Structures",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Stormwater Drainage Systems Integration",
+          "notes": null
+        },
+        {
+          "code": "PLU4",
+          "disciplineCode": "PLU",
+          "discipline": "Plumbing and Sanitary - Buildings/Structures",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Specialty Water Systems (RO, Potable, Non-potable)",
+          "notes": null
+        },
+        {
+          "code": "PLU5",
+          "disciplineCode": "PLU",
+          "discipline": "Plumbing and Sanitary - Buildings/Structures",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Fueling & Glycol Distribution Interfaces (if applicable)",
+          "notes": null
+        },
+        {
+          "code": "PLU6",
+          "disciplineCode": "PLU",
+          "discipline": "Plumbing and Sanitary - Buildings/Structures",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Water Treatment & Backflow Prevention",
+          "notes": null
+        },
+        {
+          "code": "PLU7",
+          "disciplineCode": "PLU",
+          "discipline": "Plumbing and Sanitary - Buildings/Structures",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "PLU8",
+          "disciplineCode": "PLU",
+          "discipline": "Plumbing and Sanitary - Buildings/Structures",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "PLU9",
+          "disciplineCode": "PLU",
+          "discipline": "Plumbing and Sanitary - Buildings/Structures",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Smart valves, IoT monitoring"
+        },
+        {
+          "code": "SEC0",
+          "disciplineCode": "SEC",
+          "discipline": "Physical Security and Security Systems",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "SEC1",
+          "disciplineCode": "SEC",
+          "discipline": "Physical Security and Security Systems",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Design Coordination",
+          "notes": null
+        },
+        {
+          "code": "SEC2",
+          "disciplineCode": "SEC",
+          "discipline": "Physical Security and Security Systems",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Physical Safety & Security Systems (Perimeter, barriers, vehicle screening, airside/landside segregation, Secure Access Doors)",
+          "notes": null
+        },
+        {
+          "code": "SEC3",
+          "disciplineCode": "SEC",
+          "discipline": "Physical Security and Security Systems",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Cybersecurity & Data Protection",
+          "notes": null
+        },
+        {
+          "code": "SEC4",
+          "disciplineCode": "SEC",
+          "discipline": "Physical Security and Security Systems",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Security Operations Centers (SOC) & Monitoring Platforms",
+          "notes": null
+        },
+        {
+          "code": "SEC5",
+          "disciplineCode": "SEC",
+          "discipline": "Physical Security and Security Systems",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Emergency & Incident Response Systems (Fire alarms, evacuation, crisis communication)",
+          "notes": null
+        },
+        {
+          "code": "SEC6",
+          "disciplineCode": "SEC",
+          "discipline": "Physical Security and Security Systems",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Screening & Detection Systems (Passenger, baggage, cargo, CCTV)",
+          "notes": null
+        },
+        {
+          "code": "SEC7",
+          "disciplineCode": "SEC",
+          "discipline": "Physical Security and Security Systems",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Interface/Coordination (with Building Systems, IT/OT, Operations)",
+          "notes": null
+        },
+        {
+          "code": "SEC8",
+          "disciplineCode": "SEC",
+          "discipline": "Physical Security and Security Systems",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "SEC9",
+          "disciplineCode": "SEC",
+          "discipline": "Physical Security and Security Systems",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Biometrics, AI threat detection, integrated safety platforms"
+        },
+        {
+          "code": "QMT0",
+          "disciplineCode": "QMT",
+          "discipline": "Quality assurance, Control and Management",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "QMT1",
+          "disciplineCode": "QMT",
+          "discipline": "Quality assurance, Control and Management",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Design Quality Assurance & Control",
+          "notes": null
+        },
+        {
+          "code": "QMT2",
+          "disciplineCode": "QMT",
+          "discipline": "Quality assurance, Control and Management",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Construction Quality Assurance & Control",
+          "notes": null
+        },
+        {
+          "code": "QMT3",
+          "disciplineCode": "QMT",
+          "discipline": "Quality assurance, Control and Management",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Deliverables Review & Approval Processes",
+          "notes": null
+        },
+        {
+          "code": "QMT4",
+          "disciplineCode": "QMT",
+          "discipline": "Quality assurance, Control and Management",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Commisioning and systems verification quality assurance",
+          "notes": null
+        },
+        {
+          "code": "QMT5",
+          "disciplineCode": "QMT",
+          "discipline": "Quality assurance, Control and Management",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Continuous Improvement & Lessons Learned",
+          "notes": null
+        },
+        {
+          "code": "QMT6",
+          "disciplineCode": "QMT",
+          "discipline": "Quality assurance, Control and Management",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Testing & Inspection Protocols",
+          "notes": null
+        },
+        {
+          "code": "QMT7",
+          "disciplineCode": "QMT",
+          "discipline": "Quality assurance, Control and Management",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Compliance Audits & Regulatory Standards (ICAO, FAA, ISO)",
+          "notes": null
+        },
+        {
+          "code": "QMT8",
+          "disciplineCode": "QMT",
+          "discipline": "Quality assurance, Control and Management",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "QMT9",
+          "disciplineCode": "QMT",
+          "discipline": "Quality assurance, Control and Management",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Digital QA tools, AI-based QC"
+        },
+        {
+          "code": "RKM0",
+          "disciplineCode": "RKM",
+          "discipline": "Risk Management",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "RKM1",
+          "disciplineCode": "RKM",
+          "discipline": "Risk Management",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Design Risk Assessment & Mitigation",
+          "notes": null
+        },
+        {
+          "code": "RKM2",
+          "disciplineCode": "RKM",
+          "discipline": "Risk Management",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Construction Risk Assessment & Safety Management",
+          "notes": null
+        },
+        {
+          "code": "RKM3",
+          "disciplineCode": "RKM",
+          "discipline": "Risk Management",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Operational Risk Management (Airside/Landside)",
+          "notes": null
+        },
+        {
+          "code": "RKM4",
+          "disciplineCode": "RKM",
+          "discipline": "Risk Management",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Financial & Commercial Risk Analysis",
+          "notes": null
+        },
+        {
+          "code": "RKM5",
+          "disciplineCode": "RKM",
+          "discipline": "Risk Management",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Stakeholder & Owner Risk Coordination",
+          "notes": null
+        },
+        {
+          "code": "RKM6",
+          "disciplineCode": "RKM",
+          "discipline": "Risk Management",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Business Continuity & Emergency Response Planning",
+          "notes": null
+        },
+        {
+          "code": "RKM7",
+          "disciplineCode": "RKM",
+          "discipline": "Risk Management",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Regulatory & Compliance Risk (ICAO, FAA, local codes)",
+          "notes": null
+        },
+        {
+          "code": "RKM8",
+          "disciplineCode": "RKM",
+          "discipline": "Risk Management",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "RKM9",
+          "disciplineCode": "RKM",
+          "discipline": "Risk Management",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "AI-based risk modeling, predictive analytics"
+        },
+        {
+          "code": "SAN0",
+          "disciplineCode": "SAN",
+          "discipline": "Sanitary Systems - Site Utilities",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "SAN1",
+          "disciplineCode": "SAN",
+          "discipline": "Sanitary Systems - Site Utilities",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Sanitary System - Piping type, size and layouts",
+          "notes": null
+        },
+        {
+          "code": "SAN2",
+          "disciplineCode": "SAN",
+          "discipline": "Sanitary Systems - Site Utilities",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Glycol System piping layouts",
+          "notes": null
+        },
+        {
+          "code": "SAN3",
+          "disciplineCode": "SAN",
+          "discipline": "Sanitary Systems - Site Utilities",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Sanitary Pumping Stations",
+          "notes": null
+        },
+        {
+          "code": "SAN4",
+          "disciplineCode": "SAN",
+          "discipline": "Sanitary Systems - Site Utilities",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Code/Regulatory Compliance",
+          "notes": null
+        },
+        {
+          "code": "SAN5",
+          "disciplineCode": "SAN",
+          "discipline": "Sanitary Systems - Site Utilities",
+          "subdisciplineCode": "5",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "SAN6",
+          "disciplineCode": "SAN",
+          "discipline": "Sanitary Systems - Site Utilities",
+          "subdisciplineCode": "6",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "SAN7",
+          "disciplineCode": "SAN",
+          "discipline": "Sanitary Systems - Site Utilities",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "SAN8",
+          "disciplineCode": "SAN",
+          "discipline": "Sanitary Systems - Site Utilities",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "SAN9",
+          "disciplineCode": "SAN",
+          "discipline": "Sanitary Systems - Site Utilities",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "SAF0",
+          "disciplineCode": "SAF",
+          "discipline": "Safety and Code Compliance",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "SAF1",
+          "disciplineCode": "SAF",
+          "discipline": "Safety and Code Compliance",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Safety and compliance in Design",
+          "notes": null
+        },
+        {
+          "code": "SAF2",
+          "disciplineCode": "SAF",
+          "discipline": "Safety and Code Compliance",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Construction Safety and Site Operations",
+          "notes": null
+        },
+        {
+          "code": "SAF3",
+          "disciplineCode": "SAF",
+          "discipline": "Safety and Code Compliance",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Standard Operating Procedures SOPs and Occupational Health",
+          "notes": null
+        },
+        {
+          "code": "SAF4",
+          "disciplineCode": "SAF",
+          "discipline": "Safety and Code Compliance",
+          "subdisciplineCode": "4",
+          "subdiscipline": "THIRAs",
+          "notes": null
+        },
+        {
+          "code": "SAF5",
+          "disciplineCode": "SAF",
+          "discipline": "Safety and Code Compliance",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Incident reports, analysis and Emergency Preparedness & Response",
+          "notes": null
+        },
+        {
+          "code": "SAF6",
+          "disciplineCode": "SAF",
+          "discipline": "Safety and Code Compliance",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Screening & Detection Systems (Passenger, baggage, cargo)",
+          "notes": null
+        },
+        {
+          "code": "SAF7",
+          "disciplineCode": "SAF",
+          "discipline": "Safety and Code Compliance",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Regulatory Compliance (ICAO Annex 17, TSA, NFPA, OSHA, GDPR)",
+          "notes": null
+        },
+        {
+          "code": "SAF8",
+          "disciplineCode": "SAF",
+          "discipline": "Safety and Code Compliance",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "SAF9",
+          "disciplineCode": "SAF",
+          "discipline": "Safety and Code Compliance",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "SMT0",
+          "disciplineCode": "SMT",
+          "discipline": "Schedule Management",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "SMT1",
+          "disciplineCode": "SMT",
+          "discipline": "Schedule Management",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Design Phase Scheduling (Design deliverables, reviews)",
+          "notes": null
+        },
+        {
+          "code": "SMT2",
+          "disciplineCode": "SMT",
+          "discipline": "Schedule Management",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Procurement Scheduling (Material, equipment, vendor timelines)",
+          "notes": null
+        },
+        {
+          "code": "SMT3",
+          "disciplineCode": "SMT",
+          "discipline": "Schedule Management",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Construction Scheduling (Phasing, milestones, critical path)",
+          "notes": null
+        },
+        {
+          "code": "SMT4",
+          "disciplineCode": "SMT",
+          "discipline": "Schedule Management",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Commissioning & Handover Scheduling",
+          "notes": null
+        },
+        {
+          "code": "SMT5",
+          "disciplineCode": "SMT",
+          "discipline": "Schedule Management",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Operational Readiness & Transition Scheduling",
+          "notes": null
+        },
+        {
+          "code": "SMT6",
+          "disciplineCode": "SMT",
+          "discipline": "Schedule Management",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Resource & Workforce Scheduling",
+          "notes": null
+        },
+        {
+          "code": "SMT7",
+          "disciplineCode": "SMT",
+          "discipline": "Schedule Management",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Schedule Risk Analysis & Mitigation",
+          "notes": null
+        },
+        {
+          "code": "SMT8",
+          "disciplineCode": "SMT",
+          "discipline": "Schedule Management",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "SMT9",
+          "disciplineCode": "SMT",
+          "discipline": "Schedule Management",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "AI-driven scheduling, BIM 4D, predictive analytics"
+        },
+        {
+          "code": "SES0",
+          "disciplineCode": "SES",
+          "discipline": "Special Engineering Systems and Technologies",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "SES1",
+          "disciplineCode": "SES",
+          "discipline": "Special Engineering Systems and Technologies",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Deicing Systems",
+          "notes": null
+        },
+        {
+          "code": "SES2",
+          "disciplineCode": "SES",
+          "discipline": "Special Engineering Systems and Technologies",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Snowmelt Systems",
+          "notes": null
+        },
+        {
+          "code": "SES3",
+          "disciplineCode": "SES",
+          "discipline": "Special Engineering Systems and Technologies",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Glycol Recovery & Treatment",
+          "notes": null
+        },
+        {
+          "code": "SES4",
+          "disciplineCode": "SES",
+          "discipline": "Special Engineering Systems and Technologies",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Heated Pavement Systems",
+          "notes": null
+        },
+        {
+          "code": "SES5",
+          "disciplineCode": "SES",
+          "discipline": "Special Engineering Systems and Technologies",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Storage & Distribution Facilities",
+          "notes": null
+        },
+        {
+          "code": "SES6",
+          "disciplineCode": "SES",
+          "discipline": "Special Engineering Systems and Technologies",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Air and Ground Traffic Control and Air Navigation & Surveillance systems",
+          "notes": null
+        },
+        {
+          "code": "SES7",
+          "disciplineCode": "SES",
+          "discipline": "Special Engineering Systems and Technologies",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "SES8",
+          "disciplineCode": "SES",
+          "discipline": "Special Engineering Systems and Technologies",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "SES9",
+          "disciplineCode": "SES",
+          "discipline": "Special Engineering Systems and Technologies",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "SUR0",
+          "disciplineCode": "SUR",
+          "discipline": "Survey (Engineering / Topographic/ Layout)",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "SUR1",
+          "disciplineCode": "SUR",
+          "discipline": "Survey (Engineering / Topographic/ Layout)",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Design Coordination",
+          "notes": null
+        },
+        {
+          "code": "SUR2",
+          "disciplineCode": "SUR",
+          "discipline": "Survey (Engineering / Topographic/ Layout)",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Topographic Survey (includes terrestrial surveys)",
+          "notes": null
+        },
+        {
+          "code": "SUR3",
+          "disciplineCode": "SUR",
+          "discipline": "Survey (Engineering / Topographic/ Layout)",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Geodetic Control",
+          "notes": null
+        },
+        {
+          "code": "SUR4",
+          "disciplineCode": "SUR",
+          "discipline": "Survey (Engineering / Topographic/ Layout)",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Construction Layout (includes pre/post pour checks)",
+          "notes": null
+        },
+        {
+          "code": "SUR5",
+          "disciplineCode": "SUR",
+          "discipline": "Survey (Engineering / Topographic/ Layout)",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Underground Utility Survey",
+          "notes": null
+        },
+        {
+          "code": "SUR6",
+          "disciplineCode": "SUR",
+          "discipline": "Survey (Engineering / Topographic/ Layout)",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Monitoring & Settlement Survey",
+          "notes": null
+        },
+        {
+          "code": "SUR7",
+          "disciplineCode": "SUR",
+          "discipline": "Survey (Engineering / Topographic/ Layout)",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Aerial/LiDAR Survey (includes laser scanning & photogrammetry)",
+          "notes": null
+        },
+        {
+          "code": "SUR8",
+          "disciplineCode": "SUR",
+          "discipline": "Survey (Engineering / Topographic/ Layout)",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "SUR9",
+          "disciplineCode": "SUR",
+          "discipline": "Survey (Engineering / Topographic/ Layout)",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Future Survey and Reality capture Technologies"
+        },
+        {
+          "code": "SUS0",
+          "disciplineCode": "SUS",
+          "discipline": "Sustainability",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "SUS1",
+          "disciplineCode": "SUS",
+          "discipline": "Sustainability",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Sustainability Strategy & Reporting & Certifications",
+          "notes": null
+        },
+        {
+          "code": "SUS2",
+          "disciplineCode": "SUS",
+          "discipline": "Sustainability",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Climate Resilience and Adaptation",
+          "notes": null
+        },
+        {
+          "code": "SUS3",
+          "disciplineCode": "SUS",
+          "discipline": "Sustainability",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Carbon Management and Air Quality Emissions",
+          "notes": null
+        },
+        {
+          "code": "SUS4",
+          "disciplineCode": "SUS",
+          "discipline": "Sustainability",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Energy Efficiency and Optimization",
+          "notes": null
+        },
+        {
+          "code": "SUS5",
+          "disciplineCode": "SUS",
+          "discipline": "Sustainability",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Water Conservation and Management",
+          "notes": null
+        },
+        {
+          "code": "SUS6",
+          "disciplineCode": "SUS",
+          "discipline": "Sustainability",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Waste Management and Circular Economy",
+          "notes": null
+        },
+        {
+          "code": "SUS7",
+          "disciplineCode": "SUS",
+          "discipline": "Sustainability",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Natural Resources Management",
+          "notes": null
+        },
+        {
+          "code": "SUS8",
+          "disciplineCode": "SUS",
+          "discipline": "Sustainability",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "SUS9",
+          "disciplineCode": "SUS",
+          "discipline": "Sustainability",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "SMD0",
+          "disciplineCode": "SMD",
+          "discipline": "Stormwater and Drainage",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "SMD1",
+          "disciplineCode": "SMD",
+          "discipline": "Stormwater and Drainage",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Stormwater & Drainage - Piping type, size & layouts, outfalls, ditches, culverts, inlets/outlets",
+          "notes": null
+        },
+        {
+          "code": "SMD2",
+          "disciplineCode": "SMD",
+          "discipline": "Stormwater and Drainage",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Drainage Zones",
+          "notes": null
+        },
+        {
+          "code": "SMD3",
+          "disciplineCode": "SMD",
+          "discipline": "Stormwater and Drainage",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Storm Water Management Ponds and Facilities",
+          "notes": null
+        },
+        {
+          "code": "SMD4",
+          "disciplineCode": "SMD",
+          "discipline": "Stormwater and Drainage",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Storm Water Pumping Stations",
+          "notes": null
+        },
+        {
+          "code": "SMD5",
+          "disciplineCode": "SMD",
+          "discipline": "Stormwater and Drainage",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Storm Water Modelling",
+          "notes": null
+        },
+        {
+          "code": "SMD6",
+          "disciplineCode": "SMD",
+          "discipline": "Stormwater and Drainage",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Code/Regulatory Compliance",
+          "notes": null
+        },
+        {
+          "code": "SMD7",
+          "disciplineCode": "SMD",
+          "discipline": "Stormwater and Drainage",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "SMD8",
+          "disciplineCode": "SMD",
+          "discipline": "Stormwater and Drainage",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "SMD9",
+          "disciplineCode": "SMD",
+          "discipline": "Stormwater and Drainage",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Future Technologies / Smart Utility Networks"
+        },
+        {
+          "code": "TAT0",
+          "disciplineCode": "TAT",
+          "discipline": "Traffic and Transportation (Landside)",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "TAT1",
+          "disciplineCode": "TAT",
+          "discipline": "Traffic and Transportation (Landside)",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Design Coordination",
+          "notes": null
+        },
+        {
+          "code": "TAT2",
+          "disciplineCode": "TAT",
+          "discipline": "Traffic and Transportation (Landside)",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Traffic Analysis & Modeling",
+          "notes": null
+        },
+        {
+          "code": "TAT3",
+          "disciplineCode": "TAT",
+          "discipline": "Traffic and Transportation (Landside)",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Roadway Design",
+          "notes": null
+        },
+        {
+          "code": "TAT4",
+          "disciplineCode": "TAT",
+          "discipline": "Traffic and Transportation (Landside)",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Intersection & Access Management",
+          "notes": null
+        },
+        {
+          "code": "TAT5",
+          "disciplineCode": "TAT",
+          "discipline": "Traffic and Transportation (Landside)",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Pedestrian & Bicycle Facilities",
+          "notes": null
+        },
+        {
+          "code": "TAT6",
+          "disciplineCode": "TAT",
+          "discipline": "Traffic and Transportation (Landside)",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Parking & Curbside Design",
+          "notes": null
+        },
+        {
+          "code": "TAT7",
+          "disciplineCode": "TAT",
+          "discipline": "Traffic and Transportation (Landside)",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "TAT8",
+          "disciplineCode": "TAT",
+          "discipline": "Traffic and Transportation (Landside)",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "TAT9",
+          "disciplineCode": "TAT",
+          "discipline": "Traffic and Transportation (Landside)",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "TNC0",
+          "disciplineCode": "TNC",
+          "discipline": "Testing & Commisioning",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "TNC1",
+          "disciplineCode": "TNC",
+          "discipline": "Testing & Commisioning",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Pre-Commissioning Preparation (procedures, checklists, readiness)",
+          "notes": null
+        },
+        {
+          "code": "TNC2",
+          "disciplineCode": "TNC",
+          "discipline": "Testing & Commisioning",
+          "subdisciplineCode": "2",
+          "subdiscipline": "System Activation & Start-Up",
+          "notes": null
+        },
+        {
+          "code": "TNC3",
+          "disciplineCode": "TNC",
+          "discipline": "Testing & Commisioning",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Functional Testing",
+          "notes": null
+        },
+        {
+          "code": "TNC4",
+          "disciplineCode": "TNC",
+          "discipline": "Testing & Commisioning",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Performance & Load Testing",
+          "notes": null
+        },
+        {
+          "code": "TNC5",
+          "disciplineCode": "TNC",
+          "discipline": "Testing & Commisioning",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Integrated Systems Commissioning",
+          "notes": null
+        },
+        {
+          "code": "TNC6",
+          "disciplineCode": "TNC",
+          "discipline": "Testing & Commisioning",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Training & Operational Readiness",
+          "notes": null
+        },
+        {
+          "code": "TNC7",
+          "disciplineCode": "TNC",
+          "discipline": "Testing & Commisioning",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Certification, Compliance & Handover Documentation",
+          "notes": null
+        },
+        {
+          "code": "TNC8",
+          "disciplineCode": "TNC",
+          "discipline": "Testing & Commisioning",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "TNC9",
+          "disciplineCode": "TNC",
+          "discipline": "Testing & Commisioning",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Future Technologies / Digital Commissioning / Remote Monitoring"
+        },
+        {
+          "code": "WAY0",
+          "disciplineCode": "WAY",
+          "discipline": "Wayfinding & Signage - Airside & Groundside",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "WAY1",
+          "disciplineCode": "WAY",
+          "discipline": "Wayfinding & Signage - Airside & Groundside",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Design Standards & Guidelines",
+          "notes": null
+        },
+        {
+          "code": "WAY2",
+          "disciplineCode": "WAY",
+          "discipline": "Wayfinding & Signage - Airside & Groundside",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Terminal  Signage",
+          "notes": null
+        },
+        {
+          "code": "WAY3",
+          "disciplineCode": "WAY",
+          "discipline": "Wayfinding & Signage - Airside & Groundside",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Landside Signage",
+          "notes": null
+        },
+        {
+          "code": "WAY4",
+          "disciplineCode": "WAY",
+          "discipline": "Wayfinding & Signage - Airside & Groundside",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Airside Signage",
+          "notes": null
+        },
+        {
+          "code": "WAY5",
+          "disciplineCode": "WAY",
+          "discipline": "Wayfinding & Signage - Airside & Groundside",
+          "subdisciplineCode": "5",
+          "subdiscipline": "Dynamic & Digital Signage Systems",
+          "notes": null
+        },
+        {
+          "code": "WAY6",
+          "disciplineCode": "WAY",
+          "discipline": "Wayfinding & Signage - Airside & Groundside",
+          "subdisciplineCode": "6",
+          "subdiscipline": "Accessibility & Multilingual Signage",
+          "notes": null
+        },
+        {
+          "code": "WAY7",
+          "disciplineCode": "WAY",
+          "discipline": "Wayfinding & Signage - Airside & Groundside",
+          "subdisciplineCode": "7",
+          "subdiscipline": "Branding & Advertising Integration",
+          "notes": null
+        },
+        {
+          "code": "WAY8",
+          "disciplineCode": "WAY",
+          "discipline": "Wayfinding & Signage - Airside & Groundside",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": "Interface/Coordination"
+        },
+        {
+          "code": "WAY9",
+          "disciplineCode": "WAY",
+          "discipline": "Wayfinding & Signage - Airside & Groundside",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": "Future Technologies / Smart Wayfinding Solutions"
+        },
+        {
+          "code": "WAT0",
+          "disciplineCode": "WAT",
+          "discipline": "Water Distribution-Utilities",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "WAT1",
+          "disciplineCode": "WAT",
+          "discipline": "Water Distribution-Utilities",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Water Distribution - Piping type, size & layouts",
+          "notes": null
+        },
+        {
+          "code": "WAT2",
+          "disciplineCode": "WAT",
+          "discipline": "Water Distribution-Utilities",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Fire Hydrants and valves",
+          "notes": null
+        },
+        {
+          "code": "WAT3",
+          "disciplineCode": "WAT",
+          "discipline": "Water Distribution-Utilities",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Water Distribution Modelling",
+          "notes": null
+        },
+        {
+          "code": "WAT4",
+          "disciplineCode": "WAT",
+          "discipline": "Water Distribution-Utilities",
+          "subdisciplineCode": "4",
+          "subdiscipline": "Code/Regulatory Compliance",
+          "notes": null
+        },
+        {
+          "code": "WAT5",
+          "disciplineCode": "WAT",
+          "discipline": "Water Distribution-Utilities",
+          "subdisciplineCode": "5",
+          "subdiscipline": "",
+          "notes": "Reserved for Future Use"
+        },
+        {
+          "code": "WAT6",
+          "disciplineCode": "WAT",
+          "discipline": "Water Distribution-Utilities",
+          "subdisciplineCode": "6",
+          "subdiscipline": "",
+          "notes": "Reserved for Future Use"
+        },
+        {
+          "code": "WAT7",
+          "disciplineCode": "WAT",
+          "discipline": "Water Distribution-Utilities",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for Future Use"
+        },
+        {
+          "code": "WAT8",
+          "disciplineCode": "WAT",
+          "discipline": "Water Distribution-Utilities",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "WAT9",
+          "disciplineCode": "WAT",
+          "discipline": "Water Distribution-Utilities",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "HNC0",
+          "disciplineCode": "HNC",
+          "discipline": "Hot and Chilled Water distribution - Utilities",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "HNC1",
+          "disciplineCode": "HNC",
+          "discipline": "Hot and Chilled Water distribution - Utilities",
+          "subdisciplineCode": "1",
+          "subdiscipline": "Hot & Chilled Water Distribution - Piping type, size & layouts",
+          "notes": null
+        },
+        {
+          "code": "HNC2",
+          "disciplineCode": "HNC",
+          "discipline": "Hot and Chilled Water distribution - Utilities",
+          "subdisciplineCode": "2",
+          "subdiscipline": "Hot & Chilled Water Modelling",
+          "notes": null
+        },
+        {
+          "code": "HNC3",
+          "disciplineCode": "HNC",
+          "discipline": "Hot and Chilled Water distribution - Utilities",
+          "subdisciplineCode": "3",
+          "subdiscipline": "Code/Regulatory Compliance",
+          "notes": null
+        },
+        {
+          "code": "HNC4",
+          "disciplineCode": "HNC",
+          "discipline": "Hot and Chilled Water distribution - Utilities",
+          "subdisciplineCode": "4",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "HNC5",
+          "disciplineCode": "HNC",
+          "discipline": "Hot and Chilled Water distribution - Utilities",
+          "subdisciplineCode": "5",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "HNC6",
+          "disciplineCode": "HNC",
+          "discipline": "Hot and Chilled Water distribution - Utilities",
+          "subdisciplineCode": "6",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "HNC7",
+          "disciplineCode": "HNC",
+          "discipline": "Hot and Chilled Water distribution - Utilities",
+          "subdisciplineCode": "7",
+          "subdiscipline": "",
+          "notes": "Reserved for future use"
+        },
+        {
+          "code": "HNC8",
+          "disciplineCode": "HNC",
+          "discipline": "Hot and Chilled Water distribution - Utilities",
+          "subdisciplineCode": "8",
+          "subdiscipline": "Interface and Coordination",
+          "notes": null
+        },
+        {
+          "code": "HNC9",
+          "disciplineCode": "HNC",
+          "discipline": "Hot and Chilled Water distribution - Utilities",
+          "subdisciplineCode": "9",
+          "subdiscipline": "Innovation and Future Technologies",
+          "notes": null
+        },
+        {
+          "code": "XXX0",
+          "disciplineCode": "XXX",
+          "discipline": "Non-discipline specific",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        },
+        {
+          "code": "ZZZ0",
+          "disciplineCode": "ZZZ",
+          "discipline": "Multiple Disciplines",
+          "subdisciplineCode": "0",
+          "subdiscipline": "General",
+          "notes": null
+        }
+      ]
+    },
+    {
+      "id": "L7",
+      "key": "ACC-Document Type",
+      "label": "ACC-Document Type",
+      "sheet": "L7 - Document Type",
+      "items": [
+        {
+          "code": "ACL",
+          "name": "Audit Checklist"
+        },
+        {
+          "code": "ACR",
+          "name": "Audit Criteria"
+        },
+        {
+          "code": "ADD",
+          "name": "Addendum"
+        },
+        {
+          "code": "AGD",
+          "name": "Agenda"
+        },
+        {
+          "code": "AGR",
+          "name": "Agreement"
+        },
+        {
+          "code": "AMR",
+          "name": "Assessment Report"
+        },
+        {
+          "code": "ANL",
+          "name": "Analysis"
+        },
+        {
+          "code": "APP",
+          "name": "Appendix"
+        },
+        {
+          "code": "ART",
+          "name": "Artwork"
+        },
+        {
+          "code": "AUR",
+          "name": "Audit Report"
+        },
+        {
+          "code": "CAR",
+          "name": "Corrective Action Request"
+        },
+        {
+          "code": "CCL",
+          "name": "Compliance Checklist"
+        },
+        {
+          "code": "CER",
+          "name": "Certificate"
+        },
+        {
+          "code": "CHD",
+          "name": "Change Directive"
+        },
+        {
+          "code": "CHO",
+          "name": "Change Order"
+        },
+        {
+          "code": "CHR",
+          "name": "Change Request"
+        },
+        {
+          "code": "CNO",
+          "name": "Change Notice"
+        },
+        {
+          "code": "CON",
+          "name": "Contract"
+        },
+        {
+          "code": "COR",
+          "name": "Correspondence"
+        },
+        {
+          "code": "CRR",
+          "name": "Change Recommendation"
+        },
+        {
+          "code": "CRS",
+          "name": "Comments and Review Sheets"
+        },
+        {
+          "code": "DEC",
+          "name": "Design Criteria"
+        },
+        {
+          "code": "DRG",
+          "name": "Drawing"
+        },
+        {
+          "code": "DSK",
+          "name": "Drawing - Sketch"
+        },
+        {
+          "code": "DTS",
+          "name": "Data Sheet"
+        },
+        {
+          "code": "EST",
+          "name": "Estimate"
+        },
+        {
+          "code": "FAT",
+          "name": "Factory Acceptance Test"
+        },
+        {
+          "code": "FCR",
+          "name": "Field Change Request"
+        },
+        {
+          "code": "FDR",
+          "name": "Federated Model/Coordination Models"
+        },
+        {
+          "code": "FRM",
+          "name": "Form"
+        },
+        {
+          "code": "GID",
+          "name": "Guidance Document"
+        },
+        {
+          "code": "GMP",
+          "name": "ArcGIS Map Package"
+        },
+        {
+          "code": "ICD",
+          "name": "Interface Control Document"
+        },
+        {
+          "code": "INP",
+          "name": "Inspection Records"
+        },
+        {
+          "code": "INS",
+          "name": "Insurance"
+        },
+        {
+          "code": "INV",
+          "name": "Invoice"
+        },
+        {
+          "code": "IRQ",
+          "name": "Inspection Request"
+        },
+        {
+          "code": "ITP",
+          "name": "Inspection & Testing Plan"
+        },
+        {
+          "code": "LAS",
+          "name": "LIDAR Data Exchange File"
+        },
+        {
+          "code": "LAZ",
+          "name": "LIDAR Compressed Data Exchange File"
+        },
+        {
+          "code": "LET",
+          "name": "Letter"
+        },
+        {
+          "code": "LIC",
+          "name": "Licence"
+        },
+        {
+          "code": "LIS",
+          "name": "List"
+        },
+        {
+          "code": "LOG",
+          "name": "Log"
+        },
+        {
+          "code": "M2D",
+          "name": "2D Models"
+        },
+        {
+          "code": "M2X",
+          "name": "Model 2D - Existing"
+        },
+        {
+          "code": "M3D",
+          "name": "Model - 3D"
+        },
+        {
+          "code": "M3X",
+          "name": "Model 3D - Existing"
+        },
+        {
+          "code": "MAN",
+          "name": "Manual"
+        },
+        {
+          "code": "MAP",
+          "name": "Map"
+        },
+        {
+          "code": "MED",
+          "name": "Media"
+        },
+        {
+          "code": "MEM",
+          "name": "Memo"
+        },
+        {
+          "code": "MEO",
+          "name": "Methodology"
+        },
+        {
+          "code": "MES",
+          "name": "Method Statement"
+        },
+        {
+          "code": "MOM",
+          "name": "Meeting Minutes"
+        },
+        {
+          "code": "MPC",
+          "name": "Model - Point Cloud"
+        },
+        {
+          "code": "MSL",
+          "name": "Materials and Spares List"
+        },
+        {
+          "code": "MSR",
+          "name": "Model - Surfaces"
+        },
+        {
+          "code": "MTA",
+          "name": "Material Approvals"
+        },
+        {
+          "code": "MTI",
+          "name": "Material Testing and Inspection"
+        },
+        {
+          "code": "MTX",
+          "name": "Matrix"
+        },
+        {
+          "code": "NCR",
+          "name": "Non Conformance Report"
+        },
+        {
+          "code": "NOD",
+          "name": "Notice of Delay"
+        },
+        {
+          "code": "NTC",
+          "name": "Notice"
+        },
+        {
+          "code": "PAY",
+          "name": "Payment Certificate"
+        },
+        {
+          "code": "PDA",
+          "name": "Product Data"
+        },
+        {
+          "code": "PER",
+          "name": "Permit"
+        },
+        {
+          "code": "PLN",
+          "name": "Plan"
+        },
+        {
+          "code": "PLQ",
+          "name": "Plain Language Questionnaire"
+        },
+        {
+          "code": "POL",
+          "name": "Policy"
+        },
+        {
+          "code": "PRE",
+          "name": "Presentation"
+        },
+        {
+          "code": "PRO",
+          "name": "Procedure"
+        },
+        {
+          "code": "PRP",
+          "name": "Proposal"
+        },
+        {
+          "code": "PRW",
+          "name": "Process Workflow"
+        },
+        {
+          "code": "PVI",
+          "name": "Photographs Images and Videos"
+        },
+        {
+          "code": "QAI",
+          "name": "Quality Inspection"
+        },
+        {
+          "code": "QAR",
+          "name": "Quality Audit Report"
+        },
+        {
+          "code": "QAT",
+          "name": "Quality Test"
+        },
+        {
+          "code": "QLA",
+          "name": "Qualification Assessment"
+        },
+        {
+          "code": "QLF",
+          "name": "Qualification Criteria"
+        },
+        {
+          "code": "QLR",
+          "name": "Qualification Report"
+        },
+        {
+          "code": "QNR",
+          "name": "Questionnaire"
+        },
+        {
+          "code": "REG",
+          "name": "Register"
+        },
+        {
+          "code": "REQ",
+          "name": "Requirements"
+        },
+        {
+          "code": "RFI",
+          "name": "Request for Information"
+        },
+        {
+          "code": "RGN",
+          "name": "Reference - General"
+        },
+        {
+          "code": "RPT",
+          "name": "Report"
+        },
+        {
+          "code": "SAT",
+          "name": "Site Acceptance Test"
+        },
+        {
+          "code": "SCH",
+          "name": "Schedule"
+        },
+        {
+          "code": "SHD",
+          "name": "Drawing - Shop Drawings"
+        },
+        {
+          "code": "SIT",
+          "name": "Site Instruction"
+        },
+        {
+          "code": "SOF",
+          "name": "Software"
+        },
+        {
+          "code": "SOW",
+          "name": "Scope of Work"
+        },
+        {
+          "code": "SPC",
+          "name": "Specification"
+        },
+        {
+          "code": "STA",
+          "name": "Standard"
+        },
+        {
+          "code": "STE",
+          "name": "Statement"
+        },
+        {
+          "code": "STR",
+          "name": "Strategy"
+        },
+        {
+          "code": "SUB",
+          "name": "Submittal"
+        },
+        {
+          "code": "TCM",
+          "name": "Technical Memo"
+        },
+        {
+          "code": "TEM",
+          "name": "Template"
+        },
+        {
+          "code": "TRA",
+          "name": "Training"
+        },
+        {
+          "code": "TRN",
+          "name": "Transmittal"
+        },
+        {
+          "code": "VAD",
+          "name": "Variation Directive"
+        },
+        {
+          "code": "VAE",
+          "name": "Variation Enquiry"
+        },
+        {
+          "code": "VAN",
+          "name": "Variation Notice"
+        },
+        {
+          "code": "VAO",
+          "name": "Variation Order"
+        },
+        {
+          "code": "VAR",
+          "name": "Variation"
+        },
+        {
+          "code": "WIN",
+          "name": "Work Instruction"
+        },
+        {
+          "code": "WTY",
+          "name": "Warranty"
+        },
+        {
+          "code": "XRF",
+          "name": "Background Data-Cross Reference Files (specially created-if any)"
+        }
+      ]
+    }
+  ],
+  "metadataFields": [
+    {
+      "field": "Field",
+      "requirement": "Requirement",
+      "options": [
+        {
+          "option": "Option",
+          "description": "Description"
+        }
+      ]
+    },
+    {
+      "field": "Document Number",
+      "requirement": "Required",
+      "options": []
+    },
+    {
+      "field": "Title",
+      "requirement": "Required",
+      "options": []
+    },
+    {
+      "field": "Rev",
+      "requirement": "Required",
+      "options": [
+        {
+          "option": "P0n.0n",
+          "description": "Suitable for WIP preliminary versions"
+        },
+        {
+          "option": "P0n",
+          "description": "Suitable for Shared (non-contractual) revisions"
+        },
+        {
+          "option": "C0n",
+          "description": "Suitable for Published (contractual)"
+        }
+      ]
+    },
+    {
+      "field": "Rev. Date",
+      "requirement": "Required",
+      "options": [
+        {
+          "option": "YYYY-MM-DD",
+          "description": null
+        }
+      ]
+    },
+    {
+      "field": "Sheet Number",
+      "requirement": "Required",
+      "options": [
+        {
+          "option": null,
+          "description": "Required only for drawing sheets"
+        }
+      ]
+    },
+    {
+      "field": "Suitability",
+      "requirement": "Required",
+      "options": [
+        {
+          "option": "S0 - Initial state",
+          "description": "Preliminary revision and version - Work in progress (WIP)"
+        },
+        {
+          "option": "S1 - Suitable for coordination",
+          "description": "Preliminary revision - Shared (non-contractual)"
+        },
+        {
+          "option": "S2 - Suitable for information",
+          "description": "Preliminary revision - Shared (non-contractual)"
+        },
+        {
+          "option": "S3 - Suitable for review and comment",
+          "description": "Preliminary revision - Shared (non-contractual)"
+        },
+        {
+          "option": "S4 - Suitable for stage approval",
+          "description": "Preliminary revision - Shared (non-contractual)"
+        },
+        {
+          "option": "S5 - Suitable for PIM authorization",
+          "description": "Preliminary revision - Shared (non-contractual)"
+        },
+        {
+          "option": "S6 - Suitable for AIM authorization",
+          "description": "Preliminary revision - Shared (non-contractual)"
+        },
+        {
+          "option": "A1 - Authorized and accepted",
+          "description": "Contractual revision - Published (contractual)"
+        },
+        {
+          "option": "An - Authorized and accepted",
+          "description": "Contractual revision - Published (contractual)"
+        },
+        {
+          "option": "B1 - Partial sign-off (with comments)",
+          "description": "Preliminary revision - Preliminary revision"
+        },
+        {
+          "option": "Bn - Partial sign-off (with comments)",
+          "description": "Preliminary revision - Preliminary revision"
+        },
+        {
+          "option": "CR - As constructed record document",
+          "description": "Contractual revision - Published (for AIM acceptance)"
+        }
+      ]
+    },
+    {
+      "field": "Sensitivity",
+      "requirement": "Required",
+      "options": [
+        {
+          "option": "Internal",
+          "description": null
+        }
+      ]
+    },
+    {
+      "field": "Level",
+      "requirement": "Required",
+      "options": [
+        {
+          "option": "01 - First Level",
+          "description": null
+        },
+        {
+          "option": "02 - Second Level",
+          "description": null
+        },
+        {
+          "option": "03 - Third Level",
+          "description": null
+        },
+        {
+          "option": "04 - Forth Level",
+          "description": null
+        },
+        {
+          "option": "05 - Fifth Level",
+          "description": null
+        },
+        {
+          "option": "06 - Sixth Level",
+          "description": null
+        },
+        {
+          "option": "07 - Seventh Level",
+          "description": null
+        },
+        {
+          "option": "08 - Eighth Level",
+          "description": null
+        },
+        {
+          "option": "09 - Ninth Level",
+          "description": null
+        },
+        {
+          "option": "10 - Tenth Level",
+          "description": null
+        },
+        {
+          "option": "11 - Eleventh Level",
+          "description": null
+        },
+        {
+          "option": "RF - Roof Level",
+          "description": null
+        },
+        {
+          "option": "AG - At Grade (Site)",
+          "description": null
+        },
+        {
+          "option": "B1 - Basement",
+          "description": null
+        },
+        {
+          "option": "B2 - Sub-basement 1",
+          "description": null
+        },
+        {
+          "option": "B2 - Sub-basement 1",
+          "description": null
+        },
+        {
+          "option": "B3 - Sub-basement 2",
+          "description": null
+        },
+        {
+          "option": "B4 - Sub-basement 3",
+          "description": null
+        },
+        {
+          "option": "B5 - Sub-basement 4",
+          "description": null
+        },
+        {
+          "option": "M1 - Mezzanine Level 1",
+          "description": null
+        },
+        {
+          "option": "M2 - Mezzanine Level 2",
+          "description": null
+        },
+        {
+          "option": "M3 - Mezzanine Level 3",
+          "description": null
+        },
+        {
+          "option": "Mn - Mezzanine Level n",
+          "description": null
+        },
+        {
+          "option": "XX - Non Level Specific",
+          "description": null
+        },
+        {
+          "option": "ZZ - Multiple Levels",
+          "description": null
+        }
+      ]
+    },
+    {
+      "field": "ProjectNo.",
+      "requirement": "Required",
+      "options": []
+    },
+    {
+      "field": "PackageNo.",
+      "requirement": "Required",
+      "options": []
+    },
+    {
+      "field": "Doc. Category",
+      "requirement": "Optional",
+      "options": [
+        {
+          "option": "Technical",
+          "description": null
+        }
+      ]
+    },
+    {
+      "field": "Milestone",
+      "requirement": "Required",
+      "options": [
+        {
+          "option": "30% - DD",
+          "description": null
+        },
+        {
+          "option": "60% - DD",
+          "description": null
+        },
+        {
+          "option": "90% - DD",
+          "description": null
+        }
+      ]
+    },
+    {
+      "field": "DEX. Format",
+      "requirement": "Required",
+      "options": [
+        {
+          "option": "Native",
+          "description": null
+        },
+        {
+          "option": "Rendition",
+          "description": null
+        },
+        {
+          "option": "Standard",
+          "description": null
+        }
+      ]
+    },
+    {
+      "field": "Review Status",
+      "requirement": null,
+      "options": []
+    }
+  ],
+  "counts": {
+    "L1": 1,
+    "L2": 1,
+    "L3": 5,
+    "L4": 8,
+    "L5": 182,
+    "L6": 492,
+    "L7": 110
+  }
+}

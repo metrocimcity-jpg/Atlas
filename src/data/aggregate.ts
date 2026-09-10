@@ -10,6 +10,7 @@ import { GENERATOR_VERSION, SCHEMA_VERSION } from "./types";
 import { createNodeId, parentRelativePath } from "./ids";
 import type { FileClassifier } from "@/metadata/FileClassifier";
 import { defaultClassifier } from "@/metadata/FileClassifier";
+import { mergeAccTaxonomyMetadata } from "@/metadata/accTaxonomy";
 
 function emptyStats(): FolderStats {
   return {
@@ -124,6 +125,12 @@ export function buildFileIndex(options: {
       attributes: entry.attributes,
       stats: entry.nodeType === "folder" ? emptyStats() : undefined,
     };
+    if (entry.nodeType === "file") {
+      const enriched = mergeAccTaxonomyMetadata(undefined, entry.name, entry.relativePath);
+      if (enriched) {
+        node.metadata = enriched;
+      }
+    }
     byId.set(id, node);
   }
 
@@ -285,4 +292,21 @@ function escapeCsv(value: string): string {
     return `"${value.replaceAll('"', '""')}"`;
   }
   return value;
+}
+
+/** Attach ACC taxonomy metadata to every file node (safe to run on JSON loads too). */
+export function enrichFileIndexWithAccTaxonomy(index: FileIndex): FileIndex {
+  return {
+    ...index,
+    items: index.items.map((item) => {
+      if (item.nodeType !== "file") {
+        return item;
+      }
+      const metadata = mergeAccTaxonomyMetadata(item.metadata, item.name, item.relativePath);
+      if (!metadata) {
+        return item;
+      }
+      return { ...item, metadata };
+    }),
+  };
 }

@@ -6,6 +6,17 @@ import { colorForExt } from "@/visualization/palettes";
 import { formatBytes, formatNumber } from "@/utils/format";
 import { isFilterActive } from "@/filtering/FilterEngine";
 import type { ColorBy, GroupBy, LayoutMode } from "@/visualization/types";
+import { indexShowsAccTaxonomy } from "@/metadata/accTaxonomy";
+
+const ACC_GROUP_BY = new Set<string>([
+  "accPortfolio",
+  "accProgram",
+  "accSubProgram",
+  "accOriginator",
+  "accLocation",
+  "accDiscipline",
+  "accDocumentType",
+]);
 
 function groupValue(groupBy: GroupBy[]): string {
   if (groupBy[0] === "folder") {
@@ -31,6 +42,7 @@ export function Sidebar(): JSX.Element {
   const totalSize = index?.statistics.totalSize ?? 0;
   const matching = search.trim().length > 0 || isFilterActive(filters);
   const metadataKeys = collectMetadataKeys(index);
+  const showAccGroups = indexShowsAccTaxonomy(index);
 
   const extUniverse = Object.entries(
     files.reduce<Record<string, { count: number; size: number }>>((acc, file) => {
@@ -68,7 +80,19 @@ export function Sidebar(): JSX.Element {
               actions.patchVisualization({ groupBy: ["custom"], customProperty: property });
               return;
             }
-            actions.patchVisualization({ groupBy: value.split(",") as GroupBy[] });
+            const groups = value.split(",") as GroupBy[];
+            const accLabels = ACC_GROUP_BY.has(groups[0] ?? "");
+            actions.patchVisualization({
+              groupBy: groups,
+              ...(accLabels
+                ? {
+                    style: {
+                      groupLabelMinFontSize: 4,
+                      groupLabelMaxFontSize: 22,
+                    },
+                  }
+                : {}),
+            });
           }}
         >
           <option value="folder">Folder structure</option>
@@ -79,6 +103,17 @@ export function Sidebar(): JSX.Element {
           <option value="date,extension">Date modified → type</option>
           <option value="category">Category</option>
           <option value="category,fileType,extension">Category → Type → Ext</option>
+          {showAccGroups ? (
+            <>
+              <option value="accPortfolio">ACC-Portfolio</option>
+              <option value="accProgram">ACC-Program</option>
+              <option value="accSubProgram">ACC-Sub Program</option>
+              <option value="accOriginator">ACC-Originator</option>
+              <option value="accLocation">ACC-Location</option>
+              <option value="accDiscipline">ACC-Discipline</option>
+              <option value="accDocumentType">ACC-Document Type</option>
+            </>
+          ) : null}
           {metadataKeys.length > 0 ? <option value="custom">Document metadata…</option> : null}
         </select>
 

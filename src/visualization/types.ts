@@ -31,7 +31,14 @@ export type GroupBy =
   | "owner"
   | "drive"
   | "path"
-  | "custom";
+  | "custom"
+  | "accPortfolio"
+  | "accProgram"
+  | "accSubProgram"
+  | "accOriginator"
+  | "accLocation"
+  | "accDiscipline"
+  | "accDocumentType";
 
 export type LayoutMode = "foam" | "treemap" | "circles" | "sunburst";
 

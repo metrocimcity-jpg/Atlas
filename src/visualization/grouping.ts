@@ -4,7 +4,24 @@ import { defaultSizeMapper } from "./SizeMapper";
 
 const OTHER_LABEL = "Other";
 
+const ACC_GROUP_KEYS: Partial<Record<GroupBy, string>> = {
+  accPortfolio: "ACC-Portfolio",
+  accProgram: "ACC-Program",
+  accSubProgram: "ACC-Sub Program",
+  accOriginator: "ACC-Originator",
+  accLocation: "ACC-Location",
+  accDiscipline: "ACC-Discipline",
+  accDocumentType: "ACC-Document Type",
+};
+
 function groupKey(node: IndexNode, key: GroupBy, customProperty: string): string {
+  const accKey = ACC_GROUP_KEYS[key];
+  if (accKey) {
+    const value = node.metadata?.[accKey];
+    return value === undefined || value === null || String(value).trim().length === 0
+      ? "(none)"
+      : String(value);
+  }
   switch (key) {
     case "extension":
       return node.extension ?? "(none)";
@@ -57,8 +74,8 @@ function sizeBucket(size: number): string {
   return "100 MB +";
 }
 
-function colorKeyFor(node: IndexNode, colorByFallback: GroupBy): string {
-  return groupKey(node, colorByFallback, "");
+function colorKeyFor(node: IndexNode, colorByFallback: GroupBy, customProperty: string): string {
+  return groupKey(node, colorByFallback, customProperty);
 }
 
 export function buildFolderTree(
@@ -179,7 +196,7 @@ export function buildGroupedTree(
       sourceId: file.id,
       label: file.name,
       weight: defaultSizeMapper.weight(file, sizeBy, customProperty),
-      colorKey: colorKeyFor(file, groups[0]),
+      colorKey: colorKeyFor(file, groups[0], customProperty),
       nodeType: "file",
       category: file.category,
       extension: file.extension,

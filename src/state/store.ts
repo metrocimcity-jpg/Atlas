@@ -1,5 +1,6 @@
 import type { FileIndex, IndexNode, ScanProgress } from "@/data/types";
-import { indexToCsv, serializeIndex } from "@/data/aggregate";
+import { indexToCsv, serializeIndex, enrichFileIndexWithAccTaxonomy } from "@/data/aggregate";
+import { indexShowsAccTaxonomy } from "@/metadata/accTaxonomy";
 import { parseIndexJson } from "@/data/validate";
 import { createSampleIndex } from "@/data/sampleIndex";
 import { cloneConfig, defaultAppConfig, type AppConfig, type SavedPreset } from "@/config/defaults";
@@ -28,8 +29,18 @@ import { openWebUrl, openableWebUrlFromMetadata } from "@/utils/webLinks";
 import { copyText, openLocalFileHandle } from "@/utils/openFile";
 import { buildGroupedTree } from "@/visualization/grouping";
 import { applyStylePreset as composeStylePreset, stylePresets } from "@/visualization/foamtree/stylePresets";
-import type { VisualizationStyle, VizNode } from "@/visualization/types";
+import type { GroupBy, VisualizationStyle, VizNode } from "@/visualization/types";
 import { useSyncExternalStore } from "react";
+
+const ACC_GROUP_BY_VALUES = new Set<string>([
+  "accPortfolio",
+  "accProgram",
+  "accSubProgram",
+  "accOriginator",
+  "accLocation",
+  "accDiscipline",
+  "accDocumentType",
+]);
 
 export interface AtlasState {
   index: FileIndex | null;
@@ -322,13 +333,22 @@ export const actions = {
     });
   },
   loadIndex(index: FileIndex): void {
+    const enriched = enrichFileIndexWithAccTaxonomy(index);
+    const nextConfig =
+      ACC_GROUP_BY_VALUES.has(state.config.visualization.groupBy[0] ?? "") && !indexShowsAccTaxonomy(enriched)
+        ? {
+            ...state.config,
+            visualization: { ...state.config.visualization, groupBy: ["folder"] as GroupBy[] },
+          }
+        : state.config;
     recompute({
-      index,
+      index: enriched,
       handles: new Map(),
       loadError: null,
       selectedId: null,
       focusPath: [],
       scan: null,
+      config: nextConfig,
     });
   },
   async openFolder(): Promise<void> {
