@@ -10,6 +10,13 @@ import { defaultFilterEngine, emptyFilterState, isFilterActive, type FilterState
 import { defaultSearchEngine } from "@/search/SearchEngine";
 import { startDirectoryScan } from "@/scanner/scanJob";
 import type { HandleMap } from "@/scanner/FileScanner";
+import {
+  directoryHandleKey,
+  ensureReadPermission,
+  loadDirectoryHandle,
+  resolveFileInFolder,
+  saveDirectoryHandle,
+} from "@/scanner/localFolderLink";
 import { mergeFileIndexes } from "@/data/mergeIndex";
 import { downloadText } from "@/utils/format";
 import { beginAccLogin, clearAccToken, completeAccLoginFromUrl, isAccSignedIn } from "@/acc/auth";
@@ -83,6 +90,60 @@ const listeners = new Set<() => void>();
 
 let scanCancel: (() => void) | null = null;
 let sharePointImportCancel = false;
+let linkedDirectory: FileSystemDirectoryHandle | null = null;
+let linkedDirectoryKey: string | null = null;
+let directoryPrefetch: Promise<void> | null = null;
+
+function rememberDirectory(index: FileIndex, handle: FileSystemDirectoryHandle): void {
+  linkedDirectory = handle;
+  linkedDirectoryKey = directoryHandleKey(index);
+  void saveDirectoryHandle(linkedDirectoryKey, handle);
+}
+
+function prefetchLinkedDirectory(index: FileIndex): void {
+  const key = directoryHandleKey(index);
+  linkedDirectory = null;
+  linkedDirectoryKey = key;
+  directoryPrefetch = loadDirectoryHandle(key)
+    .then((handle) => {
+      if (handle && linkedDirectoryKey === key) {
+        linkedDirectory = handle;
+      }
+    })
+    .catch(() => undefined);
+}
+
+async function permittedLinkedDirectory(index: FileIndex): Promise<FileSystemDirectoryHandle | null> {
+  if (directoryPrefetch) {
+    await directoryPrefetch;
+  }
+  const key = directoryHandleKey(index);
+  if (linkedDirectory && linkedDirectoryKey === key && (await ensureReadPermission(linkedDirectory))) {
+    return linkedDirectory;
+  }
+  return null;
+}
+
+async function pickOriginalFolder(index: FileIndex): Promise<FileSystemDirectoryHandle> {
+  if (!window.showDirectoryPicker) {
+    throw new Error("Folder picking requires Chrome or Edge with the File System Access API.");
+  }
+  setState({
+    loadError: null,
+    acc: {
+      ...state.acc,
+      resolveMessage: `Pick “${index.root.name}” — the folder this JSON was scanned from — to open the file.`,
+    },
+  });
+  try {
+    return await window.showDirectoryPicker({ mode: "read", id: "prisma-local-folder" });
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "AbortError") {
+      throw new Error("Folder selection cancelled.");
+    }
+    throw error;
+  }
+}
 
 let state: AtlasState = {
   index: null,
@@ -323,6 +384,9 @@ export const actions = {
     });
   },
   loadSample(): void {
+    linkedDirectory = null;
+    linkedDirectoryKey = null;
+    directoryPrefetch = null;
     recompute({
       index: createSampleIndex(),
       handles: new Map(),
@@ -341,6 +405,7 @@ export const actions = {
             visualization: { ...state.config.visualization, groupBy: ["folder"] as GroupBy[] },
           }
         : state.config;
+    prefetchLinkedDirectory(enriched);
     recompute({
       index: enriched,
       handles: new Map(),
@@ -365,6 +430,7 @@ export const actions = {
       scanCancel = job.cancel;
       setState({ scanning: true, loadError: null, scan: null });
       const result = await job.done;
+      rememberDirectory(result.index, handle);
       recompute({
         index: result.index,
         handles: result.handles,
@@ -604,16 +670,45 @@ export const actions = {
       }
       return;
     }
-    const handle = state.handles.get(node.id);
+    const index = state.index;
+    let handle = state.handles.get(node.id);
     if (!handle || handle.kind !== "file") {
-      setState({
-        loadError:
-          "Cannot open this file. Import from SharePoint (opens on the web), Resolve ACC links, or Load folder for local open.",
-      });
-      return;
+      try {
+        let folder = await permittedLinkedDirectory(index);
+        let located = folder ? await resolveFileInFolder(folder, node, index.root.name) : null;
+        if (!located) {
+          linkedDirectory = null;
+          folder = await pickOriginalFolder(index);
+          located = await resolveFileInFolder(folder, node, index.root.name);
+        }
+        if (state.index !== index) {
+          return;
+        }
+        if (!located || !folder) {
+          setState({
+            loadError: `Cannot find “${node.name}” in “${folder?.name ?? index.root.name}”. Pick the same folder this JSON was scanned from (${index.root.name}).`,
+          });
+          return;
+        }
+        rememberDirectory(index, located.directory);
+        const nextHandles = new Map(state.handles);
+        nextHandles.set(node.id, located.file);
+        if (node.parentId) {
+          nextHandles.set(node.parentId, located.parent);
+        }
+        handle = located.file;
+        setState({ handles: nextHandles, loadError: null });
+      } catch (error) {
+        setState({
+          loadError: error instanceof Error ? error.message : "Could not link the original folder",
+        });
+        return;
+      }
     }
     try {
-      const result = await openLocalFileHandle(handle as FileSystemFileHandle);
+      const parent = node.parentId ? state.handles.get(node.parentId) : null;
+      const startIn = parent?.kind === "directory" ? (parent as FileSystemDirectoryHandle) : undefined;
+      const result = await openLocalFileHandle(handle as FileSystemFileHandle, { startIn });
       setState({
         loadError: null,
         acc: {

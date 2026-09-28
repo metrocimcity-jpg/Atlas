@@ -44,7 +44,7 @@ export function DetailsPanel(): JSX.Element {
   const group = !node && selectedId && vizTree ? findVizNode(vizTree, selectedId) : null;
   const hasCloudUrl = Boolean(node?.nodeType === "file" && openableWebUrlFromMetadata(node.metadata));
   const canDownload = Boolean(node?.nodeType === "file" && handles.get(node.id)?.kind === "file");
-  const canOpen = hasCloudUrl || canDownload;
+  const canOpen = node?.nodeType === "file";
 
   return (
     <div className="card">
@@ -68,7 +68,7 @@ export function DetailsPanel(): JSX.Element {
                   ? "Open on the web (Enter or double-click)"
                   : canDownload
                     ? "Double-click the tile or press open to get a local copy"
-                    : "Import from SharePoint, Resolve ACC links, or Load folder first"
+                    : "Pick the original folder this JSON was scanned from, then save a local copy"
               }
               onClick={() => void actions.openSelected()}
             >

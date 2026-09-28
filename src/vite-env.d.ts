@@ -19,6 +19,7 @@ declare global {
     }) => Promise<FileSystemFileHandle[]>;
     showSaveFilePicker?: (options?: {
       suggestedName?: string;
+      startIn?: FileSystemHandle | "desktop" | "documents" | "downloads" | "music" | "pictures" | "videos";
       types?: Array<{ description?: string; accept: Record<string, string[]> }>;
     }) => Promise<FileSystemFileHandle>;
   }

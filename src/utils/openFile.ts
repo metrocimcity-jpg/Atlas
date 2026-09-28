@@ -36,13 +36,18 @@ function triggerDownload(url: string, filename: string): void {
  * Prefers the Save As picker; falls back to a download.
  * Browsers cannot launch Revit/AutoCAD — the user opens the saved file themselves.
  */
-export async function openLocalFileHandle(handle: FileSystemFileHandle): Promise<"saved" | "downloaded"> {
+export async function openLocalFileHandle(
+  handle: FileSystemFileHandle,
+  options?: { startIn?: FileSystemDirectoryHandle },
+): Promise<"saved" | "downloaded"> {
   const file = await readFile(handle);
 
   if (typeof window.showSaveFilePicker === "function") {
     try {
       const output = await window.showSaveFilePicker({
         suggestedName: file.name,
+        // A file handle opens the dialog in that file's folder, not the scanned root.
+        startIn: options?.startIn ?? handle,
       });
       const writable = await output.createWritable();
       await writable.write(await file.arrayBuffer());
