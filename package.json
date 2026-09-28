@@ -1,9 +1,9 @@
 {
-  "name": "atlas",
+  "name": "prisma",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Visual filesystem analytics explorer powered by Carrot Search FoamTree",
+  "description": "Prisma — visual filesystem analytics explorer powered by Carrot Search FoamTree",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

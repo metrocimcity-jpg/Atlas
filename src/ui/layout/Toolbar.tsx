@@ -26,7 +26,7 @@ export function Toolbar(): JSX.Element {
     <header className="topbar">
       <div className="brand">
         <div className="mark">
-          Disk<span>Atlas</span>
+          Disk<span>Prisma</span>
         </div>
         <div className="tag">file &amp; folder treemap — grouped by type / size / date</div>
       </div>

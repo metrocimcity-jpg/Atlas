@@ -30,8 +30,8 @@ export const stylePresets: StylePreset[] = [
   {
     id: "disk-atlas",
     group: "Appearance",
-    label: "Disk Atlas",
-    description: "Flattened file-type coloring used by the previous Atlas UI",
+    label: "Disk Prisma",
+    description: "Flattened file-type coloring used by the previous Prisma UI",
     visualization: {
       layout: "sunburst",
       renderer: "foamtree",

@@ -15,7 +15,7 @@ export function AccSettingsCard(): JSX.Element {
     <div className="card acc-settings-card">
       <h3>Autodesk Construction Cloud</h3>
       <p className="detail-hint">
-        Atlas builds real Docs links like{" "}
+        Prisma builds real Docs links like{" "}
         <code>https://acc.autodesk.com/docs/files/projects/…?entityId=…</code> by signing into Autodesk and matching
         your loaded folder paths to ACC. Create a free APS app, enable PKCE, and add this callback URL:{" "}
         <code>

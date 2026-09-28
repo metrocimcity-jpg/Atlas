@@ -47,7 +47,7 @@ export function describeAccLinkError(value: string): string {
     return "Paste an ACC Docs https link first.";
   }
   if (looksLikeFilePath(trimmed)) {
-    return "That is a file path, not an ACC web link. In File Explorer: right-click the file → Desktop Connector → Copy web link (must start with https://acc.autodesk.com/...). Atlas Copy path will not open ACC.";
+    return "That is a file path, not an ACC web link. In File Explorer: right-click the file → Desktop Connector → Copy web link (must start with https://acc.autodesk.com/...). Prisma Copy path will not open ACC.";
   }
   if (/^http:\/\//i.test(trimmed)) {
     return "Use an https:// ACC Docs link, not http.";
@@ -78,6 +78,6 @@ export function openAccWebUrl(url: string): void {
   }
   const opened = window.open(normalized, "_blank", "noopener,noreferrer");
   if (!opened) {
-    throw new Error("Popup blocked — allow popups for Atlas to open ACC.");
+    throw new Error("Popup blocked — allow popups for Prisma to open ACC.");
   }
 }

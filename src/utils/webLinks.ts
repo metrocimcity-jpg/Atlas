@@ -37,7 +37,7 @@ export function openWebUrl(url: string): void {
   }
   const opened = window.open(sharePoint, "_blank", "noopener,noreferrer");
   if (!opened) {
-    throw new Error("Popup blocked — allow popups for Atlas to open SharePoint.");
+    throw new Error("Popup blocked — allow popups for Prisma to open SharePoint.");
   }
 }
 

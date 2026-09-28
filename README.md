@@ -1,17 +1,17 @@
-# Atlas
+# Prisma
 
 Visual filesystem analytics explorer. Scan a folder (or load a versioned JSON index) and inspect it with **Carrot Search FoamTree** — the official Voronoi treemap engine — plus search, filters, grouping, coloring, and a FoamTree settings panel.
 
-The visualization uses the `@carrotsearch/foamtree` package (demo distribution). Atlas does not reimplement FoamTree’s layout.
+The visualization uses the `@carrotsearch/foamtree` package (demo distribution). Prisma does not reimplement FoamTree’s layout.
 
-## Default look vs Disk Atlas
+## Default look vs Disk Prisma
 
 | Mode | Meaning |
 | --- | --- |
 | **Default** | FoamTree factory styling from the [settings demo](https://get.carrotsearch.com/foamtree/latest/demos/settings.html): rainbow colors, gradient fills, hierarchical stacking, Oxygen labels, light stage |
-| **Disk Atlas preset** | Previous Atlas chrome/style from `context/file-treemap-explorer.html`: flattened stacking, plain fills, Inter labels, extension-based file coloring, dark stage |
+| **Disk Prisma preset** | Previous Prisma chrome/style from `context/file-treemap-explorer.html`: flattened stacking, plain fills, Inter labels, extension-based file coloring, dark stage |
 
-Apply **Disk Atlas** from Settings → Presets → Appearance (or the Disk Atlas analysis preset under More).
+Apply **Disk Prisma** from Settings → Presets → Appearance (or the Disk Prisma analysis preset under More).
 
 ## Architecture
 
@@ -98,8 +98,8 @@ Left sidebar: Search, View, Overview, Selection.
 
 - **View card:** Group By, Color By, Display (flattened / hierarchical)
 - **Settings panel:** FoamTree options (layout, borders, fill, stroke, rainbow, labels, animation) with live updates
-- **Style presets:** Appearance (FoamTree defaults, Disk Atlas), Color scheme, Borders & fill, Layout, Animation
-- **Analysis presets (More):** Disk Atlas, BIM, CAD, Large Files, Recently Modified, Engineering, Archive
+- **Style presets:** Appearance (FoamTree defaults, Disk Prisma), Color scheme, Borders & fill, Layout, Animation
+- **Analysis presets (More):** Disk Prisma, BIM, CAD, Large Files, Recently Modified, Engineering, Archive
 
 ## Search
 
@@ -135,6 +135,6 @@ npm run typecheck
 ## Troubleshooting
 
 - **Open folder disabled / error** — use Chromium (Chrome, Edge, or a Chromium-based Electron shell). Firefox does not implement `showDirectoryPicker`.
-- **Malformed JSON** — Atlas reports validation errors and does not crash.
+- **Malformed JSON** — Prisma reports validation errors and does not crash.
 - **Empty visualization after filters** — clear all filters or widen the query; the status bar shows matching counts.
-- **Want the old Disk Atlas look** — Settings → Presets → Appearance → Disk Atlas.
+- **Want the old Disk Prisma look** — Settings → Presets → Appearance → Disk Prisma.

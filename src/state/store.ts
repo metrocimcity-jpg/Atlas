@@ -391,7 +391,7 @@ export const actions = {
   async openJson(): Promise<void> {
     try {
       const text = await pickTextFile([
-        { description: "Atlas index or workspace", accept: { "application/json": [".json"] } },
+        { description: "Prisma index or workspace", accept: { "application/json": [".json"] } },
       ]);
       if (text === null) {
         return;
@@ -467,7 +467,7 @@ export const actions = {
   async mergeJson(): Promise<void> {
     try {
       const text = await pickTextFile([
-        { description: "Atlas index JSON", accept: { "application/json": [".json"] } },
+        { description: "Prisma index JSON", accept: { "application/json": [".json"] } },
       ]);
       if (text === null) {
         return;

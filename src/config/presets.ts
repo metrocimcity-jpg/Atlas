@@ -26,7 +26,7 @@ function viz(partial: Partial<VisualizationConfig>, filters?: Partial<FilterStat
 export const builtinPresets: SavedPreset[] = [
   {
     id: "disk-atlas",
-    name: "Disk Atlas",
+    name: "Disk Prisma",
     theme: "dark",
     ...viz({
       layout: "sunburst",

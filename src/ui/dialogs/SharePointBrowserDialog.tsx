@@ -118,7 +118,7 @@ export function SharePointBrowserDialog(): JSX.Element | null {
         </header>
         <div className="panel-body">
           <p className="detail-hint">
-            Pick a site and document library to import into Atlas. Open will launch the item on SharePoint in your
+            Pick a site and document library to import into Prisma. Open will launch the item on SharePoint in your
             browser.
           </p>
 
