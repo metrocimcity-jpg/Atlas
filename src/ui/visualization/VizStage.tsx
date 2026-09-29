@@ -1,11 +1,11 @@
-import { useAtlas } from "@/state/store";
+import { usePrisma } from "@/state/store";
 import { CirclePackCanvas } from "@/ui/visualization/CirclePackCanvas";
 import { FoamCanvas } from "@/ui/visualization/FoamCanvas";
 import { SequencesSunburstCanvas } from "@/ui/visualization/SequencesSunburstCanvas";
 import { SunburstCanvas } from "@/ui/visualization/SunburstCanvas";
 
 export function VizStage(): JSX.Element {
-  const { config } = useAtlas();
+  const { config } = usePrisma();
   const renderer = config.visualization.renderer ?? "foamtree";
   if (renderer === "circlePacking") {
     return <CirclePackCanvas />;

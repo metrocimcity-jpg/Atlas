@@ -5,7 +5,7 @@
 - Default FoamTree look matches the official factory / [settings demo](https://get.carrotsearch.com/foamtree/latest/demos/settings.html) (rainbow, gradients, hierarchical stacking).
 - Disk Prisma UI and flattened extension coloring preserved as an Appearance / analysis preset (`context/file-treemap-explorer.html`).
 - Settings panel modeled on FoamTree settings: search, foldable sections, color/style/layout/animation presets, export settings JSON.
-- Color models: `rainbow` (default) and `atlas` (file-type decorator).
+- Color models: `rainbow` (default) and `prisma` (file-type decorator).
 - Chrome layout: top bar, crumb bar, left sidebar cards, full-bleed stage, right settings panel, status bar.
 
 ## 0.2.0

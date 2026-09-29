@@ -1,4 +1,4 @@
-import { actions, useAtlas } from "@/state/store";
+import { actions, usePrisma } from "@/state/store";
 import { useEffect, useMemo, useState } from "react";
 
 interface Command {
@@ -9,7 +9,7 @@ interface Command {
 }
 
 export function CommandPalette(): JSX.Element | null {
-  const { panels } = useAtlas();
+  const { panels } = usePrisma();
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
 

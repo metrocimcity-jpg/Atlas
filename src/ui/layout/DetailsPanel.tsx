@@ -1,4 +1,4 @@
-import { actions, useAtlas } from "@/state/store";
+import { actions, usePrisma } from "@/state/store";
 import { openableWebUrlFromMetadata } from "@/utils/webLinks";
 import { formatBytes, formatDate, formatNumber } from "@/utils/format";
 import { findVizNode } from "@/visualization/tree";
@@ -39,7 +39,7 @@ function formatMetadataValue(value: unknown): string {
 }
 
 export function DetailsPanel(): JSX.Element {
-  const { selectedId, index, vizTree, handles } = useAtlas();
+  const { selectedId, index, vizTree, handles } = usePrisma();
   const node = selectedId ? index?.items.find((item) => item.id === selectedId) ?? null : null;
   const group = !node && selectedId && vizTree ? findVizNode(vizTree, selectedId) : null;
   const hasCloudUrl = Boolean(node?.nodeType === "file" && openableWebUrlFromMetadata(node.metadata));

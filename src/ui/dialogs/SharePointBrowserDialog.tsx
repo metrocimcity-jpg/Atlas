@@ -1,9 +1,9 @@
-import { actions, useAtlas } from "@/state/store";
+import { actions, usePrisma } from "@/state/store";
 import type { GraphDrive, GraphSite } from "@/sharepoint/graph";
 import { useEffect, useState } from "react";
 
 export function SharePointBrowserDialog(): JSX.Element | null {
-  const { panels, sharePoint, index } = useAtlas();
+  const { panels, sharePoint, index } = usePrisma();
   const [sites, setSites] = useState<GraphSite[]>([]);
   const [drives, setDrives] = useState<GraphDrive[]>([]);
   const [selectedSiteId, setSelectedSiteId] = useState<string | null>(null);

@@ -1,6 +1,6 @@
 import { FilterPanel } from "@/ui/layout/FilterPanel";
 import { DetailsPanel } from "@/ui/layout/DetailsPanel";
-import { actions, useAtlas } from "@/state/store";
+import { actions, usePrisma } from "@/state/store";
 import { collectMetadataKeys } from "@/data/metadataKeys";
 import { colorForExt } from "@/visualization/palettes";
 import { formatBytes, formatNumber } from "@/utils/format";
@@ -36,7 +36,7 @@ function formatPropertyLabel(key: string): string {
 }
 
 export function Sidebar(): JSX.Element {
-  const { config, index, visibleCount, search, filters } = useAtlas();
+  const { config, index, visibleCount, search, filters } = usePrisma();
   const viz = config.visualization;
   const files = index?.items.filter((item) => item.nodeType === "file") ?? [];
   const totalSize = index?.statistics.totalSize ?? 0;

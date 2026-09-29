@@ -10,7 +10,7 @@ interface Extents {
   newest: number;
 }
 
-export interface AtlasFoamGroup extends FoamTreeGroup {
+export interface PrismaFoamGroup extends FoamTreeGroup {
   id: string;
   label: string;
   weight: number;
@@ -19,7 +19,7 @@ export interface AtlasFoamGroup extends FoamTreeGroup {
   nodeType: VizNode["nodeType"];
   isFile: boolean;
   color?: string;
-  groups?: AtlasFoamGroup[];
+  groups?: PrismaFoamGroup[];
 }
 
 function collectExtents(node: VizNode, extents: Extents): void {
@@ -59,8 +59,8 @@ function colorFor(node: VizNode, config: VisualizationConfig, extents: Extents):
   });
 }
 
-function toGroup(node: VizNode, config: VisualizationConfig, extents: Extents): AtlasFoamGroup {
-  const group: AtlasFoamGroup = {
+function toGroup(node: VizNode, config: VisualizationConfig, extents: Extents): PrismaFoamGroup {
+  const group: PrismaFoamGroup = {
     id: node.id,
     label: node.label,
     weight: Math.max(node.weight, 0.0001),
@@ -68,7 +68,7 @@ function toGroup(node: VizNode, config: VisualizationConfig, extents: Extents): 
     size: node.size,
     nodeType: node.nodeType,
     isFile: node.nodeType === "file",
-    ...(config.style.colorModel === "atlas" ? { color: colorFor(node, config, extents) } : {}),
+    ...(config.style.colorModel === "prisma" ? { color: colorFor(node, config, extents) } : {}),
   };
   if (node.children.length > 0) {
     group.groups = node.children.map((child) => toGroup(child, config, extents));
@@ -92,7 +92,7 @@ export function toFoamTreeData(root: VizNode, config: VisualizationConfig): Foam
   return { groups };
 }
 
-export function findFoamGroupBySourceId(groups: AtlasFoamGroup[] | undefined, sourceId: string): AtlasFoamGroup | null {
+export function findFoamGroupBySourceId(groups: PrismaFoamGroup[] | undefined, sourceId: string): PrismaFoamGroup | null {
   if (!groups) {
     return null;
   }

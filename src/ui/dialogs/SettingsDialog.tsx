@@ -1,7 +1,7 @@
 import { AccSettingsCard } from "@/ui/dialogs/AccSettingsCard";
 import { SharePointSettingsCard } from "@/ui/dialogs/SharePointSettingsCard";
-import { actions, useAtlas } from "@/state/store";
-import { atlasLayoutFromFoam } from "@/visualization/defaultStyle";
+import { actions, usePrisma } from "@/state/store";
+import { prismaLayoutFromFoam } from "@/visualization/defaultStyle";
 import { settingGroups, type SettingControl } from "@/visualization/foamtree/settingsSchema";
 import { STYLE_PRESET_GROUPS, stylePresets } from "@/visualization/foamtree/stylePresets";
 import { downloadText } from "@/utils/format";
@@ -17,7 +17,7 @@ function matchesQuery(label: string, option: string, query: string): boolean {
 }
 
 function SettingRow({ control }: { control: SettingControl }): JSX.Element {
-  const { config } = useAtlas();
+  const { config } = usePrisma();
   const style = config.visualization.style;
   const id = `setting-${control.option}`;
 
@@ -42,7 +42,7 @@ function SettingRow({ control }: { control: SettingControl }): JSX.Element {
     if (key === "foamLayout" || key === "stacking" || key === "relaxationInitializer") {
       const merged = { ...style, ...stylePatch };
       actions.patchVisualization({
-        layout: atlasLayoutFromFoam(merged),
+        layout: prismaLayoutFromFoam(merged),
         style: merged,
       });
       return;
@@ -117,7 +117,7 @@ function SettingRow({ control }: { control: SettingControl }): JSX.Element {
 }
 
 export function SettingsPanel(): JSX.Element | null {
-  const { panels, config } = useAtlas();
+  const { panels, config } = usePrisma();
   const [query, setQuery] = useState("");
   const [folded, setFolded] = useState<Record<string, boolean>>({});
 

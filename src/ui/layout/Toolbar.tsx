@@ -1,5 +1,5 @@
 import { builtinPresets } from "@/config/presets";
-import { actions, useAtlas } from "@/state/store";
+import { actions, usePrisma } from "@/state/store";
 
 function FolderIcon(): JSX.Element {
   return (
@@ -20,7 +20,7 @@ function LayersIcon(): JSX.Element {
 }
 
 export function Toolbar(): JSX.Element {
-  const { config, panels } = useAtlas();
+  const { config, panels } = usePrisma();
 
   return (
     <header className="topbar">

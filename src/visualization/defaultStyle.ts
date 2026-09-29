@@ -67,10 +67,10 @@ export function foamtreeDefaultStyle(): VisualizationStyle {
 }
 
 /** Previous Disk Prisma chrome + flattened file-type coloring. */
-export function diskAtlasStyle(): VisualizationStyle {
+export function diskPrismaStyle(): VisualizationStyle {
   return {
     ...foamtreeDefaultStyle(),
-    colorModel: "atlas",
+    colorModel: "prisma",
     stageBackground: "#0f1115",
     foamLayout: "relaxed",
     stacking: "flattened",
@@ -114,7 +114,7 @@ export function diskAtlasStyle(): VisualizationStyle {
 
 export const defaultVisualizationStyle = foamtreeDefaultStyle;
 
-export function atlasLayoutFromFoam(style: Pick<VisualizationStyle, "foamLayout" | "stacking" | "relaxationInitializer">): LayoutMode {
+export function prismaLayoutFromFoam(style: Pick<VisualizationStyle, "foamLayout" | "stacking" | "relaxationInitializer">): LayoutMode {
   if (style.foamLayout === "squarified") {
     return "treemap";
   }

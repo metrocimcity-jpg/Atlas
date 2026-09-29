@@ -32,7 +32,7 @@ Light theme may soft-neutralize panels; keep FoamTree stage color independent vi
 
 ## Visualization Palettes
 
-Provide Prisma categorical palettes for `colorModel: "atlas"` and analysis presets:
+Provide Prisma categorical palettes for `colorModel: "prisma"` and analysis presets:
 
 - Professional / Rainbow (Disk Prisma curated extension palette)
 - Dark, Light, Monochrome
@@ -69,7 +69,7 @@ Prefer a FoamTree-aligned style object (see `VisualizationStyle` in `src/visuali
 
 ```ts
 interface VisualizationStyle {
-  colorModel: "rainbow" | "atlas";
+  colorModel: "rainbow" | "prisma";
   stageBackground: string;
   foamLayout: "relaxed" | "ordered" | "squarified";
   stacking: "hierarchical" | "flattened";

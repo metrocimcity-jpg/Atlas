@@ -84,7 +84,7 @@ Schema version `1.0`. Shape:
 }
 ```
 
-Load this file later with **Open JSON**. Workspaces (`atlas.workspace.json`) store view state only — not a second copy of file metadata.
+Load this file later with **Open JSON**. Workspaces (`prisma.workspace.json`) store view state only — not a second copy of file metadata.
 
 ## UI layout
 

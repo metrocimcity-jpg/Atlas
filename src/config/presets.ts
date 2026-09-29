@@ -1,5 +1,5 @@
 import { emptyFilterState, type FilterState } from "@/filtering/FilterEngine";
-import { diskAtlasStyle, foamtreeDefaultStyle } from "@/visualization/defaultStyle";
+import { diskPrismaStyle, foamtreeDefaultStyle } from "@/visualization/defaultStyle";
 import type { SavedPreset } from "./defaults";
 import type { VisualizationConfig } from "@/visualization/types";
 
@@ -25,7 +25,7 @@ function viz(partial: Partial<VisualizationConfig>, filters?: Partial<FilterStat
 
 export const builtinPresets: SavedPreset[] = [
   {
-    id: "disk-atlas",
+    id: "disk-prisma",
     name: "Disk Prisma",
     theme: "dark",
     ...viz({
@@ -34,7 +34,7 @@ export const builtinPresets: SavedPreset[] = [
       groupBy: ["extension"],
       palette: "rainbow",
       labelThreshold: 8,
-      style: diskAtlasStyle(),
+      style: diskPrismaStyle(),
     }),
   },
   {

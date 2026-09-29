@@ -89,7 +89,7 @@ FoamTree itself is the layout/renderer. Keep a thin adapter rather than a second
 
 Do not hard-code user-tunable FoamTree values in components.
 
-Use typed configuration objects and centralized defaults (`foamtreeDefaultStyle`, `diskAtlasStyle`).
+Use typed configuration objects and centralized defaults (`foamtreeDefaultStyle`, `diskPrismaStyle`).
 
 ## Extensibility
 

@@ -1,9 +1,9 @@
-import { actions, useAtlas } from "@/state/store";
+import { actions, usePrisma } from "@/state/store";
 import { formatBytes } from "@/utils/format";
 import { findFoamGroupBySourceId, toFoamTreeData } from "@/visualization/foamtree/dataObject";
 import { setFoamTreeInstance } from "@/visualization/foamtree/host";
 import { foamTreeViewOptions } from "@/visualization/foamtree/options";
-import type { AtlasFoamGroup } from "@/visualization/foamtree/dataObject";
+import type { PrismaFoamGroup } from "@/visualization/foamtree/dataObject";
 import { FoamTree, type FoamTreeEvent } from "@carrotsearch/foamtree";
 import { useEffect, useRef } from "react";
 
@@ -12,12 +12,12 @@ function cssColor(name: string, fallback: string): string {
   return value.length > 0 ? value : fallback;
 }
 
-function sourceIdFrom(group: AtlasFoamGroup | undefined): string | null {
+function sourceIdFrom(group: PrismaFoamGroup | undefined): string | null {
   return group?.sourceId ?? group?.id ?? null;
 }
 
 export function FoamCanvas(): JSX.Element {
-  const { vizTree, config, selectedId } = useAtlas();
+  const { vizTree, config, selectedId } = usePrisma();
   const hostRef = useRef<HTMLDivElement>(null);
   const foamRef = useRef<FoamTree | null>(null);
 
@@ -32,10 +32,10 @@ export function FoamCanvas(): JSX.Element {
       ...foamTreeViewOptions(config.visualization, cssColor("--bg", "#0f1115")),
       pixelRatio: window.devicePixelRatio || 1,
       onGroupClick: (event: FoamTreeEvent) => {
-        actions.select(sourceIdFrom(event.group as AtlasFoamGroup | undefined));
+        actions.select(sourceIdFrom(event.group as PrismaFoamGroup | undefined));
       },
       onGroupDoubleClick: (event: FoamTreeEvent) => {
-        const group = event.group as AtlasFoamGroup | undefined;
+        const group = event.group as PrismaFoamGroup | undefined;
         if (!group) {
           return;
         }
@@ -52,14 +52,14 @@ export function FoamCanvas(): JSX.Element {
         void actions.openNode(id);
       },
       onGroupHover: (event: FoamTreeEvent) => {
-        actions.hover(event.group ? String((event.group as AtlasFoamGroup).id) : null);
+        actions.hover(event.group ? String((event.group as PrismaFoamGroup).id) : null);
       },
       onGroupSelectionChanged: (event: FoamTreeEvent) => {
-        const first = event.groups?.[0] as AtlasFoamGroup | undefined;
+        const first = event.groups?.[0] as PrismaFoamGroup | undefined;
         actions.select(sourceIdFrom(first));
       },
       onGroupExposureChanged: (event: FoamTreeEvent) => {
-        const exposed = (event.groups ?? []) as AtlasFoamGroup[];
+        const exposed = (event.groups ?? []) as PrismaFoamGroup[];
         if (exposed.length === 0) {
           actions.setFocusPath([]);
           return;
@@ -68,7 +68,7 @@ export function FoamCanvas(): JSX.Element {
       },
       titleBarDecorator: (
         _options: unknown,
-        properties: { group?: AtlasFoamGroup },
+        properties: { group?: PrismaFoamGroup },
         variables: { titleBarText?: string },
       ) => {
         const group = properties.group;
@@ -133,7 +133,7 @@ export function FoamCanvas(): JSX.Element {
       void foamtree.select([]);
       return;
     }
-    const data = foamtree.get("dataObject") as { groups?: AtlasFoamGroup[] } | null;
+    const data = foamtree.get("dataObject") as { groups?: PrismaFoamGroup[] } | null;
     const group = findFoamGroupBySourceId(data?.groups, selectedId);
     if (group) {
       void foamtree.select(group);

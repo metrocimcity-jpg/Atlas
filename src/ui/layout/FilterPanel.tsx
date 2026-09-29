@@ -1,9 +1,9 @@
-import { actions, useAtlas } from "@/state/store";
+import { actions, usePrisma } from "@/state/store";
 import { colorForExt } from "@/visualization/palettes";
 import { useEffect, useState } from "react";
 
 export function FilterPanel(): JSX.Element {
-  const { filters, index, search } = useAtlas();
+  const { filters, index, search } = usePrisma();
   const [searchDraft, setSearchDraft] = useState(search);
   const files = index?.items.filter((item) => item.nodeType === "file") ?? [];
 

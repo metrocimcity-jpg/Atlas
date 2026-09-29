@@ -2,7 +2,7 @@ import { FOLDER_FILL } from "@/visualization/palettes";
 import type { VisualizationConfig } from "@/visualization/types";
 import type { FoamTreeOptions } from "@carrotsearch/foamtree";
 import { foamLayoutOptions } from "./dataObject";
-import type { AtlasFoamGroup } from "./dataObject";
+import type { PrismaFoamGroup } from "./dataObject";
 
 export function foamTreeViewOptions(
   config: VisualizationConfig,
@@ -11,7 +11,7 @@ export function foamTreeViewOptions(
   const style = config.style;
   const layout = foamLayoutOptions(config.layout);
   const animate = config.animation;
-  const atlasColors = style.colorModel === "atlas";
+  const prismaColors = style.colorModel === "prisma";
   return {
     layout: style.foamLayout ?? layout.layout,
     stacking: style.stacking ?? layout.stacking,
@@ -75,10 +75,10 @@ export function foamTreeViewOptions(
     rainbowLightnessShift: style.rainbowLightnessShift,
     rainbowSaturationCorrection: style.rainbowSaturationCorrection,
     rainbowLightnessCorrection: style.rainbowLightnessCorrection,
-    groupColorDecorator: atlasColors
+    groupColorDecorator: prismaColors
       ? (
           _options: unknown,
-          properties: { group?: AtlasFoamGroup },
+          properties: { group?: PrismaFoamGroup },
           variables: { groupColor: unknown; labelColor: string },
         ) => {
           const group = properties.group;
@@ -93,10 +93,10 @@ export function foamTreeViewOptions(
           variables.groupColor = FOLDER_FILL;
         }
       : () => undefined,
-    groupLabelDecorator: atlasColors
+    groupLabelDecorator: prismaColors
       ? (
           _options: unknown,
-          properties: { group?: AtlasFoamGroup; open?: boolean; hasChildren?: boolean; description?: boolean },
+          properties: { group?: PrismaFoamGroup; open?: boolean; hasChildren?: boolean; description?: boolean },
           variables: { labelText: string },
         ) => {
           const group = properties.group;

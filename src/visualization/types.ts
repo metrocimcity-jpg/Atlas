@@ -58,7 +58,7 @@ export type PaletteId =
   | "pastel"
   | "highContrast";
 
-export type ColorModel = "rainbow" | "atlas";
+export type ColorModel = "rainbow" | "prisma";
 export type FoamLayout = "relaxed" | "ordered" | "squarified";
 export type FoamStacking = "hierarchical" | "flattened";
 export type FoamFillType = "none" | "plain" | "gradient";

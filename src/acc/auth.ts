@@ -1,6 +1,6 @@
 const AUTH_BASE = "https://developer.api.autodesk.com/authentication/v2";
-const TOKEN_KEY = "atlas.acc.token.v1";
-const PKCE_KEY = "atlas.acc.pkce.v1";
+const TOKEN_KEY = "prisma.acc.token.v1";
+const PKCE_KEY = "prisma.acc.pkce.v1";
 
 export interface AccToken {
   accessToken: string;

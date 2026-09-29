@@ -151,7 +151,7 @@ export const settingGroups: SettingGroup[] = [
         type: "enum",
         values: [
           { value: "rainbow", label: "FoamTree rainbow" },
-          { value: "atlas", label: "File type / Prisma" },
+          { value: "prisma", label: "File type / Prisma" },
         ],
       },
       { option: "rainbowStartColor", label: "Rainbow start color", type: "string" },

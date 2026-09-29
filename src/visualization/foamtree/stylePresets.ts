@@ -1,4 +1,4 @@
-import { atlasLayoutFromFoam, diskAtlasStyle, foamtreeDefaultStyle } from "@/visualization/defaultStyle";
+import { prismaLayoutFromFoam, diskPrismaStyle, foamtreeDefaultStyle } from "@/visualization/defaultStyle";
 import type { LayoutMode, VisualizationConfig, VisualizationStyle } from "@/visualization/types";
 
 export interface StylePreset {
@@ -28,7 +28,7 @@ export const stylePresets: StylePreset[] = [
     style: foamtreeDefaultStyle(),
   },
   {
-    id: "disk-atlas",
+    id: "disk-prisma",
     group: "Appearance",
     label: "Disk Prisma",
     description: "Flattened file-type coloring used by the previous Prisma UI",
@@ -41,7 +41,7 @@ export const stylePresets: StylePreset[] = [
       showLabels: true,
       animation: true,
     },
-    style: diskAtlasStyle(),
+    style: diskPrismaStyle(),
   },
   {
     id: "zoomable-circle-packing",
@@ -323,7 +323,7 @@ export function applyStylePreset(current: VisualizationConfig, preset: StylePres
     ...preset.visualization,
     style,
   };
-  visualization.layout = (preset.visualization?.layout ?? atlasLayoutFromFoam(style)) as LayoutMode;
+  visualization.layout = (preset.visualization?.layout ?? prismaLayoutFromFoam(style)) as LayoutMode;
   return visualization;
 }
 

@@ -9,7 +9,7 @@ import { StatusBar } from "@/ui/layout/StatusBar";
 import { Toolbar } from "@/ui/layout/Toolbar";
 import { Breadcrumbs } from "@/ui/visualization/Breadcrumbs";
 import { VizStage } from "@/ui/visualization/VizStage";
-import { useAtlas } from "@/state/store";
+import { usePrisma } from "@/state/store";
 
 function stageTone(background: string): "stage-dark" | "stage-light" {
   const hex = background.trim();
@@ -26,7 +26,7 @@ function stageTone(background: string): "stage-dark" | "stage-light" {
 }
 
 export function AppShell(): JSX.Element {
-  const { index, panels, config } = useAtlas();
+  const { index, panels, config } = usePrisma();
   useKeyboard();
   const background = config.visualization.style.stageBackground;
   const tone = stageTone(background);

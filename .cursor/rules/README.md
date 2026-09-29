@@ -26,5 +26,5 @@ Read these rules before implementing features.
 
 1. Visualization engine is `@carrotsearch/foamtree` (not a custom canvas FoamTree clone).
 2. Default look = FoamTree factory / settings-demo defaults.
-3. Disk Prisma look = Appearance preset (`diskAtlasStyle`), reference `context/file-treemap-explorer.html`.
+3. Disk Prisma look = Appearance preset (`diskPrismaStyle`), reference `context/file-treemap-explorer.html`.
 4. Settings panel mirrors the official FoamTree settings demo (search, sections, presets, export JSON).

@@ -32,7 +32,7 @@ The default visualization uses FoamTree factory styling and supports:
 
 - hierarchical and flattened stacking
 - proportional sizing
-- rainbow and Prisma (`atlas`) color models
+- rainbow and Prisma (`prisma`) color models
 - drill-down / expose / open
 - zoom
 - selection

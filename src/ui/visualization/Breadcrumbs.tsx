@@ -1,9 +1,9 @@
-import { actions, useAtlas } from "@/state/store";
+import { actions, usePrisma } from "@/state/store";
 import { resetFoamTreeView } from "@/visualization/foamtree/host";
 import { focusedVizNode } from "@/visualization/tree";
 
 export function Breadcrumbs(): JSX.Element {
-  const { vizTree, focusPath, index } = useAtlas();
+  const { vizTree, focusPath, index } = usePrisma();
   const crumbs = index && vizTree
     ? focusPath.map((id, indexInPath) => {
         const node = focusedVizNode(vizTree, focusPath.slice(0, indexInPath + 1));

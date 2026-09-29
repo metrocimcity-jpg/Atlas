@@ -1,4 +1,4 @@
-const STORAGE_KEY = "atlas.ms.settings.v1";
+const STORAGE_KEY = "prisma.ms.settings.v1";
 
 export interface SharePointSettings {
   /** Azure AD SPA application (client) ID */

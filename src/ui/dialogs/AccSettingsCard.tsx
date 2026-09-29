@@ -1,9 +1,9 @@
-import { actions, useAtlas } from "@/state/store";
+import { actions, usePrisma } from "@/state/store";
 import { applyAccProjectFromUrl, type AccSettings } from "@/acc/settings";
 import { useEffect, useState } from "react";
 
 export function AccSettingsCard(): JSX.Element {
-  const { acc } = useAtlas();
+  const { acc } = usePrisma();
   const [draft, setDraft] = useState<AccSettings>(acc.settings);
   const [projectUrl, setProjectUrl] = useState("");
 

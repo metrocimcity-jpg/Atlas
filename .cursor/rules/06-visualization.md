@@ -43,7 +43,7 @@ Prefer driving layout from `VisualizationStyle` fields (`foamLayout`, `stacking`
 Support two color models in style config:
 
 - **`rainbow`** (default) — FoamTree built-in rainbow (`rainbowStartColor` / `rainbowEndColor` / distribution). Do not override with a custom group color decorator unless necessary.
-- **`atlas`** — Disk Prisma extension / category coloring; folders use a neutral fill; files get palette colors. Use `groupColorDecorator` only in this mode.
+- **`prisma`** — Disk Prisma extension / category coloring; folders use a neutral fill; files get palette colors. Use `groupColorDecorator` only in this mode.
 
 ## Dimensions
 
@@ -143,4 +143,4 @@ Factory defaults come from FoamTree (`foamtreeDefaultStyle()`):
 - Oxygen font family (demo default)
 - ~2s rollout / 1.5s pullback
 
-Disk Prisma (`diskAtlasStyle()`) is a preset, not the factory default.
+Disk Prisma (`diskPrismaStyle()`) is a preset, not the factory default.

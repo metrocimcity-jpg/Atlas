@@ -1,7 +1,7 @@
 const TENANT = "organizations";
 const AUTH_BASE = `https://login.microsoftonline.com/${TENANT}/oauth2/v2.0`;
-const TOKEN_KEY = "atlas.ms.token.v1";
-const PKCE_KEY = "atlas.ms.pkce.v1";
+const TOKEN_KEY = "prisma.ms.token.v1";
+const PKCE_KEY = "prisma.ms.pkce.v1";
 
 export const SHAREPOINT_SCOPES = [
   "openid",

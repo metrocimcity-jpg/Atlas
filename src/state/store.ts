@@ -49,7 +49,7 @@ const ACC_GROUP_BY_VALUES = new Set<string>([
   "accDocumentType",
 ]);
 
-export interface AtlasState {
+export interface PrismaState {
   index: FileIndex | null;
   handles: HandleMap;
   scan: ScanProgress | null;
@@ -145,7 +145,7 @@ async function pickOriginalFolder(index: FileIndex): Promise<FileSystemDirectory
   }
 }
 
-let state: AtlasState = {
+let state: PrismaState = {
   index: null,
   handles: new Map(),
   scan: null,
@@ -182,7 +182,7 @@ function emit(): void {
   }
 }
 
-function setState(partial: Partial<AtlasState>): void {
+function setState(partial: Partial<PrismaState>): void {
   state = { ...state, ...partial };
   emit();
 }
@@ -205,8 +205,8 @@ function expandAncestors(index: FileIndex, ids: Set<string>): Set<string> {
   return visible;
 }
 
-function recompute(next: Partial<AtlasState> = {}): void {
-  const merged: AtlasState = { ...state, ...next };
+function recompute(next: Partial<PrismaState> = {}): void {
+  const merged: PrismaState = { ...state, ...next };
   if (!merged.index) {
     state = {
       ...merged,
@@ -261,11 +261,11 @@ export function subscribe(listener: () => void): () => void {
   return () => listeners.delete(listener);
 }
 
-export function getState(): AtlasState {
+export function getState(): PrismaState {
   return state;
 }
 
-export function useAtlas(): AtlasState {
+export function usePrisma(): PrismaState {
   return useSyncExternalStore(subscribe, getState, getState);
 }
 
@@ -599,7 +599,7 @@ export const actions = {
       config: cloneConfig(state.config),
       panels: { filters: state.panels.filters, details: state.panels.details },
     });
-    downloadText("atlas.workspace.json", `${JSON.stringify(workspace, null, 2)}\n`);
+    downloadText("prisma.workspace.json", `${JSON.stringify(workspace, null, 2)}\n`);
   },
   resetVisualization(): void {
     const defaults = defaultAppConfig();

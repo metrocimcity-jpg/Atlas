@@ -1,4 +1,4 @@
-import { actions, useAtlas } from "@/state/store";
+import { actions, usePrisma } from "@/state/store";
 import type { VizNode } from "@/visualization/types";
 import * as d3 from "d3";
 import { useEffect, useRef } from "react";
@@ -36,7 +36,7 @@ function resolveId(d: d3.HierarchyCircularNode<PackDatum>): string | null {
 }
 
 export function CirclePackCanvas(): JSX.Element {
-  const { vizTree, config, selectedId } = useAtlas();
+  const { vizTree, config, selectedId } = usePrisma();
   const hostRef = useRef<HTMLDivElement>(null);
   const selectedRef = useRef(selectedId);
   selectedRef.current = selectedId;

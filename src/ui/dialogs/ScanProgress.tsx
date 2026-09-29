@@ -1,8 +1,8 @@
-import { actions, useAtlas } from "@/state/store";
+import { actions, usePrisma } from "@/state/store";
 import { formatBytes, formatDuration, formatNumber } from "@/utils/format";
 
 export function ScanProgressDialog(): JSX.Element | null {
-  const { scanning, scan } = useAtlas();
+  const { scanning, scan } = usePrisma();
   if (!scanning || !scan) {
     return null;
   }

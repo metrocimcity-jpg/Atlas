@@ -1,9 +1,9 @@
-import { actions, useAtlas } from "@/state/store";
+import { actions, usePrisma } from "@/state/store";
 import type { SharePointSettings } from "@/sharepoint/settings";
 import { useEffect, useState } from "react";
 
 export function SharePointSettingsCard(): JSX.Element {
-  const { sharePoint } = useAtlas();
+  const { sharePoint } = usePrisma();
   const [draft, setDraft] = useState<SharePointSettings>(sharePoint.settings);
 
   useEffect(() => {

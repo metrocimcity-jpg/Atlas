@@ -1,6 +1,6 @@
 import { parseAccProjectIdFromUrl, stripProjectIdPrefix } from "@/acc/urls";
 
-const STORAGE_KEY = "atlas.acc.settings.v1";
+const STORAGE_KEY = "prisma.acc.settings.v1";
 
 export interface AccSettings {
   clientId: string;

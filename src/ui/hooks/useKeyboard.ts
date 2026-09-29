@@ -1,9 +1,9 @@
-import { actions, useAtlas } from "@/state/store";
+import { actions, usePrisma } from "@/state/store";
 import { resetFoamTreeView } from "@/visualization/foamtree/host";
 import { useEffect } from "react";
 
 export function useKeyboard(): void {
-  const { panels, selectedId } = useAtlas();
+  const { panels, selectedId } = usePrisma();
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent): void => {

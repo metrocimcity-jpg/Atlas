@@ -1,4 +1,4 @@
-import { actions, useAtlas } from "@/state/store";
+import { actions, usePrisma } from "@/state/store";
 import type { VizNode } from "@/visualization/types";
 import * as d3 from "d3";
 import { useEffect, useRef } from "react";
@@ -38,7 +38,7 @@ function resolveId(d: SunburstNode): string | null {
 }
 
 export function SequencesSunburstCanvas(): JSX.Element {
-  const { vizTree, selectedId } = useAtlas();
+  const { vizTree, selectedId } = usePrisma();
   const hostRef = useRef<HTMLDivElement>(null);
   const selectedRef = useRef(selectedId);
   selectedRef.current = selectedId;
