@@ -66,7 +66,7 @@ export function foamtreeDefaultStyle(): VisualizationStyle {
   };
 }
 
-/** Previous Disk Atlas chrome + flattened file-type coloring. */
+/** Previous Disk Prisma chrome + flattened file-type coloring. */
 export function diskAtlasStyle(): VisualizationStyle {
   return {
     ...foamtreeDefaultStyle(),

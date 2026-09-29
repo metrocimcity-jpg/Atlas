@@ -23,7 +23,7 @@ function findChild(items: AccFolderContentItem[], name: string, type?: "folders"
 }
 
 /**
- * Walk ACC folder tree to match Atlas relative paths and attach `metadata.accUrl`.
+ * Walk ACC folder tree to match Prisma relative paths and attach `metadata.accUrl`.
  */
 export async function resolveAccLinks(
   index: FileIndex,

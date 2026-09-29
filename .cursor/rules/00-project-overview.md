@@ -21,10 +21,10 @@ The application must:
 
 The application is not merely a colorful file manager. It is a visual filesystem analytics and exploration tool.
 
-## Default Look vs Disk Atlas
+## Default Look vs Disk Prisma
 
 - **Default appearance** matches the official FoamTree factory settings from the [FoamTree settings demo](https://get.carrotsearch.com/foamtree/latest/demos/settings.html): rainbow color model, gradient fills, hierarchical stacking, Oxygen labels, light stage.
-- **Disk Atlas** (from `context/file-treemap-explorer.html`) is preserved as an **Appearance / color / style preset**: gold/teal chrome cues, flattened stacking, plain fills, Inter labels, extension-based file coloring.
+- **Disk Prisma** (from `context/file-treemap-explorer.html`) is preserved as an **Appearance / color / style preset**: gold/teal chrome cues, flattened stacking, plain fills, Inter labels, extension-based file coloring.
 
 ## Primary Workflow
 
@@ -50,4 +50,4 @@ The application is not merely a colorful file manager. It is a visual filesystem
 
 Always inspect the existing repository before changing architecture. Reuse working code when practical. Do not rewrite the project unnecessarily.
 
-When restyling FoamTree or Settings, prefer matching official FoamTree options and the Disk Atlas reference HTML rather than inventing a parallel visual system.
+When restyling FoamTree or Settings, prefer matching official FoamTree options and the Disk Prisma reference HTML rather than inventing a parallel visual system.

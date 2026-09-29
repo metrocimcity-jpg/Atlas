@@ -4,13 +4,13 @@
 
 Embed **Carrot Search FoamTree** (`@carrotsearch/foamtree`) as the visualization engine.
 
-Do not reimplement FoamTree layout, relaxation, or polygon rendering. Atlas adapts the file index into FoamTree `dataObject` groups and maps typed config onto FoamTree options.
+Do not reimplement FoamTree layout, relaxation, or polygon rendering. Prisma adapts the file index into FoamTree `dataObject` groups and maps typed config onto FoamTree options.
 
 Reference:
 
 - Official package and [API](https://get.carrotsearch.com/foamtree/latest/api/)
 - [Settings demo](https://get.carrotsearch.com/foamtree/latest/demos/settings.html) for defaults and tunable options
-- `context/file-treemap-explorer.html` for the Disk Atlas look (preset, not default)
+- `context/file-treemap-explorer.html` for the Disk Prisma look (preset, not default)
 
 ## Adapter Layer
 
@@ -27,23 +27,23 @@ src/visualization/foamtree/
 
 ## Layout Modes
 
-Atlas layout modes map to FoamTree:
+Prisma layout modes map to FoamTree:
 
-| Atlas layout | FoamTree |
+| Prisma layout | FoamTree |
 | --- | --- |
 | `foam` | `layout: relaxed`, `stacking: hierarchical` |
 | `treemap` | `layout: squarified` |
 | `circles` | `relaxed` + `relaxationInitializer: fisheye` |
 | `sunburst` | `relaxed` + `stacking: flattened` |
 
-Prefer driving layout from `VisualizationStyle` fields (`foamLayout`, `stacking`, `relaxationInitializer`) and keep Atlas `layout` in sync.
+Prefer driving layout from `VisualizationStyle` fields (`foamLayout`, `stacking`, `relaxationInitializer`) and keep Prisma `layout` in sync.
 
 ## Color Models
 
 Support two color models in style config:
 
 - **`rainbow`** (default) — FoamTree built-in rainbow (`rainbowStartColor` / `rainbowEndColor` / distribution). Do not override with a custom group color decorator unless necessary.
-- **`atlas`** — Disk Atlas extension / category coloring; folders use a neutral fill; files get palette colors. Use `groupColorDecorator` only in this mode.
+- **`atlas`** — Disk Prisma extension / category coloring; folders use a neutral fill; files get palette colors. Use `groupColorDecorator` only in this mode.
 
 ## Dimensions
 
@@ -143,4 +143,4 @@ Factory defaults come from FoamTree (`foamtreeDefaultStyle()`):
 - Oxygen font family (demo default)
 - ~2s rollout / 1.5s pullback
 
-Disk Atlas (`diskAtlasStyle()`) is a preset, not the factory default.
+Disk Prisma (`diskAtlasStyle()`) is a preset, not the factory default.

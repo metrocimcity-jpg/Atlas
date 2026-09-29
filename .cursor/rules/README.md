@@ -2,7 +2,7 @@
 
 Read these rules before implementing features.
 
-- `00-project-overview.md` — product mission; FoamTree default vs Disk Atlas preset
+- `00-project-overview.md` — product mission; FoamTree default vs Disk Prisma preset
 - `01-architecture.md` — modular architecture and FoamTree adapter
 - `02-revit-cad-bim-domain.md` — engineering/BIM/CAD classifications
 - `03-data-schema.md` — JSON index and data model
@@ -10,7 +10,7 @@ Read these rules before implementing features.
 - `05-metadata-and-classification.md` — metadata providers and file classification
 - `06-visualization.md` — official FoamTree adapter, layouts, color models
 - `07-search-and-filtering.md` — search and filters
-- `08-ui-ux.md` — Disk Atlas chrome + FoamTree settings panel layout
+- `08-ui-ux.md` — Disk Prisma chrome + FoamTree settings panel layout
 - `09-design-system.md` — tokens, palettes, FoamTree style model
 - `10-performance.md` — large dataset performance
 - `11-security.md` — filesystem and JSON security
@@ -26,5 +26,5 @@ Read these rules before implementing features.
 
 1. Visualization engine is `@carrotsearch/foamtree` (not a custom canvas FoamTree clone).
 2. Default look = FoamTree factory / settings-demo defaults.
-3. Disk Atlas look = Appearance preset (`diskAtlasStyle`), reference `context/file-treemap-explorer.html`.
+3. Disk Prisma look = Appearance preset (`diskAtlasStyle`), reference `context/file-treemap-explorer.html`.
 4. Settings panel mirrors the official FoamTree settings demo (search, sections, presets, export JSON).

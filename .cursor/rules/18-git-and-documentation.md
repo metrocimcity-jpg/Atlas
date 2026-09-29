@@ -27,7 +27,7 @@ Update documentation **and** `.cursor/rules/` when:
 - new metadata providers are added
 - new visualization modes are added
 - FoamTree defaults / style presets change
-- Disk Atlas vs factory default behavior changes
+- Disk Prisma vs factory default behavior changes
 - Settings panel UX or preset groups change
 
 Keep these in sync with the product:
@@ -41,7 +41,7 @@ Keep these in sync with the product:
 README should explain:
 
 - project purpose
-- FoamTree default vs Disk Atlas preset
+- FoamTree default vs Disk Prisma preset
 - architecture
 - prerequisites
 - installation

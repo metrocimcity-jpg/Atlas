@@ -34,7 +34,7 @@ describe("FoamTree data adapter", () => {
     expect(data.groups?.some((group) => Array.isArray(group.groups) && group.groups.length > 0)).toBe(true);
   });
 
-  it("maps Atlas layouts to FoamTree layout and stacking", () => {
+  it("maps Prisma layouts to FoamTree layout and stacking", () => {
     expect(foamLayoutOptions("foam")).toMatchObject({ layout: "relaxed", stacking: "hierarchical" });
     expect(foamLayoutOptions("treemap")).toMatchObject({ layout: "squarified" });
     expect(foamLayoutOptions("sunburst")).toMatchObject({ stacking: "flattened" });

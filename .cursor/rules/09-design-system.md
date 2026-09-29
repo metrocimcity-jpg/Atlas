@@ -15,14 +15,14 @@ Use CSS design tokens for chrome UI:
 
 Do not scatter arbitrary chrome colors through components.
 
-Disk Atlas chrome reference (`context/file-treemap-explorer.html`):
+Disk Prisma chrome reference (`context/file-treemap-explorer.html`):
 
 - background `#0f1115`
 - accent gold `#ffb454`
 - match teal `#59d9c4`
 - fonts: Space Grotesk, Inter, JetBrains Mono
 
-FoamTree **stage** background is controlled by `VisualizationStyle.stageBackground` (factory default is light white; Disk Atlas preset uses dark `#0f1115`).
+FoamTree **stage** background is controlled by `VisualizationStyle.stageBackground` (factory default is light white; Disk Prisma preset uses dark `#0f1115`).
 
 ## Dark / Light Chrome
 
@@ -32,9 +32,9 @@ Light theme may soft-neutralize panels; keep FoamTree stage color independent vi
 
 ## Visualization Palettes
 
-Provide Atlas categorical palettes for `colorModel: "atlas"` and analysis presets:
+Provide Prisma categorical palettes for `colorModel: "atlas"` and analysis presets:
 
-- Professional / Rainbow (Disk Atlas curated extension palette)
+- Professional / Rainbow (Disk Prisma curated extension palette)
 - Dark, Light, Monochrome
 - Engineering, BIM, CAD
 - Heatmap, Pastel, High Contrast
@@ -59,7 +59,7 @@ All tuning must update live.
 Provide:
 
 - **FoamTree defaults** preset (factory)
-- **Disk Atlas** preset (previous UI look)
+- **Disk Prisma** preset (previous UI look)
 - Reset / factory via FoamTree defaults preset
 - Export settings JSON
 

@@ -32,14 +32,14 @@ The default visualization uses FoamTree factory styling and supports:
 
 - hierarchical and flattened stacking
 - proportional sizing
-- rainbow and Atlas color models
+- rainbow and Prisma (`atlas`) color models
 - drill-down / expose / open
 - zoom
 - selection
 - labels / title bar
 - live option updates from the Settings panel
 
-**Disk Atlas** must remain available as an Appearance preset (flattened + extension coloring).
+**Disk Prisma** must remain available as an Appearance preset (flattened + extension coloring).
 
 ## Search
 

@@ -14,7 +14,7 @@ describe("FoamTree style presets", () => {
     expect(config.layout).toBe("foam");
   });
 
-  it("keeps Disk Atlas as a color and style preset", () => {
+  it("keeps Disk Prisma as a color and style preset", () => {
     const atlas = stylePresets.find((preset) => preset.id === "disk-atlas");
     expect(atlas).toBeDefined();
     const applied = applyStylePreset(defaultAppConfig().visualization, atlas!);

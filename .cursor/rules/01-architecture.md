@@ -34,7 +34,7 @@ Schema, normalization, indexing, aggregation, serialization/deserialization.
 
 Hierarchy transformation (grouping), color/size mappers, and the FoamTree adapter.
 
-Rendering of cells is FoamTree’s job. Atlas only:
+Rendering of cells is FoamTree’s job. Prisma only:
 
 - builds `dataObject` groups
 - maps config → FoamTree options
@@ -97,5 +97,5 @@ New file types, metadata providers, grouping strategies, color mappings, and Foa
 
 ## Reference Assets
 
-- `context/file-treemap-explorer.html` — Disk Atlas UI + FoamTree flattened style reference
+- `context/file-treemap-explorer.html` — Disk Prisma UI + FoamTree flattened style reference
 - FoamTree settings demo — factory defaults and settings-panel UX reference

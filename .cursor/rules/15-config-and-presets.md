@@ -36,7 +36,7 @@ Settings → Presets must include groups inspired by the FoamTree settings demo:
 ### Appearance
 
 - **FoamTree defaults** — factory look (default)
-- **Disk Atlas** — flattened + extension coloring + Disk Atlas visual style
+- **Disk Prisma** — flattened + extension coloring + Disk Prisma visual style
 
 ### Color scheme
 
@@ -73,7 +73,7 @@ Settings → Presets must include groups inspired by the FoamTree settings demo:
 
 Users should also be able to apply domain presets such as:
 
-- Disk Atlas
+- Disk Prisma
 - BIM Analysis
 - CAD Analysis
 - Large Files

@@ -19,10 +19,10 @@ Target qualities:
 
 ## Main Layout
 
-Preferred structure (Disk Atlas chrome + FoamTree settings):
+Preferred structure (Disk Prisma chrome + FoamTree settings):
 
 ```text
-Top bar (Disk Atlas brand, Sample data, Load folder, Settings, More)
+Top bar (Disk Prisma brand, Sample data, Load folder, Settings, More)
 ------------------------------------------------
 Breadcrumb bar (⌂ all files › …)
 ------------------------------------------------
@@ -47,7 +47,7 @@ Panels should be:
 
 Include:
 
-- Brand: **Disk** + accent **Atlas**
+- Brand: **Disk** + accent **Prisma**
 - Sample data
 - Load folder (primary)
 - Settings (toggle FoamTree settings panel)
@@ -63,7 +63,7 @@ Model the settings UI on the official [FoamTree settings demo](https://get.carro
 - **Presets** section for Appearance, Color scheme, Borders & fill, Layout, Animation
 - **Export settings to JSON**
 
-Default visualization style is FoamTree factory. **Disk Atlas** must remain available as an Appearance preset.
+Default visualization style is FoamTree factory. **Disk Prisma** must remain available as an Appearance preset.
 
 ## Details
 
@@ -75,7 +75,7 @@ Selected folders / groups show aggregated statistics (files, total size).
 
 Always make current hierarchy understandable.
 
-Use Disk Atlas crumb style: `⌂ all files` with `›` separators and current accent.
+Use Disk Prisma crumb style: `⌂ all files` with `›` separators and current accent.
 
 ## Keyboard
 

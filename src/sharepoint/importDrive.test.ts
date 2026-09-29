@@ -3,7 +3,7 @@ import { driveItemsToFileIndex } from "@/sharepoint/importDrive";
 import type { GraphDriveItem } from "@/sharepoint/graph";
 
 describe("driveItemsToFileIndex", () => {
-  it("maps Graph drive items into an Atlas FileIndex with webUrl metadata", () => {
+  it("maps Graph drive items into a Prisma FileIndex with webUrl metadata", () => {
     const items: GraphDriveItem[] = [
       {
         id: "folder-1",
